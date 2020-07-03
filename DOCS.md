@@ -14,6 +14,14 @@ Basically following the official docs and [Airbnb style guide](https://github.co
 
 1. mongoose plugin 
 2. raw jsonwebtoken javascript sdk
+3. bcrypt for password encryption
+
+## Features todo
+
+1. User registerstion.
+2. Data collection from rss.
+3. Basic Sentiment implimentation.
+4. Adding profile filter to accounts: `basic filter`; `moderate filter`; `strict filter`; 
 
 ## Colab
 
