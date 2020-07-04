@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
+    // Difining mongo PATH in the main app module, and schemas to be defined in child modules
     MongooseModule.forRoot('mongodb://localhost:27017/positive-vibes', {
       useNewUrlParser: true,
       useUnifiedTopology: true,

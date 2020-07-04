@@ -8,6 +8,7 @@ export const UserSchema = new mongoose.Schema({
   setting: { type: String, default: 'basic' },
 });
 
+// Password Hashing before saving in database
 UserSchema.pre('save', async function(next: mongoose.HookNextFunction) {
   try {
     if (!this.isModified('password')) {
