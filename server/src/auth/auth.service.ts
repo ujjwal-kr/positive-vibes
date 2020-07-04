@@ -2,7 +2,8 @@ import { Injectable, HttpException, HttpStatus, Post } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from './user.model';
-import { Register } from './authdto';
+import { Register, Login } from './authdto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -24,7 +25,14 @@ export class AuthService {
        return newUser;
     }
 
-    async login(userDto) {
-        return userDto;
+    async login(userDto: Login) {
+        const { email, password } = userDto;
+        const user = await this.userModel.findOne({ email });
+        if (!user)
+            throw new HttpException("User does not exist", HttpStatus.NOT_FOUND)
+        if (await bcrypt.compare(password, user.password)) {
+            return user;
+        }
+        throw new HttpException("ACCESS DENIED", HttpStatus.UNAUTHORIZED)
     }
 }
