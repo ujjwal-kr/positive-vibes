@@ -8,7 +8,7 @@
 
 *We welcome all the users who want to remove negativity from their children's life to be the part of our journey :rocket:*
 
-*Our STACK -> React , Nest , Mongo & Node*
+*Our STACK -> React , Expressjs , MongoDB & Node*
 
 *Made with :heart: in India* 
 
