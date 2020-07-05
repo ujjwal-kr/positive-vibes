@@ -10,8 +10,13 @@ mongoose.connect('mongodb://localhost:27017/positive-vibes', {
 });
 
 const Auth = require('./routes/auth/auth');
+const News = require('./routes/parser/news');
+const UserMiddleware = require ('./middlewares/userMiddleware');
 
 app.use('/auth', Auth);
+
+
+//news
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
