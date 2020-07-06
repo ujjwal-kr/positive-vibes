@@ -5,6 +5,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/userModel');
 const KEY = require('../../settings/key');
 
+const UserMiddleware = require('../../middlewares/userMiddleware');
+
 router.post('/register', async(req, res, next) => {
     const data = {
         name: req.body.name,
@@ -42,6 +44,14 @@ router.post('/login', async(req, res, next) => {
              return res.json({ user, token })
         })
     })
+})
+
+router.patch('/user/:id', UserMiddleware, async(req, res, next) => {
+    let user = req.body.user;
+    if (req.params.id !== user.id) return res.status(403).json({message: "UNAUTHIZED"});
+    user.setting = req.body.setting;
+    user.save();
+    res.json({message: "pta nhi kya hua"})
 })
 
 module.exports = router;

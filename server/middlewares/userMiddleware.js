@@ -12,6 +12,7 @@ const UserMiddleware = async function (req, res, next) {
             if (err) return res.json({err});
             const score = scoring(user.setting)
             req.body.score = score;
+            req.body.user = user;
         })
         return next()
     } catch(e) {
