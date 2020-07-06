@@ -6,7 +6,11 @@ const User = require('../../models/userModel');
 const KEY = require('../../settings/key');
 
 router.post('/register', async(req, res, next) => {
-    const data = req.body;
+    const data = {
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    }
     const {email} = req.body;
     const user = await User.findOne({email});
     if(user) return res.json({message: "User Exists"});
