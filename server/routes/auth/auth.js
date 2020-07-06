@@ -48,10 +48,10 @@ router.post('/login', async(req, res, next) => {
 
 router.patch('/user/:id', UserMiddleware, async(req, res, next) => {
     let user = req.body.user;
-    if (req.params.id !== user.id) return res.status(403).json({message: "UNAUTHIZED"});
+    if (req.params.id !== user.id) return res.status(403).json({message: "UNAUTHORIZED"});
     user.setting = req.body.setting;
     user.save();
-    res.json({message: "pta nhi kya hua"})
+    res.json({message: "Canged settings to" + req.body.setting})
 })
 
 module.exports = router;
