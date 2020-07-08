@@ -1,13 +1,13 @@
 import React from 'react';
 
-class SettingsComponent extends React.Component {
+class NewsItemComponent extends React.Component {
     render() {
         return (
             <div>
-                SETTINGS
+                NEWWS
             </div>
         )
     }
 }
 
-export default SettingsComponent;
+export default NewsItemComponent;
