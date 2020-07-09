@@ -6,32 +6,28 @@ class NewsItemComponent extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            token: ''
-        }
+        this.state = {}
     }
 
     async componentDidMount() {
-        const token = JSON.parse(localStorage.getItem("token"));
-        this.setState({ token: token });
+        const token = localStorage.getItem("token")
         const {match: {params} } = this.props;
         if (params.id) {
             await axios.get(URL + 'news/' + params.id, {
-                headers: {'autorization': this.state.token}
+                headers: {'authorization': token}
             })
             .then(data => {
                 console.log(data.data);
             }).catch(e => {
                 console.log(e);
             })
-        }
-
-        if (!params.id) {
-            await axios.get(URL + 'news/' + params.id)
-            .then(data => {
-                console.log(data.data);
+        } else {
+            await axios.get(URL + 'news', {
+                headers: {'authorization': token}
+            }).then(data => {
+                console.log(data.data)
             }).catch(e => {
-                console.log(e);
+                console.log(e)
             })
         }
     }
