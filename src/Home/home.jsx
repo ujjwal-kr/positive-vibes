@@ -164,11 +164,11 @@ export default function HomeComponent() {
         </List>
       </Drawer>
       <main className={classes.content}>
-        <div className={classes.toolbar} />
+        <Toolbar className={classes.toolbar}  />
         <Switch>
           <Route path = "/" component = { NewsItemComponent } exact />
+          <Route path = "/news/:id" component = { NewsItemComponent } exact />
           <Route path = "/settings" component = { SettingsComponent } />
-
         </Switch>
       </main>
     </div>
