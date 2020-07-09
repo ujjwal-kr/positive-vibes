@@ -4,7 +4,7 @@ async function analyze(data, score) {
     const sentiment = new Sentiment();
     const final = [];
     await data.map(async item => {
-        if (await sentiment.analyze(item.title._text).score > score) {
+        if (await sentiment.analyze(item.title._text).score >= score) {
             final.push(item)
         }
     })
