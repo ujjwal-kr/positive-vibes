@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 app.use(bodyParser.json())
+app.use(cors);
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/positive-vibes', {
     useNewUrlParser: true,
