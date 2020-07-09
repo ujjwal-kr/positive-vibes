@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "startprocess": "pm2 start app.js",
+    "stopprocess": "pm2 stop app.js"
   },
   "engines": {
     "node": "10.19.0"
