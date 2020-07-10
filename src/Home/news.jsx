@@ -2,30 +2,46 @@ import React from 'react';
 import axios from 'axios';
 import URL from '../url';
 
+import { Button } from '@material-ui/core'
+
+import { Wrapper, Item } from '../Components/newsItem';
+
 class NewsItemComponent extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            news: [''],
+            present: false,
+        }
     }
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
-        const {match: {params} } = this.props;
+        const { match: { params } } = this.props;
         if (params.id) {
             await axios.get(URL + 'news/' + params.id, {
-                headers: {'authorization': token}
+                headers: { 'authorization': token }
             })
-            .then(data => {
-                console.log(data.data);
-            }).catch(e => {
-                console.log(e);
-            })
+                .then(data => {
+                    console.log(data.data);
+                    this.setState({
+                        news: data.data.resl,
+                        present: true
+                    });
+                }).catch(e => {
+                    console.log(e);
+                })
         } else {
             await axios.get(URL + 'news', {
-                headers: {'authorization': token}
+                headers: { 'authorization': token }
             }).then(data => {
                 console.log(data.data)
+                this.setState({
+                    news: data.data.resl,
+                    present: true
+                })
+
             }).catch(e => {
                 console.log(e)
             })
@@ -33,20 +49,33 @@ class NewsItemComponent extends React.Component {
     }
 
     render() {
+        const present = this.state.present;
+        let items;
+
+        if (!present) {
+            items = 'Loadig....'
+        } else {
+            items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
+        }
         return (
-            <div>
-                NEWWS
-            </div>
+            <Wrapper>
+                {items}
+            </Wrapper>
         )
     }
 }
 
 class NewsConstructor extends React.Component {
+
     render() {
         return (
-            <div>
-                
-            </div>
+            <Item>
+                {this.props.news.title._text}
+                <p></p>
+                <Button variant="contained" color="primary">
+                    Read Post
+                </Button>
+            </Item>
         )
     }
 }

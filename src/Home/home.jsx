@@ -122,7 +122,7 @@ export default function HomeComponent() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Mini variant drawer
+            +VE Vibes
           </Typography>
         </Toolbar>
       </AppBar>
