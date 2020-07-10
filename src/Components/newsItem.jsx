@@ -17,3 +17,8 @@ export const Center = styled.div`
     text-align: right;
     width: 100%;
 `
+
+export const Date = styled.span`
+    font-size: .62em;
+    color: gray;
+`

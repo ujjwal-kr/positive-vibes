@@ -2,9 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import URL from '../url';
 
-import { Button } from '@material-ui/core'
+import { Button, Grid } from '@material-ui/core';
 
-import { Wrapper, Item } from '../Components/newsItem';
+import { Wrapper, Item, Date } from '../Components/newsItem';
 
 class NewsItemComponent extends React.Component {
 
@@ -72,9 +72,16 @@ class NewsConstructor extends React.Component {
             <Item>
                 {this.props.news.title._text}
                 <p></p>
-                <Button variant="contained" color="primary">
-                    Read Post
-                </Button>
+                <Grid container>
+                    <Grid item xs= {10}>
+                        <Date>{this.props.news.pubDate._text}</Date>
+                    </Grid>
+                    <Grid item xs = {2}>
+                        <Button href = {this.props.news.link._text} target = "_blank" variant="contained" color="primary">
+                            Read Post
+                        </Button>
+                    </Grid>
+                </Grid>
             </Item>
         )
     }
