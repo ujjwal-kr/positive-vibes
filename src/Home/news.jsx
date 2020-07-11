@@ -22,8 +22,7 @@ class NewsItemComponent extends React.Component {
         if (params.id) {
             await axios.get(URL + 'news/' + params.id, {
                 headers: { 'authorization': token }
-            })
-                .then(data => {
+            }).then(data => {
                     console.log(data.data);
                     this.setState({
                         news: data.data.resl,
@@ -53,7 +52,7 @@ class NewsItemComponent extends React.Component {
         let items;
 
         if (!present) {
-            items = 'Loadig....'
+            items = 'Loading....'
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
         }
