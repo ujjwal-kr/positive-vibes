@@ -15,8 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import { Public, Bookmark, DesktopMac, Movie, Explore } from '@material-ui/icons';
 import { Switch, Route } from 'react-router-dom';
 
 import NewsItemComponent from './news';
@@ -146,21 +145,30 @@ export default function HomeComponent() {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+            <ListItem button >
+              <ListItemIcon><Public /></ListItemIcon>
+              <ListItemText primary="Topstories" />
             </ListItem>
-          ))}
+
+            <ListItem button>
+              <ListItemIcon><Bookmark /></ListItemIcon>
+              <ListItemText primary="Bookmarks" />
+            </ListItem>
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+        <ListItem button>
+              <ListItemIcon><DesktopMac /></ListItemIcon>
+              <ListItemText primary="Technology" />
+        </ListItem>
+        <ListItem button>
+              <ListItemIcon><Movie /></ListItemIcon>
+              <ListItemText primary="Entertainment" />
+        </ListItem>
+        <ListItem button>
+              <ListItemIcon><Explore /></ListItemIcon>
+              <ListItemText primary="Science" />
+        </ListItem>  
         </List>
       </Drawer>
       <main className={classes.content}>
