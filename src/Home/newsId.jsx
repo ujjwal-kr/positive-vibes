@@ -6,7 +6,7 @@ import { Button, Grid } from '@material-ui/core';
 
 import { Wrapper, Item, Date } from '../Components/newsItem';
 
-class NewsItemComponent extends React.Component {
+class NewsId extends React.Component {
 
     constructor(props) {
         super(props);
@@ -18,18 +18,18 @@ class NewsItemComponent extends React.Component {
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
-            await axios.get(URL + 'news', {
-                headers: { 'authorization': token }
-            }).then(data => {
-                console.log(data.data)
-                this.setState({
-                    news: data.data.resl,
-                    present: true
-                })
-
-            }).catch(e => {
-                console.log(e)
-            })
+        const { match: { params } } = this.props;
+        await axios.get(URL + 'news/' + params.id, {
+            headers: { 'authorization': token }
+        }).then(data => {
+            console.log(data.data);
+            this.setState({
+                news: data.data.resl,
+                present: true
+            });
+        }).catch(e => {
+            console.log(e);
+        })
     }
 
     render() {
@@ -57,11 +57,11 @@ class NewsConstructor extends React.Component {
                 {this.props.news.title._text}
                 <p></p>
                 <Grid container>
-                    <Grid item xs= {10}>
+                    <Grid item xs={10}>
                         <Date>{this.props.news.pubDate._text}</Date>
                     </Grid>
-                    <Grid item xs = {2}>
-                        <Button href = {this.props.news.link._text} target = "_blank" variant="contained" color="primary">
+                    <Grid item xs={2}>
+                        <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
                             Read Post
                         </Button>
                     </Grid>
@@ -71,4 +71,4 @@ class NewsConstructor extends React.Component {
     }
 }
 
-export default NewsItemComponent;
+export default NewsId;

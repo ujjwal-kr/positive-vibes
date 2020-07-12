@@ -16,9 +16,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { Public, Bookmark, DesktopMac, Movie, Explore } from '@material-ui/icons';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 import NewsItemComponent from './news';
+import NewsId from './newsId';
 import SettingsComponent from '../Settings/settings';
 
 const drawerWidth = 250;
@@ -145,10 +146,12 @@ export default function HomeComponent() {
         </div>
         <Divider />
         <List>
-            <ListItem button >
+          <Link to = "/">
+          <ListItem button >
               <ListItemIcon><Public /></ListItemIcon>
               <ListItemText primary="Topstories" />
             </ListItem>
+          </Link>
 
             <ListItem button>
               <ListItemIcon><Bookmark /></ListItemIcon>
@@ -175,7 +178,7 @@ export default function HomeComponent() {
         <Toolbar className={classes.toolbar}  />
         <Switch>
           <Route path = "/" component = { NewsItemComponent } exact />
-          <Route path = "/news/:id" component = { NewsItemComponent } exact />
+          <Route path = "/news/:id" component = { NewsId } />
           <Route path = "/settings" component = { SettingsComponent } />
         </Switch>
       </main>
