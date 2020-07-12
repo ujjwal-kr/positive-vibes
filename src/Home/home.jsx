@@ -18,6 +18,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { Public, Bookmark, DesktopMac, Movie, Explore } from '@material-ui/icons';
 import { Switch, Route, Link } from 'react-router-dom';
 
+import Redirect from './redirect';
 import NewsItemComponent from './news';
 import NewsId from './newsId';
 import SettingsComponent from '../Settings/settings';
@@ -162,19 +163,19 @@ export default function HomeComponent() {
         </List>
         <Divider />
         <List>
-        <Link to="/news/technology">
+        <Link to="/red/technology">
           <ListItem button>
               <ListItemIcon><DesktopMac /></ListItemIcon>
               <ListItemText primary="Technology" />
           </ListItem>
         </Link>
-        <Link to = "news/entertainment">
+        <Link to = "/red/entertainment">
         <ListItem button>
               <ListItemIcon><Movie /></ListItemIcon>
               <ListItemText primary="Entertainment" />
         </ListItem>
         </Link>
-        <Link to = "/news/science">
+        <Link to = "/red/science">
         <ListItem button>
               <ListItemIcon><Explore /></ListItemIcon>
               <ListItemText primary="Science" />
@@ -186,6 +187,7 @@ export default function HomeComponent() {
         <Toolbar className={classes.toolbar}  />
         <Switch>
           <Route path = "/" component = { NewsItemComponent } exact />
+          <Route path = "/red/:id" component = { Redirect } />
           <Route path = "/news/:id" component = { NewsId } />
           <Route path = "/settings" component = { SettingsComponent } />
         </Switch>

@@ -3,7 +3,6 @@ import axios from 'axios';
 import URL from '../url';
 
 import { Button, Grid } from '@material-ui/core';
-
 import { Wrapper, Item, Date } from '../Components/newsItem';
 
 class NewsItemComponent extends React.Component {
@@ -26,7 +25,6 @@ class NewsItemComponent extends React.Component {
                     news: data.data.resl,
                     present: true
                 })
-
             }).catch(e => {
                 console.log(e)
             })
@@ -39,7 +37,7 @@ class NewsItemComponent extends React.Component {
         if (!present) {
             items = 'Loading....'
         } else {
-            items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
+            items = this.state.news.map((item, key) => <NewsConstructor key = {key} news={item} />);
         }
         return (
             <Wrapper>
