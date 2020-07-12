@@ -153,25 +153,33 @@ export default function HomeComponent() {
             </ListItem>
           </Link>
 
+          <Link to = "/">
             <ListItem button>
-              <ListItemIcon><Bookmark /></ListItemIcon>
-              <ListItemText primary="Bookmarks" />
+                <ListItemIcon><Bookmark /></ListItemIcon>
+                <ListItemText primary="Bookmarks" />
             </ListItem>
+          </Link>
         </List>
         <Divider />
         <List>
-        <ListItem button>
+        <Link to="/news/technology">
+          <ListItem button>
               <ListItemIcon><DesktopMac /></ListItemIcon>
               <ListItemText primary="Technology" />
-        </ListItem>
+          </ListItem>
+        </Link>
+        <Link to = "news/entertainment">
         <ListItem button>
               <ListItemIcon><Movie /></ListItemIcon>
               <ListItemText primary="Entertainment" />
         </ListItem>
+        </Link>
+        <Link to = "/news/science">
         <ListItem button>
               <ListItemIcon><Explore /></ListItemIcon>
               <ListItemText primary="Science" />
-        </ListItem>  
+        </ListItem> 
+        </Link> 
         </List>
       </Drawer>
       <main className={classes.content}>
