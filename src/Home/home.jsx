@@ -22,6 +22,7 @@ import Redirect from './redirect';
 import NewsItemComponent from './news';
 import NewsId from './newsId';
 import SettingsComponent from '../Settings/settings';
+import { NavLink } from '../Components/newsItem';
 
 const drawerWidth = 250;
 
@@ -147,14 +148,14 @@ export default function HomeComponent() {
         </div>
         <Divider />
         <List>
-          <Link to = "/">
+          <Link to = "/" style = {NavLink}>
           <ListItem button >
               <ListItemIcon><Public /></ListItemIcon>
               <ListItemText primary="Topstories" />
             </ListItem>
           </Link>
 
-          <Link to = "/">
+          <Link to = "/" style = {NavLink}>
             <ListItem button>
                 <ListItemIcon><Bookmark /></ListItemIcon>
                 <ListItemText primary="Bookmarks" />
@@ -163,19 +164,19 @@ export default function HomeComponent() {
         </List>
         <Divider />
         <List>
-        <Link to="/red/technology">
+        <Link to="/red/technology" style = {NavLink}>
           <ListItem button>
               <ListItemIcon><DesktopMac /></ListItemIcon>
               <ListItemText primary="Technology" />
           </ListItem>
         </Link>
-        <Link to = "/red/entertainment">
+        <Link to = "/red/entertainment" style = {NavLink}>
         <ListItem button>
               <ListItemIcon><Movie /></ListItemIcon>
               <ListItemText primary="Entertainment" />
         </ListItem>
         </Link>
-        <Link to = "/red/science">
+        <Link to = "/red/science" style = {NavLink}>
         <ListItem button>
               <ListItemIcon><Explore /></ListItemIcon>
               <ListItemText primary="Science" />

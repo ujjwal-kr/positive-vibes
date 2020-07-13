@@ -22,3 +22,8 @@ export const Date = styled.span`
     font-size: .62em;
     color: gray;
 `
+
+export const NavLink = {
+    textDecoration: 'none',
+    color: 'black'
+}
