@@ -5,9 +5,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../../models/userModel');
 const KEY = require('../../settings/key');
 
-const UserMiddleware = require('../../middlewares/userMiddleware');
+const UserMiddleware = require('../../middlewares/userMiddleware')
+const { ValidateLogin, ValidateRegister } = require('../../middlewares/auth-validator')
 
-router.post('/register', async(req, res, next) => {
+router.post('/register', ValidateRegister, async(req, res, next) => {
     const data = {
         name: req.body.name,
         email: req.body.email,
@@ -29,7 +30,7 @@ router.post('/register', async(req, res, next) => {
 })
 
 
-router.post('/login', async(req, res, next) => {
+router.post('/login', ValidateLogin, async(req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({email})
     if(!user) return res.status(404).json({message: "Didnt find any user"});
