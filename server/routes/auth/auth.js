@@ -36,7 +36,7 @@ router.post('/login', ValidateLogin, async(req, res, next) => {
     if(!user) return res.status(404).json({message: "Didnt find any user"});
     await bcrypt.compare(password, user.password, async (err, correct) => {
         if (err) return console.log(err);
-        if (!correct) return res.status(404).json({message: "Didnt find any user"});
+        if (!correct) return res.status(404).json({message: "Wrong password"});
         const payload = {
             id: user.id
         }   

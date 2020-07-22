@@ -2,13 +2,13 @@ const Validator = require('../Validator/validator')
 
 const ValidateLogin = (req, res, next) => {
     const validationRule = {
-        "email": "required|email",
+        "email": "required",
         "password": "required|string"
     }
 
     Validator(req.body, validationRule, {}, (err, status) => {
         if(!status){
-            res.status(412).json({ err: "Check the fields properly" })
+            res.status(412).json({ err: err })
         } else {
             next()
         }
@@ -18,13 +18,13 @@ const ValidateLogin = (req, res, next) => {
 const ValidateRegister = (req, res, next) => {
     const validationRule = {
         "email": "required|email",
-        "password": "required|string|min:1",
+        "password": "required|string|min:2",
         "name": "required|string|min:1"
     }
 
     Validator(req.body, validationRule, {}, (err, status) => {
         if(!status){
-            res.status(412).json({ err: "Check the fields properly" })
+            res.status(412).json({ err: err })
         } else {
             next()
         }

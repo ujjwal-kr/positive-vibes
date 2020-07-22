@@ -1,7 +1,45 @@
 import React from 'react';
 import { Wrapper, Container, Label } from '../Components/auth';
-import {TextField, Button} from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
+import URL from '../url';
+
+
+function LoginForm() {
+    const { handleSubmit } = useForm();
+    const login = async entry => {
+        const email = document.getElementById("email").value
+        const password = document.getElementById("password").value
+        axios.post(URL+'auth/login', {email, password})
+            .then(data => {
+                const token = data.data.token
+                console.log(token)
+                window.localStorage.setItem("token", token)
+                const form =document.getElementById("login")
+                form.reset();
+            }).catch(e => {
+                alert("Invalid Input, check email and Password")
+            })
+    };
+
+    return (
+        <div style={{ padding: 2 + '%' }}>
+            <Label>Login</Label>
+            <form id="login" onSubmit={handleSubmit(login)}>
+                <div>
+                    <TextField id="email" label="email" name="email" variant="filled" />
+                </div>
+                <br />
+                <div>
+                    <TextField id="password" label="Password" type="password" variant="filled" />
+                </div>
+                <p></p>
+                <Button type="submit">Submit</Button>
+            </form>
+        </div>
+    );
+}
 
 class LoginComponent extends React.Component {
     render() {
@@ -15,20 +53,6 @@ class LoginComponent extends React.Component {
     }
 }
 
-function LoginForm() {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
 
-    return (
-        <div>
-            <Label>Login</Label>
-            <form noValidate autoComplete="off">
-                <TextField name = "email" label="Email" variant="filled" ref = {register({required: true})} /> <br /> <br/>
-                <TextField name = "password" label="Password" type="password" ref = {register({required: true})} variant="filled" /> <br/> <br/>
-                <Button name="btn" type="submit">Login</Button>
-            </form>
-        </div>
-    );
-}
 
 export default LoginComponent;
