@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
 
-morgan('tiny')
+app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors());
 const mongoose = require('mongoose');

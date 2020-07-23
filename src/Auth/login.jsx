@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Wrapper, Container, Label } from '../Components/auth';
 import { TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
@@ -14,7 +14,7 @@ function LoginForm() {
         axios.post(URL+'auth/login', {email, password})
             .then(data => {
                 const token = data.data.token
-                console.log(token)
+                window.localStorage.setItem("user", JSON.stringify(data.data.user))
                 window.localStorage.setItem("token", token)
                 const form =document.getElementById("login")
                 form.reset();
