@@ -47,12 +47,18 @@ router.post('/login', ValidateLogin, async(req, res, next) => {
     })
 })
 
-router.patch('/user/:id', UserMiddleware, async(req, res) => {
+router.patch('/user/:id', UserMiddleware, async (req, res) => {
     let user = req.body.user;
     if (req.params.id !== user.id) return res.status(403).json({message: "UNAUTHORIZED"});
     user.setting = req.body.setting;
     user.save();
     res.json({message: "Canged settings to" + req.body.setting})
+})
+
+router.get('/setting/:id', UserMiddleware, async (req, res) => {
+    let user = req.body.user;
+    if (req.params.id !== user.id) return res.status(403).json({message: "UNAUTHORIZED"});
+    return res.json({ setting: user.setting })
 })
 
 module.exports = router;
