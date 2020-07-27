@@ -8,6 +8,7 @@ class SettingsComponent extends React.Component {
         this.state = {
             setting: ''
         }
+        this.changeSetting = this.changeSetting.bind(this);
     }
 
     async componentDidMount() {
@@ -18,16 +19,32 @@ class SettingsComponent extends React.Component {
         await axios.get(URL + 'auth/setting/' +user._id, {
             headers: { 'authorization': token}
         }).then(res => {
-            console.log(res.data)
+            this.setState({
+                setting: res.data.setting
+            })
         }).catch(e => {
             console.log(e)
         })
     }
 
+     async changeSetting(str) {
+        const user = JSON.parse(localStorage.getItem('user'))
+        const token = localStorage.getItem('token');
+        await axios.patch(URL+'auth/user/'+user._id, {setting: str}, {
+            headers: {'authorization': token}
+        }).then(res => {
+            this.setState({
+                setting: str
+            })
+            console.log(res)
+        }).catch(e => console.log(e))
+    }
+    
+
     render() {
         return (
             <div>
-                SETTINGS
+                <button onClick={() => this.changeSetting('moderate')}>CHANGE</button>
             </div>
         )
     }

@@ -15,7 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Public, Bookmark, DesktopMac, Movie, Explore } from '@material-ui/icons';
+import { Public, Bookmark, Settings, DesktopMac, Movie, Explore } from '@material-ui/icons';
 import { Switch, Route, Link } from 'react-router-dom';
 
 import Redirect from './redirect';
@@ -149,6 +149,12 @@ export default function HomeComponent() {
         </div>
         <Divider />
         <List>
+        <Link to = "/settings" style = {NavLink}>
+          <ListItem button >
+              <ListItemIcon><Settings /></ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
+          </Link>
           <Link to = "/" style = {NavLink}>
           <ListItem button >
               <ListItemIcon><Public /></ListItemIcon>
