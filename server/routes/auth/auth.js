@@ -47,6 +47,7 @@ router.post('/login', ValidateLogin, async(req, res, next) => {
 
 router.patch('/user/:id', UserMiddleware, async (req, res) => {
     let user = req.body.user
+    if (!user) return res.status(403).json({message: "UNAUTHORIZED"})
     if (req.params.id !== user.id) return res.status(403).json({message: "UNAUTHORIZED"})
     user.setting = req.body.setting
     user.save()
@@ -55,6 +56,7 @@ router.patch('/user/:id', UserMiddleware, async (req, res) => {
 
 router.get('/setting/:id', UserMiddleware, async (req, res) => {
     let user = req.body.user
+    if (!user) return res.status(403).json({message: "UNAUTHORIZED"})
     if (req.params.id !== user.id) return res.status(403).json({message: "UNAUTHORIZED"})
     return res.json({ setting: user.setting })
 })
