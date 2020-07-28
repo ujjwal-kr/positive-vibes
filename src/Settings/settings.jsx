@@ -54,20 +54,23 @@ class SettingsComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{textAlign: 'center'}}>
                 <Button 
                 color="primary" 
+                size="large" 
                 variant={this.state.basic ? 'contained' : ''} 
                 onClick={() => this.changeSetting('basic')}>BASIC</Button> <br />
                 <br/>
-                
+
                 <Button 
                 color="primary" 
+                size="large"
                 variant={this.state.moderate ? 'contained' : ''} 
                 onClick={() => this.changeSetting('moderate')}>MODERATE</Button> <br />
                 <br/>
 
                 <Button 
+                size="large" 
                 color="primary" 
                 variant={this.state.strict ? 'contained' : ''} 
                 onClick={() => this.changeSetting('strict')}>Strict</Button>
