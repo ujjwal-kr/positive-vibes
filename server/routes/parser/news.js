@@ -92,7 +92,28 @@ router.get('/science', async (req, res, next) => {
         })
 });
 
-router.get('/science', async (req, res, next) => {
+router.get('/entertainment', async (req, res, next) => {
+    await Axios.get('https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen', {
+            headers: {"User-agent": UA}
+        }).then(async data => {
+            const result = await convert.xml2json(data.data, {
+                compact: true
+            })
+            const parsed = JSON.parse(result)
+            parsed.rss.channel.item.map(it => {
+                it.description = null
+                it.guid = null
+                it.source._attributes = null
+            })
+            const final = parsed.rss.channel.item
+            const resl = await Analyzer(final, req.body.score)
+            res.json({resl})
+        }).catch(e => {
+            return e
+        })
+})
+
+router.get('/india', async (req, res, next) => {
     await Axios.get('https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRE55YXpBU0FtVnVLQUFQAQ?hl=en-IN&gl=IN&ceid=IN%3Aen', {
             headers: {"User-agent": UA}
         }).then(async data => {

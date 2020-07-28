@@ -15,7 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Public, Bookmark, Settings, DesktopMac, Movie, Explore } from '@material-ui/icons';
+import { FlagTwoTone, MovieTwoTone, DesktopMacTwoTone, FitnessCenterTwoTone, ExploreTwoTone, BookmarkTwoTone, PublicTwoTone, SettingsTwoTone } from '@material-ui/icons';
 import { Switch, Route, Link } from 'react-router-dom';
 
 import Redirect from './redirect';
@@ -151,20 +151,20 @@ export default function HomeComponent() {
         <List>
         <Link to = "/settings" style = {NavLink}>
           <ListItem button >
-              <ListItemIcon><Settings /></ListItemIcon>
+              <ListItemIcon><SettingsTwoTone /></ListItemIcon>
               <ListItemText primary="Settings" />
             </ListItem>
           </Link>
           <Link to = "/" style = {NavLink}>
           <ListItem button >
-              <ListItemIcon><Public /></ListItemIcon>
+              <ListItemIcon><PublicTwoTone /></ListItemIcon>
               <ListItemText primary="Topstories" />
             </ListItem>
           </Link>
 
           <Link to = "/" style = {NavLink}>
             <ListItem button>
-                <ListItemIcon><Bookmark /></ListItemIcon>
+                <ListItemIcon><BookmarkTwoTone /></ListItemIcon>
                 <ListItemText primary="Bookmarks" />
             </ListItem>
           </Link>
@@ -173,19 +173,31 @@ export default function HomeComponent() {
         <List>
         <Link to="/red/technology" style = {NavLink}>
           <ListItem button>
-              <ListItemIcon><DesktopMac /></ListItemIcon>
+              <ListItemIcon><DesktopMacTwoTone /></ListItemIcon>
               <ListItemText primary="Technology" />
           </ListItem>
         </Link>
         <Link to = "/red/entertainment" style = {NavLink}>
         <ListItem button>
-              <ListItemIcon><Movie /></ListItemIcon>
+              <ListItemIcon><MovieTwoTone /></ListItemIcon>
               <ListItemText primary="Entertainment" />
         </ListItem>
         </Link>
+        <Link to = "/red/health" style = {NavLink}>
+            <ListItem button>
+                <ListItemIcon><FitnessCenterTwoTone /></ListItemIcon>
+                <ListItemText primary="Health" />
+            </ListItem>
+        </Link>
+        <Link to = "/red/india" style = {NavLink}>
+            <ListItem button>
+                <ListItemIcon><FlagTwoTone /></ListItemIcon>
+                <ListItemText primary="India" />
+            </ListItem>
+        </Link>
         <Link to = "/red/science" style = {NavLink}>
         <ListItem button>
-              <ListItemIcon><Explore /></ListItemIcon>
+              <ListItemIcon><ExploreTwoTone /></ListItemIcon>
               <ListItemText primary="Science" />
         </ListItem> 
         </Link> 
