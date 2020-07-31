@@ -6,19 +6,19 @@ import { Button } from '@material-ui/core';
 
 class SettingsComponent extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             setting: '',
             basic: false,
             strict: false,
             moderate: false
         }
-        this.changeSetting = this.changeSetting.bind(this);
+        this.changeSetting = this.changeSetting.bind(this)
     }
 
     async componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'))
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('token')
         await axios.get(URL + 'auth/setting/' + user._id, {
             headers: { 'authorization': token }
         }).then(res => {
