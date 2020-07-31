@@ -23,6 +23,7 @@ import NewsItemComponent from './news';
 import NewsId from './newsId';
 import SettingsComponent from '../Settings/settings';
 import { NavLink } from '../Components/newsItem';
+import ProfileComponent from '../Profile/profile'
 import LoginComponent from '../Auth/login';
 
 const drawerWidth = 250;
@@ -211,6 +212,7 @@ export default function HomeComponent() {
           <Route path = "/news/:id" component = { NewsId } />
           <Route path = "/settings" component = { SettingsComponent } />
           <Route path = "/login" component = { LoginComponent } />
+          <Route path = "/profile" component = { ProfileComponent } />
         </Switch>
       </main>
     </div>
