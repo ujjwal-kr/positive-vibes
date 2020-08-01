@@ -16,7 +16,7 @@ const UserMiddleware = async function (req, res, next) {
         })
         return next()
     } catch(e) {
-        req.body.score = 1
+        req.body.score = 2
         req.body.user = null
         return next()
     }
