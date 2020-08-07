@@ -7,7 +7,7 @@ const SearchBlocker = async (req, res, next) => {
        await jwt.verify(token, KEY)
        return next()
     } catch(e) {
-        return res.json({message: "UNAUTHORIZED"})
+        return res.json({message: "YOU EARNED A FLAG"})
     }
 }
 

@@ -9,7 +9,7 @@ const UserMiddleware = async function (req, res, next) {
         const decoded = jwt.verify(token, KEY)
         const id = decoded.id
         await User.findById(id, (err, user) => {
-            if (err) return res.json({err})
+            if (user == null) return res.status(404).json({ err: err })
             const score = scoring(user.setting)
             req.body.score = score
             req.body.user = user

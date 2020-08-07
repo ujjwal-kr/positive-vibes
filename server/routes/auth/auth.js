@@ -16,7 +16,7 @@ router.post('/register', ValidateRegister, async(req, res, next) => {
     }
     const {email} = req.body
     const user = await User.findOne({email})
-    if(user) return res.json({message: "User Exists"})
+    if(user) return res.status(400).json({message: "User Exists"})
     await bcrypt.genSalt(10, async (err, salt) => {
         await bcrypt.hash(data.password, salt, async (err, hash) => {
             if (err) return next(err)
@@ -24,7 +24,7 @@ router.post('/register', ValidateRegister, async(req, res, next) => {
             const user = await User.create(data).catch(e => {
                 res.json({message: e})
             })
-            return res.json({user})
+            return res.status(201).json({user})
         })
     })
 })
