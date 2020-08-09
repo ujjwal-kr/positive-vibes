@@ -41,7 +41,7 @@ class NewsItemComponent extends React.Component {
         const present = this.state.present;
         let items;
         if(login) {
-            return <Redirect to="login" />
+            return <Redirect to="/login" />
         }
 
         if (!present) {

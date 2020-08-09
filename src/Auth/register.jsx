@@ -17,6 +17,7 @@ function RegisterForm() {
         axios.post(URL+'auth/register', {name, email, password})
             .then(data => {
                 setLogin(true);
+                window.localStorage.removeItem("token")
             }).catch(e => {
                 alert("Invalid Input, check the input")
             })

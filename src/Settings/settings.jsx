@@ -19,6 +19,7 @@ class SettingsComponent extends React.Component {
     async componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'))
         const token = localStorage.getItem('token')
+        if (!token || !user) return this.props.history.push('/login');
         await axios.get(URL + 'auth/setting/' + user._id, {
             headers: { 'authorization': token }
         }).then(res => {
@@ -28,6 +29,7 @@ class SettingsComponent extends React.Component {
             this.changeSettingVal(res.data.setting)
         }).catch(e => {
             console.log(e)
+            if (!token || !user) return this.props.history.push('/login');
         })
     }
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import URL from '../url';
+import Redirect from 'react-router-dom/Redirect';
+
 
 import { Button, Grid } from '@material-ui/core';
 
@@ -13,6 +15,7 @@ class NewsId extends React.Component {
         this.state = {
             news: [''],
             present: false,
+            login: false
         }
     }
 
@@ -29,13 +32,20 @@ class NewsId extends React.Component {
             });
         }).catch(e => {
             console.log(e);
+            this.setState({
+                login: true
+            });
         })
     }
 
     render() {
         const present = this.state.present;
+        let login = this.state.login;
         let items;
-
+        if(login) {
+            return <Redirect to="/login" />
+        }
+        
         if (!present) {
             items = 'Loading....'
         } else {
