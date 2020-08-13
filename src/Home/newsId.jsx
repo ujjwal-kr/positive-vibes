@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import URL from '../url';
-import Redirect from 'react-router-dom/Redirect';
-
+import {Redirect} from 'react-router-dom';
 
 import { Button, Grid } from '@material-ui/core';
 

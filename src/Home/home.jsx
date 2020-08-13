@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -42,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarShift: {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
+    // width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -95,15 +93,6 @@ export default function HomeComponent() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true, false);
-  
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <div className={classes.root}>
@@ -118,11 +107,7 @@ export default function HomeComponent() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
             edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
           >
             <MenuIcon />
           </IconButton>
@@ -131,44 +116,40 @@ export default function HomeComponent() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+      <div>
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
+          })}
+        >
         <Divider />
         <List>
-        <Link to = "/settings" style = {NavLink}>
-          <ListItem button >
-              <ListItemIcon><SettingsTwoTone /></ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItem>
+          <Link to = "/settings" style = {NavLink}>
+            <ListItem button >
+                <ListItemIcon><SettingsTwoTone /></ListItemIcon>
+                <ListItemText primary="Settings" />
+              </ListItem>
           </Link>
-          <Link to = "/" style = {NavLink}>
-          <ListItem button >
-              <ListItemIcon><PublicTwoTone /></ListItemIcon>
-              <ListItemText primary="Topstories" />
-            </ListItem>
+          <Link to = "/settings" style = {NavLink}>
+            <ListItem button >
+                <ListItemIcon><SettingsTwoTone /></ListItemIcon>
+                <ListItemText primary="Settings" />
+              </ListItem>
+          </Link>
+            <Link to = "/" style = {NavLink}>
+            <ListItem button >
+                <ListItemIcon><PublicTwoTone /></ListItemIcon>
+                <ListItemText primary="Topstories" />
+              </ListItem>
           </Link>
 
-          <Link to = "/" style = {NavLink}>
-            <ListItem button>
-                <ListItemIcon><BookmarkTwoTone /></ListItemIcon>
-                <ListItemText primary="Bookmarks" />
-            </ListItem>
+            <Link to = "/" style = {NavLink}>
+              <ListItem button>
+                  <ListItemIcon><BookmarkTwoTone /></ListItemIcon>
+                  <ListItemText primary="Bookmarks" />
+              </ListItem>
           </Link>
         </List>
         <Divider />
@@ -176,7 +157,7 @@ export default function HomeComponent() {
         <Link to="/red/technology" style = {NavLink}>
           <ListItem button>
               <ListItemIcon><DesktopMacTwoTone /></ListItemIcon>
-              <ListItemText primary="Technology" />
+              <ListItemText primary="Technology"/>
           </ListItem>
         </Link>
         <Link to = "/red/entertainment" style = {NavLink}>
@@ -205,6 +186,7 @@ export default function HomeComponent() {
         </Link> 
         </List>
       </Drawer>
+      </div>
       <main className={classes.content}>
         <Toolbar className={classes.toolbar}  />
         <Switch>
