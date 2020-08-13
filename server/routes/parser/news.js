@@ -76,9 +76,7 @@ router.get('/health', async (req, res, next) => {
     await Axios.get('https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNR3QwTlRFU0FtVnVLQUFQAQ?hl=en-IN&gl=IN&ceid=IN%3Aen', {
             headers: {"User-agent": UA}
         }).then(async data => {
-            const result = await convert.xml2json(data.data, {
-                compact: true
-            })
+            const result = await convert.xml2json(data.data, {compact: true})
             const parsed = JSON.parse(result)
             parsed.rss.channel.item.map(it => {
                 it.description = null
@@ -97,9 +95,7 @@ router.get('/science', async (req, res, next) => {
     await Axios.get('https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNRFp0Y1RjU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen', {
             headers: {"User-agent": UA}
         }).then(async data => {
-            const result = await convert.xml2json(data.data, {
-                compact: true
-            })
+            const result = await convert.xml2json(data.data, {compact: true})
             const parsed = JSON.parse(result)
             parsed.rss.channel.item.map(it => {
                 it.description = null
@@ -118,9 +114,7 @@ router.get('/entertainment', async (req, res, next) => {
     await Axios.get('https://news.google.com/rss/topics/CAAqJggKIiBDQkFTRWdvSUwyMHZNREpxYW5RU0FtVnVHZ0pKVGlnQVAB?hl=en-IN&gl=IN&ceid=IN%3Aen', {
             headers: {"User-agent": UA}
         }).then(async data => {
-            const result = await convert.xml2json(data.data, {
-                compact: true
-            })
+            const result = await convert.xml2json(data.data, {compact: true})
             const parsed = JSON.parse(result)
             parsed.rss.channel.item.map(it => {
                 it.description = null
@@ -139,9 +133,7 @@ router.get('/india', async (req, res, next) => {
     await Axios.get('https://news.google.com/rss/topics/CAAqIQgKIhtDQkFTRGdvSUwyMHZNRE55YXpBU0FtVnVLQUFQAQ?hl=en-IN&gl=IN&ceid=IN%3Aen', {
             headers: {"User-agent": UA}
         }).then(async data => {
-            const result = await convert.xml2json(data.data, {
-                compact: true
-            })
+            const result = await convert.xml2json(data.data, {compact: true})
             const parsed = JSON.parse(result)
             parsed.rss.channel.item.map(it => {
                 it.description = null
