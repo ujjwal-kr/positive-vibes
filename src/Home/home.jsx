@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import clsx from 'clsx';
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -24,12 +25,16 @@ import { NavLink } from '../Components/newsItem';
 import ProfileComponent from '../Profile/profile'
 import LoginComponent from '../Auth/login';
 import RegisterComponent from '../Auth/register';
+import URL from '../url';
 
 const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+  },
+  title: {
+    flexGrow: 1,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -40,7 +45,6 @@ const useStyles = makeStyles((theme) => ({
   },
   appBarShift: {
     marginLeft: drawerWidth,
-    // width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
@@ -74,24 +78,26 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(9) + 1,
     },
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
+  }
 }));
 
 export default function HomeComponent() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true, false);
+  const [isAuth, setAuth] = React.useState(true)
+  
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if(!token) return setAuth(false)
+
+    axios.get(URL+'auth/check', {
+      headers: {'authorization': token}
+    }).then((resl) => {
+      console.log(resl)
+    }).catch(e => {
+      return setAuth(false)
+    })
+  }, [])
 
   return (
     <div className={classes.root}>
@@ -110,9 +116,12 @@ export default function HomeComponent() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className={classes.title}>
             +VE Vibes
           </Typography>
+          <span>
+            {isAuth ? 'LOggen In': 'nahg'}
+          </span>
         </Toolbar>
       </AppBar>
       <div>
@@ -186,8 +195,8 @@ export default function HomeComponent() {
         </List>
       </Drawer>
       </div>
-      <main className={classes.content}>
-        <Toolbar className={classes.toolbar}  />
+      <main>
+        <Toolbar/>
         <Switch>
           <Route path = "/" component = { NewsItemComponent } exact />
           <Route path = "/red/:id" component = { Redirect } />
