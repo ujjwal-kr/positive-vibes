@@ -6,6 +6,7 @@ const WORDS = {
     'fund': 3,
     'kids': 1,
     'funny': 1,
+    'violating': -2,
     'funded': 3,
     'support': 3,
     'oxygen': 2,

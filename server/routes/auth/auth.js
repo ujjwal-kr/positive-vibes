@@ -57,6 +57,11 @@ router.patch('/user/:id', UserMiddleware, async (req, res) => {
     res.json({message: "Canged settings to" + req.body.setting})
 })
 
+router.get('/check', UserMiddleware, async (req, res) => {
+    if (req.body.user == null) return res.status(403).json({message: "UNAUTHORIZED"});
+    return res.status(200).json({message: "Looks Alright"})
+})
+
 router.get('/setting/:id', UserMiddleware, async (req, res) => {
     let user = req.body.user
     if (!user) return res.status(403).json({message: "UNAUTHORIZED"})
