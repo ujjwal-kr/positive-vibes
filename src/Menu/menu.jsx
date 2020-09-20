@@ -1,11 +1,12 @@
 import React from 'react';
+import { Wrapper, Item } from '../Components/menu';
 
 class MenuComponent extends React.Component {
     render() {
         return (
-            <div>
-                MENU
-            </div>
+            <Wrapper>
+                <h1>Yo</h1>
+            </Wrapper>
         )
     }
 }

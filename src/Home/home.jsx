@@ -26,6 +26,7 @@ import ProfileComponent from '../Profile/profile'
 import LoginComponent from '../Auth/login';
 import RegisterComponent from '../Auth/register';
 import URL from '../url';
+import MenuComponent from '../Menu/menu';
 
 const drawerWidth = 250;
 
@@ -68,16 +69,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
   }
 }));
 
@@ -116,8 +110,8 @@ export default function HomeComponent() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap className={classes.title}>
-            +VE Vibes
+          <Typography variant="h6" noWrap className={classes.title} >
+            Positive Vibes
           </Typography>
           <span>
             {isAuth ? 'LOggen In': 'nahg'}
@@ -195,7 +189,7 @@ export default function HomeComponent() {
         </List>
       </Drawer>
       </div>
-      <main>
+      <main className={classes.content}>
         <Toolbar/>
         <Switch>
           <Route path = "/" component = { NewsItemComponent } exact />
@@ -205,6 +199,7 @@ export default function HomeComponent() {
           <Route path = "/login" component = { LoginComponent } />
           <Route path = "/register" component = { RegisterComponent } />
           <Route path = "/profile" component = { ProfileComponent } />
+          <Route path = "/menu" component = { MenuComponent } />
         </Switch>
       </main>
     </div>
