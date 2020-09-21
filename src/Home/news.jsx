@@ -14,11 +14,18 @@ class NewsItemComponent extends React.Component {
             news: [''],
             present: false,
             login: false,
+            user: null
         }
     }
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
+        const user = JSON.parse(localStorage.getItem("user"));
+        if(user) {
+            this.setState({
+                user: user
+            })
+        }
         await axios.get(URL + 'news', {
             headers: { 'authorization': token }
         }).then(data => {
@@ -40,6 +47,7 @@ class NewsItemComponent extends React.Component {
         const login = this.state.login;
         const present = this.state.present;
         let items;
+        let welcome;
         if(login) {
             return <Redirect to="/login" />
         }
@@ -49,8 +57,14 @@ class NewsItemComponent extends React.Component {
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor key={key} news={item} />);
         }
+        if(this.state.user) {
+            welcome = `Welcome, ${this.state.user.name}`
+        } else {
+            welcome = `Please signUp or login to tweak settings`
+        }
         return (
             <Wrapper>
+                <strong>{welcome}</strong><br/>
                 {items}
             </Wrapper>
         )
