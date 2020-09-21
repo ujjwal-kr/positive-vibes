@@ -10,11 +10,12 @@ Basically following the official docs and [Airbnb style guide](https://github.co
 4. axios
 5. jwt-decode
 
-## Nest.js Toolkit
+## Node.js Toolkit
 
 1. mongoose plugin 
 2. raw jsonwebtoken javascript sdk
 3. bcrypt for password encryption
+4. customized sentiment libyary
 
 ## Features todo
 
