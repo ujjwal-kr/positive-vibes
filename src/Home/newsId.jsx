@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import URL from '../url';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 import { Button, Grid } from '@material-ui/core';
 
@@ -60,11 +60,11 @@ class NewsId extends React.Component {
         if(this.state.user) {
             welcome = `Welcome, ${this.state.user.name}`
         } else {
-            welcome = `Please signUp or login to tweak settings`
+            welcome = <LoginMessage/>
         }
         return (
             <Wrapper>
-                <strong>{welcome}</strong><br/>
+                 <strong>{welcome}</strong><br/>
                 {items}
             </Wrapper>
         )
@@ -89,6 +89,16 @@ class NewsConstructor extends React.Component {
                     </Grid>
                 </Grid>
             </Item>
+        )
+    }
+}
+
+class LoginMessage extends React.Component {
+    render() {
+        return(
+            <strong>
+                Please <Link to = "/register">SignUp</Link> or <Link to="/login">Login</Link> to tewak settings. <br />
+            </strong>
         )
     }
 }
