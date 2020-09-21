@@ -9,6 +9,8 @@ Basically following the official docs and [Airbnb style guide](https://github.co
 3. styled-components
 4. axios
 5. jwt-decode
+6. material-ui
+7. styled-components
 
 ## Node.js Toolkit
 
