@@ -28,6 +28,6 @@ app.use(function (req, res, next) {
 })
 
 
-app.listen(4000, (req, res) => {
+app.listen(process.env.PORT || 4000, (req, res) => {
     console.log('app listening on port 4000!')
 })
