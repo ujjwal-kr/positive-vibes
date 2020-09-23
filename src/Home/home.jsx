@@ -27,6 +27,7 @@ import LoginComponent from '../Auth/login';
 import RegisterComponent from '../Auth/register';
 import URL from '../url';
 import MenuComponent from '../Menu/menu';
+import SearchComponent from './search';
 
 const drawerWidth = 250;
 
@@ -194,6 +195,7 @@ export default function HomeComponent() {
         <Switch>
           <Route path = "/" component = { NewsItemComponent } exact />
           <Route path = "/red/:id" component = { Redirect } />
+          <Route path = "/search/:query" component = { SearchComponent } />
           <Route path = "/news/:id" component = { NewsId } />
           <Route path = "/settings" component = { SettingsComponent } />
           <Route path = "/login" component = { LoginComponent } />

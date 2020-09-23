@@ -1,3 +1,3 @@
 // const URL = 'http://localhost:4000/';
-const URL = 'https://positive-vibes-server.herokuapp.com/';
+const URL = 'http://localhost:4000/';
 export default URL;
