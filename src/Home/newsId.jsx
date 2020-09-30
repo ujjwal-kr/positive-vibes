@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import URL from '../url';
-import {Redirect, Link} from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid } from '@material-ui/core';
 
@@ -22,11 +22,13 @@ class NewsId extends React.Component {
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        if(user) {
+        axios.get(URL+'auth/check', {
+            headers: {'authorization': 'token'}
+        }).then(res => {
             this.setState({
                 user: user
             })
-        }
+        });
         const { match: { params } } = this.props;
         await axios.get(URL + 'news/' + params.id, {
             headers: { 'authorization': token }

@@ -21,11 +21,13 @@ class NewsItemComponent extends React.Component {
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        if(user) {
+        axios.get(URL+'auth/check', {
+            headers: {'authorization': 'token'}
+        }).then(res => {
             this.setState({
                 user: user
             })
-        }
+        });
         await axios.get(URL + 'news', {
             headers: { 'authorization': token }
         }).then(data => {
