@@ -1,6 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import SettingsComponent from '../Settings/settings';
+import axios from 'axios';
+import URL from '../url';
 
 class ProfileComponent extends React.Component {
     constructor(props){
@@ -14,8 +16,17 @@ class ProfileComponent extends React.Component {
 
     async componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'))
-        if (!user) return this.setState({ toLogin: true })
-        this.setState({user: user})
+        const token = localStorage.getItem("token")
+        axios.get(URL+'auth/check', {
+            headers: {'authorization': token}
+        }).then(res => {
+            this.setState({user: user})
+        }).catch(e => {
+            this.setState({
+                toLogin: true
+            })
+        })
+        
     }
 
     render() {

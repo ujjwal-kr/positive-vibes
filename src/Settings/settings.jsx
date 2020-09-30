@@ -29,7 +29,7 @@ class SettingsComponent extends React.Component {
             this.changeSettingVal(res.data.setting)
         }).catch(e => {
             console.log(e)
-            if (!token || !user) return this.props.history.push('/login');
+            return this.props.history.push('/login');
         })
     }
 
