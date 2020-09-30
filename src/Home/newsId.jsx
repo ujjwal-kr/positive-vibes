@@ -23,7 +23,7 @@ class NewsId extends React.Component {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
         axios.get(URL+'auth/check', {
-            headers: {'authorization': 'token'}
+            headers: {'authorization': token}
         }).then(res => {
             this.setState({
                 user: user
