@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Wrapper, Container, Label } from '../Components/auth';
 import { TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import URL from '../url';
 
 
 function LoginForm() {
+    const [toHome, homeRedirect] = useState(false);
     const { handleSubmit } = useForm();
     const login = async entry => {
         const email = document.getElementById("email").value
@@ -16,12 +18,17 @@ function LoginForm() {
                 const token = data.data.token
                 window.localStorage.setItem("user", JSON.stringify(data.data.user))
                 window.localStorage.setItem("token", token)
-                const form =document.getElementById("login")
+                const form = document.getElementById("login")
                 form.reset();
+                homeRedirect(true);
             }).catch(e => {
                 alert("Invalid Input, check email and Password")
             })
     };
+
+    if (toHome === true) {
+        return <Redirect to="/" />
+    }
 
     return (
         <div style={{ padding: 2 + '%' }}>
