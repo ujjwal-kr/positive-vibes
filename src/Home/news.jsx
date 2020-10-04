@@ -77,7 +77,7 @@ class NewsItemComponent extends React.Component {
         }
 
         if (!present) {
-            items = 'Loading....'
+            items = <strong>Loading....</strong>
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor key={key} news={item} />);
         }
@@ -88,10 +88,13 @@ class NewsItemComponent extends React.Component {
         }
         return (
             <Wrapper>
-                <form onSubmit={this.search} noValidate autoComplete="off">
-                    <TextField onChange={this.handleSearch} label="Search" variant="outlined" />
-                </form>
-                <br/>
+                {this.state.user ?
+                    <form onSubmit={this.search} noValidate autoComplete="off">
+                        <TextField onChange={this.handleSearch} label="Search" variant="outlined" />
+                    </form>
+                    : null
+                }
+                <br />
                 {welcome} <br />
                 {items}
             </Wrapper>

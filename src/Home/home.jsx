@@ -194,8 +194,8 @@ export default function HomeComponent() {
         <Toolbar/>
         <Switch>
           <Route path = "/" component = { NewsItemComponent } exact />
-          <Route path = "/red/:id" component = { Redirect } />
           <Route path = "/search/:query" component = { SearchComponent } />
+          <Route path = "/red/:id" component = { Redirect } />
           <Route path = "/news/:id" component = { NewsId } />
           <Route path = "/settings" component = { SettingsComponent } />
           <Route path = "/login" component = { LoginComponent } />
