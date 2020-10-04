@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import URL from '../url';
-import {Redirect, Link} from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
-import { Button, Grid } from '@material-ui/core';
+import { Button, Grid, TextField } from '@material-ui/core';
 import { Wrapper, Item, Date } from '../Components/newsItem';
 
 class NewsItemComponent extends React.Component {
@@ -14,15 +14,19 @@ class NewsItemComponent extends React.Component {
             news: [''],
             present: false,
             login: false,
-            user: null
+            user: null,
+            searchValue: null,
+            search: false
         }
+        this.handleSearch = this.handleSearch.bind(this)
+        this.search = this.search.bind(this)
     }
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        axios.get(URL+'auth/check', {
-            headers: {'authorization': token}
+        axios.get(URL + 'auth/check', {
+            headers: { 'authorization': token }
         }).then(res => {
             this.setState({
                 user: user
@@ -45,13 +49,31 @@ class NewsItemComponent extends React.Component {
         })
     }
 
+    search(event) {
+        event.preventDefault();
+        this.setState({
+            search: true
+        })
+    }
+
+    handleSearch(event) {
+        this.setState({
+            searchValue: event.target.value
+        })
+    }
+
     render() {
         const login = this.state.login;
         const present = this.state.present;
+        const search = this.state.search;
         let items;
         let welcome;
-        if(login) {
+        if (login) {
             return <Redirect to="/login" />
+        }
+
+        if (search) {
+            return <Redirect to={"/search/" + this.state.searchValue} />
         }
 
         if (!present) {
@@ -59,14 +81,18 @@ class NewsItemComponent extends React.Component {
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor key={key} news={item} />);
         }
-        if(this.state.user) {
+        if (this.state.user) {
             welcome = `Welcome, ${this.state.user.name}`
         } else {
             welcome = <LoginMessage />
         }
         return (
             <Wrapper>
-                {welcome} <br/>
+                <form onSubmit={this.search} noValidate autoComplete="off">
+                    <TextField onChange={this.handleSearch} label="Search" variant="outlined" />
+                </form>
+                <br/>
+                {welcome} <br />
                 {items}
             </Wrapper>
         )
@@ -97,9 +123,9 @@ class NewsConstructor extends React.Component {
 
 class LoginMessage extends React.Component {
     render() {
-        return(
+        return (
             <strong>
-                Please <Link to = "/register">SignUp</Link> or <Link to="/login">Login</Link> to tewak settings. <br />
+                Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to tewak settings. <br />
             </strong>
         )
     }

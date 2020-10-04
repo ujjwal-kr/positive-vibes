@@ -16,9 +16,9 @@ function LoginForm() {
         axios.post(URL+'auth/login', {email, password})
             .then(data => {
                 const token = data.data.token
-                window.localStorage.setItem("user", JSON.stringify(data.data.user))
-                window.localStorage.setItem("token", token)
-                const form = document.getElementById("login")
+                window.localStorage.setItem("user", JSON.stringify(data.data.user));
+                window.localStorage.setItem("token", token);
+                const form = document.getElementById("login");
                 form.reset();
                 homeRedirect(true);
             }).catch(e => {
