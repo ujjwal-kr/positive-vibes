@@ -31,7 +31,9 @@ class NewsItemComponent extends React.Component {
             this.setState({
                 user: user
             })
-        });
+        }).catch(e => {
+            console.log(e)
+        })
         await axios.get(URL + 'news', {
             headers: { 'authorization': token }
         }).then(data => {
