@@ -1,11 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import URL from '../url';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { NewsConstructor, LoginMessage } from './news';
 
-import { Button, Grid } from '@material-ui/core';
-
-import { Wrapper, Item, Date } from '../Components/newsItem';
+import { Wrapper } from '../Components/newsItem';
 
 class NewsId extends React.Component {
 
@@ -69,38 +68,6 @@ class NewsId extends React.Component {
                  <strong>{welcome}</strong><br/>
                 {items}
             </Wrapper>
-        )
-    }
-}
-
-class NewsConstructor extends React.Component {
-
-    render() {
-        return (
-            <Item>
-                {this.props.news.title._text}
-                <p></p>
-                <Grid container>
-                    <Grid item xs={10}>
-                        <Date>{this.props.news.pubDate._text}</Date>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
-                            Read Post
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Item>
-        )
-    }
-}
-
-class LoginMessage extends React.Component {
-    render() {
-        return(
-            <strong>
-                Please <Link to = "/register">SignUp</Link> or <Link to="/login">Login</Link> to tewak settings. <br />
-            </strong>
         )
     }
 }

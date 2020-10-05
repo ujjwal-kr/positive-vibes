@@ -26,7 +26,27 @@ export const Center = styled.div`
     width: 100%;
 `
 
-export const Date = styled.span`
+export const Date = styled.div`
     font-size: .62em;
     color: gray;
+    @media (max-width: 800px) {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px
+    }
+`
+
+export const MobileButton = styled.div`
+    display: none;
+    @media (max-width: 800px) {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+`
+
+export const DesktopButton = styled.div`
+        @media (max-width: 800px) {
+        display: none;
+    }
 `

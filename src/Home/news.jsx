@@ -4,7 +4,7 @@ import URL from '../url';
 import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
-import { Wrapper, Item, Date } from '../Components/newsItem';
+import { Wrapper, Item, Date, MobileButton, DesktopButton } from '../Components/newsItem';
 
 class NewsItemComponent extends React.Component {
 
@@ -25,7 +25,7 @@ class NewsItemComponent extends React.Component {
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        axios.get(URL + 'auth/check', {
+        await axios.get(URL + 'auth/check', {
             headers: { 'authorization': token }
         }).then(res => {
             this.setState({
@@ -102,29 +102,40 @@ class NewsItemComponent extends React.Component {
     }
 }
 
-class NewsConstructor extends React.Component {
+export class NewsConstructor extends React.Component {
 
     render() {
         return (
             <Item>
                 {this.props.news.title._text}
                 <p></p>
-                <Grid container>
-                    <Grid item xs={10}>
-                        <Date>{this.props.news.pubDate._text}</Date>
+                <DesktopButton>
+                    <Grid container>
+                            <Grid item xs={10}>
+                                <Date>{this.props.news.pubDate._text}</Date>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
+                                    Read Post
+                                </Button>
+                            </Grid>
                     </Grid>
-                    <Grid item xs={2}>
-                        <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
+                </DesktopButton>
+
+                    <MobileButton>
+                        <Grid item>
+                            <Date>{this.props.news.pubDate._text}</Date>
+                        </Grid>
+                        <Button href={this.props.news.link._text} target="_blank" variant="outlined" color="primary">
                             Read Post
                         </Button>
-                    </Grid>
-                </Grid>
+                    </MobileButton>
             </Item>
         )
     }
 }
 
-class LoginMessage extends React.Component {
+export class LoginMessage extends React.Component {
     render() {
         return (
             <strong>

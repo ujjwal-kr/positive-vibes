@@ -6,7 +6,7 @@ import { BrowserRouter} from 'react-router-dom';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <App className = "roboto"/>
   </BrowserRouter>,
   document.getElementById('root')
 );
