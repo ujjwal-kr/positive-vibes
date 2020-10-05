@@ -4,6 +4,10 @@ export const Wrapper = styled.section`
     width: 100%;
     padding: 5%;
     font-size: 2em;
+    @media (max-width: 800px) {
+        font-size: 1.4em;
+        padding: 2%;
+    }
 `
 
 export const Item = styled.div`
@@ -11,6 +15,9 @@ export const Item = styled.div`
     border: 1px solid blue;
     border-radius: 10px;
     padding: 1em;
+    @media (max-width: 800px) {
+        margin: .5em;
+    }
 `
 
 export const Center = styled.div`
