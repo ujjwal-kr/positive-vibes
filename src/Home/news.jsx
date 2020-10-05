@@ -20,7 +20,7 @@ class NewsItemComponent extends React.Component {
         }
         this.handleSearch = this.handleSearch.bind(this)
         this.search = this.search.bind(this)
-    }
+    } 
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
