@@ -73,7 +73,7 @@ class NewsItemComponent extends React.Component {
         }
 
         if (search) {
-            return <Redirect to={"/search/" + this.state.searchValue} />
+            return <Redirect push to={"/search/" + this.state.searchValue} />
         }
 
         if (!present) {

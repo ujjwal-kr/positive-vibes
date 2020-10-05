@@ -21,7 +21,7 @@ import Redirect from './redirect';
 import NewsItemComponent from './news';
 import NewsId from './newsId';
 import SettingsComponent from '../Settings/settings';
-import { NavLink } from '../Components/newsItem';
+import { NavLink, Ham, NavWrapper } from '../Components/nav';
 import ProfileComponent from '../Profile/profile'
 import LoginComponent from '../Auth/login';
 import RegisterComponent from '../Auth/register';
@@ -104,6 +104,7 @@ export default function HomeComponent() {
         })}
       >
         <Toolbar>
+          <Ham>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -111,6 +112,7 @@ export default function HomeComponent() {
           >
             <MenuIcon />
           </IconButton>
+          </Ham>
           <Typography variant="h6" noWrap className={classes.title} >
             Positive Vibes
           </Typography>
@@ -120,75 +122,77 @@ export default function HomeComponent() {
         </Toolbar>
       </AppBar>
       <div>
-        <Drawer
-          variant="permanent"
-          className={clsx(classes.drawer, {
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          })}
-        >
-        <Divider />
-        <List>
-          <Link to = "/settings" style = {NavLink}>
-            <ListItem button >
-                <ListItemIcon><SettingsTwoTone /></ListItemIcon>
-                <ListItemText primary="Settings" />
-              </ListItem>
-          </Link>
-          <Link to = "/settings" style = {NavLink}>
-            <ListItem button >
-                <ListItemIcon><SettingsTwoTone /></ListItemIcon>
-                <ListItemText primary="Settings" />
-              </ListItem>
-          </Link>
-            <Link to = "/" style = {NavLink}>
-            <ListItem button >
-                <ListItemIcon><PublicTwoTone /></ListItemIcon>
-                <ListItemText primary="Topstories" />
-              </ListItem>
-          </Link>
+        <NavWrapper>
+          <Drawer
+            variant="permanent"
+            className={clsx(classes.drawer, {
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            })}
+          >
+          <Divider />
+          <List>
+            <Link to = "/settings" style = {NavLink}>
+              <ListItem button >
+                  <ListItemIcon><SettingsTwoTone /></ListItemIcon>
+                  <ListItemText primary="Settings" />
+                </ListItem>
+            </Link>
+            <Link to = "/settings" style = {NavLink}>
+              <ListItem button >
+                  <ListItemIcon><SettingsTwoTone /></ListItemIcon>
+                  <ListItemText primary="Settings" />
+                </ListItem>
+            </Link>
+              <Link to = "/" style = {NavLink}>
+              <ListItem button >
+                  <ListItemIcon><PublicTwoTone /></ListItemIcon>
+                  <ListItemText primary="Topstories" />
+                </ListItem>
+            </Link>
 
-            <Link to = "/" style = {NavLink}>
+              <Link to = "/" style = {NavLink}>
+                <ListItem button>
+                    <ListItemIcon><BookmarkTwoTone /></ListItemIcon>
+                    <ListItemText primary="Bookmarks" />
+                </ListItem>
+            </Link>
+          </List>
+          <Divider />
+          <List>
+          <Link to="/red/technology" style = {NavLink}>
+            <ListItem button>
+                <ListItemIcon><DesktopMacTwoTone /></ListItemIcon>
+                <ListItemText primary="Technology"/>
+            </ListItem>
+          </Link>
+          <Link to = "/red/entertainment" style = {NavLink}>
+          <ListItem button>
+                <ListItemIcon><MovieTwoTone /></ListItemIcon>
+                <ListItemText primary="Entertainment" />
+          </ListItem>
+          </Link>
+          <Link to = "/red/health" style = {NavLink}>
               <ListItem button>
-                  <ListItemIcon><BookmarkTwoTone /></ListItemIcon>
-                  <ListItemText primary="Bookmarks" />
+                  <ListItemIcon><FitnessCenterTwoTone /></ListItemIcon>
+                  <ListItemText primary="Health" />
               </ListItem>
           </Link>
-        </List>
-        <Divider />
-        <List>
-        <Link to="/red/technology" style = {NavLink}>
+          <Link to = "/red/india" style = {NavLink}>
+              <ListItem button>
+                  <ListItemIcon><FlagTwoTone /></ListItemIcon>
+                  <ListItemText primary="India" />
+              </ListItem>
+          </Link>
+          <Link to = "/red/science" style = {NavLink}>
           <ListItem button>
-              <ListItemIcon><DesktopMacTwoTone /></ListItemIcon>
-              <ListItemText primary="Technology"/>
-          </ListItem>
-        </Link>
-        <Link to = "/red/entertainment" style = {NavLink}>
-        <ListItem button>
-              <ListItemIcon><MovieTwoTone /></ListItemIcon>
-              <ListItemText primary="Entertainment" />
-        </ListItem>
-        </Link>
-        <Link to = "/red/health" style = {NavLink}>
-            <ListItem button>
-                <ListItemIcon><FitnessCenterTwoTone /></ListItemIcon>
-                <ListItemText primary="Health" />
-            </ListItem>
-        </Link>
-        <Link to = "/red/india" style = {NavLink}>
-            <ListItem button>
-                <ListItemIcon><FlagTwoTone /></ListItemIcon>
-                <ListItemText primary="India" />
-            </ListItem>
-        </Link>
-        <Link to = "/red/science" style = {NavLink}>
-        <ListItem button>
-              <ListItemIcon><ExploreTwoTone /></ListItemIcon>
-              <ListItemText primary="Science" />
-        </ListItem> 
-        </Link> 
-        </List>
-      </Drawer>
+                <ListItemIcon><ExploreTwoTone /></ListItemIcon>
+                <ListItemText primary="Science" />
+          </ListItem> 
+          </Link> 
+          </List>
+        </Drawer>
+      </NavWrapper>
       </div>
       <main className={classes.content}>
         <Toolbar/>
