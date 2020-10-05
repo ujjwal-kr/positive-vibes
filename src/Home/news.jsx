@@ -5,6 +5,7 @@ import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
 import { Wrapper, Item, Date, MobileButton, DesktopButton } from '../Components/newsItem';
+import { Alert } from '@material-ui/lab';
 
 class NewsItemComponent extends React.Component {
 
@@ -141,9 +142,9 @@ export class NewsConstructor extends React.Component {
 export class LoginMessage extends React.Component {
     render() {
         return (
-            <strong>
-                Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to tewak settings. <br />
-            </strong>
+            <Alert severity="info">
+                Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to change settings. <br />
+            </Alert>
         )
     }
 }

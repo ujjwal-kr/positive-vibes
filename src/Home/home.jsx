@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 import { FlagTwoTone, MovieTwoTone, DesktopMacTwoTone, FitnessCenterTwoTone, ExploreTwoTone, BookmarkTwoTone, PublicTwoTone, SettingsTwoTone } from '@material-ui/icons';
 import { Switch, Route, Link } from 'react-router-dom';
 
@@ -78,20 +79,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HomeComponent() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true, false);
-  const [isAuth, setAuth] = React.useState(true)
-  
+  const [open, setOpen] = React.useState();
   useEffect(() => {
-    const token = localStorage.getItem("token")
-    if(!token) return setAuth(false)
-
-    axios.get(URL+'auth/check', {
-      headers: {'authorization': token}
-    }).then((resl) => {
-      console.log(resl)
-    }).catch(e => {
-      return setAuth(false)
-    })
+    setOpen(true)
   }, [])
 
   return (
@@ -116,9 +106,9 @@ export default function HomeComponent() {
           <Typography variant="h6" noWrap className={classes.title} >
             Positive Vibes
           </Typography>
-          <span>
-            {isAuth ? 'LOggen In': 'nahg'}
-          </span>
+          {/* <span>
+            profile
+          </span> */}
         </Toolbar>
       </AppBar>
       <div>
@@ -127,7 +117,7 @@ export default function HomeComponent() {
             variant="permanent"
             className={clsx(classes.drawer, {
               [classes.drawerOpen]: open,
-              [classes.drawerClose]: !open,
+              [classes.drawerOpen]: !open,
             })}
           >
           <Divider />

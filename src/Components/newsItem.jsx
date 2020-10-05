@@ -16,8 +16,8 @@ export const Item = styled.div`
     border-radius: 10px;
     padding: 1em;
     @media (max-width: 800px) {
-        margin: .3em;
-        margin-bottom: 1.2em
+        margin: .2em;
+        margin-top: 1.5em
     }
 `
 
