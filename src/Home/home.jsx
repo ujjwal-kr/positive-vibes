@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import clsx from 'clsx';
-import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -14,7 +13,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Button from '@material-ui/core/Button';
 import { FlagTwoTone, MovieTwoTone, DesktopMacTwoTone, FitnessCenterTwoTone, ExploreTwoTone, BookmarkTwoTone, PublicTwoTone, SettingsTwoTone } from '@material-ui/icons';
 import { Switch, Route, Link } from 'react-router-dom';
 
@@ -26,7 +24,6 @@ import { NavLink, Ham, NavWrapper } from '../Components/nav';
 import ProfileComponent from '../Profile/profile'
 import LoginComponent from '../Auth/login';
 import RegisterComponent from '../Auth/register';
-import URL from '../url';
 import MenuComponent from '../Menu/menu';
 import SearchComponent from './search';
 

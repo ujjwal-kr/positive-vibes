@@ -11,7 +11,7 @@ class NewsId extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            news: [''],
+            news: null,
             present: false,
             login: false,
             user: null
@@ -54,7 +54,11 @@ class NewsId extends React.Component {
             return <Redirect to="/login" />
         }
         if (!present) {
-            items = 'Loading....'
+            items = <div>
+                <NewsConstructor />
+                <NewsConstructor />
+                <NewsConstructor />
+            </div>
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
         }

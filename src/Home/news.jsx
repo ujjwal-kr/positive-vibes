@@ -5,14 +5,14 @@ import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
 import { Wrapper, Item, Date, MobileButton, DesktopButton } from '../Components/newsItem';
-import { Alert } from '@material-ui/lab';
+import { Alert, Skeleton } from '@material-ui/lab';
 
 class NewsItemComponent extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            news: [''],
+            news: null,
             present: false,
             login: false,
             user: null,
@@ -21,7 +21,7 @@ class NewsItemComponent extends React.Component {
         }
         this.handleSearch = this.handleSearch.bind(this)
         this.search = this.search.bind(this)
-    } 
+    }
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
@@ -81,7 +81,11 @@ class NewsItemComponent extends React.Component {
         }
 
         if (!present) {
-            items = <strong>Loading....</strong>
+            items = <div>
+                <NewsConstructor />
+                <NewsConstructor />
+                <NewsConstructor />
+            </div>
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor key={key} news={item} />);
         }
@@ -109,22 +113,24 @@ class NewsItemComponent extends React.Component {
 export class NewsConstructor extends React.Component {
 
     render() {
-        return (
-            <Item>
-                {this.props.news.title._text}
-                <p></p>
-                <DesktopButton>
-                    <Grid container>
+
+        if (this.props.news) {
+            return (
+                <Item>
+                    {this.props.news.title._text}
+                    <p></p>
+                    <DesktopButton>
+                        <Grid container>
                             <Grid item xs={10}>
                                 <Date>{this.props.news.pubDate._text}</Date>
                             </Grid>
                             <Grid item xs={2}>
                                 <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
                                     Read Post
-                                </Button>
+                                    </Button>
                             </Grid>
-                    </Grid>
-                </DesktopButton>
+                        </Grid>
+                    </DesktopButton>
 
                     <MobileButton>
                         <Grid item>
@@ -132,10 +138,17 @@ export class NewsConstructor extends React.Component {
                         </Grid>
                         <Button href={this.props.news.link._text} target="_blank" variant="outlined" color="primary">
                             Read Post
-                        </Button>
+                            </Button>
                     </MobileButton>
-            </Item>
-        )
+                </Item>
+            )
+        } else {
+            return (<div>
+                <br/>
+                <Skeleton animation="wave" variant="rect" width={100 + '%'} height={200} /> <br />
+            </div>
+            )
+        }
     }
 }
 
