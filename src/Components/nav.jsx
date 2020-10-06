@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Ham = styled.span`
     display: none;
+    color: white !important;
     @media (max-width: 800px) {
         display: block
     }

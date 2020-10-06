@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -92,13 +92,15 @@ export default function HomeComponent() {
       >
         <Toolbar>
           <Ham>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-          >
-            <MenuIcon />
-          </IconButton>
+            <Link to="/menu">
+              <IconButton
+                color="white"
+                aria-label="open drawer"
+                edge="start"
+              >
+                <MenuIcon />
+              </IconButton>
+            </Link>
           </Ham>
           <Typography variant="h6" noWrap className={classes.title} >
             Positive Vibes
@@ -117,82 +119,82 @@ export default function HomeComponent() {
               [classes.drawerOpen]: !open,
             })}
           >
-          <Divider />
-          <List>
-            <Link to = "/settings" style = {NavLink}>
-              <ListItem button >
+            <Divider />
+            <List>
+              <Link to="/settings" style={NavLink}>
+                <ListItem button >
                   <ListItemIcon><SettingsTwoTone /></ListItemIcon>
                   <ListItemText primary="Settings" />
                 </ListItem>
-            </Link>
-            <Link to = "/settings" style = {NavLink}>
-              <ListItem button >
+              </Link>
+              <Link to="/settings" style={NavLink}>
+                <ListItem button >
                   <ListItemIcon><SettingsTwoTone /></ListItemIcon>
                   <ListItemText primary="Settings" />
                 </ListItem>
-            </Link>
-              <Link to = "/" style = {NavLink}>
-              <ListItem button >
+              </Link>
+              <Link to="/" style={NavLink}>
+                <ListItem button >
                   <ListItemIcon><PublicTwoTone /></ListItemIcon>
                   <ListItemText primary="Topstories" />
                 </ListItem>
-            </Link>
+              </Link>
 
-              <Link to = "/" style = {NavLink}>
+              <Link to="/" style={NavLink}>
                 <ListItem button>
-                    <ListItemIcon><BookmarkTwoTone /></ListItemIcon>
-                    <ListItemText primary="Bookmarks" />
+                  <ListItemIcon><BookmarkTwoTone /></ListItemIcon>
+                  <ListItemText primary="Bookmarks" />
                 </ListItem>
-            </Link>
-          </List>
-          <Divider />
-          <List>
-          <Link to="/red/technology" style = {NavLink}>
-            <ListItem button>
-                <ListItemIcon><DesktopMacTwoTone /></ListItemIcon>
-                <ListItemText primary="Technology"/>
-            </ListItem>
-          </Link>
-          <Link to = "/red/entertainment" style = {NavLink}>
-          <ListItem button>
-                <ListItemIcon><MovieTwoTone /></ListItemIcon>
-                <ListItemText primary="Entertainment" />
-          </ListItem>
-          </Link>
-          <Link to = "/red/health" style = {NavLink}>
-              <ListItem button>
+              </Link>
+            </List>
+            <Divider />
+            <List>
+              <Link to="/red/technology" style={NavLink}>
+                <ListItem button>
+                  <ListItemIcon><DesktopMacTwoTone /></ListItemIcon>
+                  <ListItemText primary="Technology" />
+                </ListItem>
+              </Link>
+              <Link to="/red/entertainment" style={NavLink}>
+                <ListItem button>
+                  <ListItemIcon><MovieTwoTone /></ListItemIcon>
+                  <ListItemText primary="Entertainment" />
+                </ListItem>
+              </Link>
+              <Link to="/red/health" style={NavLink}>
+                <ListItem button>
                   <ListItemIcon><FitnessCenterTwoTone /></ListItemIcon>
                   <ListItemText primary="Health" />
-              </ListItem>
-          </Link>
-          <Link to = "/red/india" style = {NavLink}>
-              <ListItem button>
+                </ListItem>
+              </Link>
+              <Link to="/red/india" style={NavLink}>
+                <ListItem button>
                   <ListItemIcon><FlagTwoTone /></ListItemIcon>
                   <ListItemText primary="India" />
-              </ListItem>
-          </Link>
-          <Link to = "/red/science" style = {NavLink}>
-          <ListItem button>
-                <ListItemIcon><ExploreTwoTone /></ListItemIcon>
-                <ListItemText primary="Science" />
-          </ListItem> 
-          </Link> 
-          </List>
-        </Drawer>
-      </NavWrapper>
+                </ListItem>
+              </Link>
+              <Link to="/red/science" style={NavLink}>
+                <ListItem button>
+                  <ListItemIcon><ExploreTwoTone /></ListItemIcon>
+                  <ListItemText primary="Science" />
+                </ListItem>
+              </Link>
+            </List>
+          </Drawer>
+        </NavWrapper>
       </div>
       <main className={classes.content}>
-        <Toolbar/>
+        <Toolbar />
         <Switch>
-          <Route path = "/" component = { NewsItemComponent } exact />
-          <Route path = "/search/:query" component = { SearchComponent } />
-          <Route path = "/red/:id" component = { Redirect } />
-          <Route path = "/news/:id" component = { NewsId } />
-          <Route path = "/settings" component = { SettingsComponent } />
-          <Route path = "/login" component = { LoginComponent } />
-          <Route path = "/register" component = { RegisterComponent } />
-          <Route path = "/profile" component = { ProfileComponent } />
-          <Route path = "/menu" component = { MenuComponent } />
+          <Route path="/" component={NewsItemComponent} exact />
+          <Route path="/search/:query" component={SearchComponent} />
+          <Route path="/red/:id" component={Redirect} />
+          <Route path="/news/:id" component={NewsId} />
+          <Route path="/settings" component={SettingsComponent} />
+          <Route path="/login" component={LoginComponent} />
+          <Route path="/register" component={RegisterComponent} />
+          <Route path="/profile" component={ProfileComponent} />
+          <Route path="/menu" component={MenuComponent} />
         </Switch>
       </main>
     </div>

@@ -27,7 +27,10 @@ class NewsId extends React.Component {
             this.setState({
                 user: user
             })
-        });
+        }).catch(e => {
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
+        })
         const { match: { params } } = this.props;
         await axios.get(URL + 'news/' + params.id, {
             headers: { 'authorization': token }

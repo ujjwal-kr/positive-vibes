@@ -33,6 +33,8 @@ class NewsItemComponent extends React.Component {
                 user: user
             })
         }).catch(e => {
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
             console.log(e)
         })
 
