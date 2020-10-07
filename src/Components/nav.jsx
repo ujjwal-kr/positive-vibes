@@ -9,7 +9,7 @@ export const Ham = styled.span`
 `
 
 export const NavWrapper = styled.div`
-    @media (max-width: 800px) {
+    @media (max-width: 870px) {
         display: none
     }
 `

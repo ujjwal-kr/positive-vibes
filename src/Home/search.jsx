@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import URL from '../url';
-import { Redirect, Link } from 'react-router-dom';
-
-import { Button, Grid } from '@material-ui/core';
-import { Wrapper, Item, Date } from '../Components/newsItem';
+import { Redirect } from 'react-router-dom';
+import { Wrapper } from '../Components/newsItem';
+import { NewsConstructor, LoginMessage } from './news';
 
 class SearchComponent extends React.Component {
 
@@ -37,15 +36,21 @@ class SearchComponent extends React.Component {
         await axios.get(URL + 'news/search/' + params.query, {
             headers: { 'authorization': token }
         }).then(data => {
-            console.log(data.data);
-            this.setState({
-                news: data.data.resl,
-                present: true
-            });
+            if(Object.keys(data.data.resl).length < 1) {
+                this.setState({
+                    news: null,
+                    present: false
+                })
+            } else {
+                this.setState({
+                    news: data.data.resl,
+                    present: true
+                });
+            }
         }).catch(e => {
             console.log(e);
             this.setState({
-                login: true
+                present: true
             });
         })
     }
@@ -59,7 +64,11 @@ class SearchComponent extends React.Component {
             return <Redirect to="/login" />
         }
         if (!present) {
-            items = 'Loading....'
+            items = <div>
+                <NewsConstructor />
+                <NewsConstructor />
+                <NewsConstructor />
+            </div>
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
         }
@@ -73,38 +82,6 @@ class SearchComponent extends React.Component {
                  <strong>{welcome}</strong><br/>
                 {items}
             </Wrapper>
-        )
-    }
-}
-
-class NewsConstructor extends React.Component {
-
-    render() {
-        return (
-            <Item>
-                {this.props.news.title._text}
-                <p></p>
-                <Grid container>
-                    <Grid item xs={10}>
-                        <Date>{this.props.news.pubDate._text}</Date>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
-                            Read Post
-                        </Button>
-                    </Grid>
-                </Grid>
-            </Item>
-        )
-    }
-}
-
-class LoginMessage extends React.Component {
-    render() {
-        return(
-            <strong>
-                Please <Link to = "/register">SignUp</Link> or <Link to="/login">Login</Link> to tewak settings. <br />
-            </strong>
         )
     }
 }

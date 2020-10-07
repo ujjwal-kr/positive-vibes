@@ -94,7 +94,6 @@ export default function HomeComponent() {
           <Ham>
             <Link to="/menu">
               <IconButton
-                color="white"
                 aria-label="open drawer"
                 edge="start"
               >
