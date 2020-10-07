@@ -3,7 +3,7 @@ import axios from 'axios';
 import URL from '../url';
 import { Redirect } from 'react-router-dom';
 import { Wrapper } from '../Components/newsItem';
-import { NewsConstructor, LoginMessage } from './news';
+import { NewsConstructor } from './news';
 
 class SearchComponent extends React.Component {
 
@@ -13,14 +13,14 @@ class SearchComponent extends React.Component {
             news: [''],
             present: false,
             login: false,
-            user: null
+            user: null,
+            searchTerm: null
         }
     }
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-
         axios.get(URL+'auth/check', {
             headers: {'authorization': token}
         }).then(res => {
@@ -33,13 +33,13 @@ class SearchComponent extends React.Component {
             })
         })
         const { match: { params } } = this.props;
+        this.setState({ searchTerm: params.query })
         await axios.get(URL + 'news/search/' + params.query, {
             headers: { 'authorization': token }
         }).then(data => {
             if(Object.keys(data.data.resl).length < 1) {
                 this.setState({
-                    news: null,
-                    present: false
+                    present: true
                 })
             } else {
                 this.setState({
@@ -59,7 +59,7 @@ class SearchComponent extends React.Component {
         const present = this.state.present;
         let login = this.state.login;
         let items;
-        let welcome;
+        let searchTerm = this.state.searchTerm;
         if(login) {
             return <Redirect to="/login" />
         }
@@ -72,14 +72,9 @@ class SearchComponent extends React.Component {
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
         }
-        if(this.state.user) {
-            welcome = `Welcome, ${this.state.user.name}`
-        } else {
-            welcome = <LoginMessage/>
-        }
         return (
             <Wrapper>
-                 <strong>{welcome}</strong><br/>
+                 <strong>Results for '{searchTerm}'</strong><br/>
                 {items}
             </Wrapper>
         )

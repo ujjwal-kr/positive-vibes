@@ -91,22 +91,23 @@ export default function HomeComponent() {
         })}
       >
         <Toolbar>
-          <Ham>
-            <Link to="/menu">
-              <IconButton
-                aria-label="open drawer"
-                edge="start"
-              >
-                <MenuIcon />
-              </IconButton>
-            </Link>
-          </Ham>
           <Typography variant="h6" noWrap className={classes.title} >
             Positive Vibes
           </Typography>
           {/* <span>
             profile
           </span> */}
+          <Ham>
+            <Link to="/menu">
+              <IconButton
+                aria-label="open drawer"
+                edge="start"
+                style={{ color: 'white' }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Link>
+          </Ham>
         </Toolbar>
       </AppBar>
       <div>
