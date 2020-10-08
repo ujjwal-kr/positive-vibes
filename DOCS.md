@@ -35,3 +35,7 @@ Basically following the official docs and [Airbnb style guide](https://github.co
 2. Push the branch to github
 3. Start the pull request
 
+## Todo
+1. Menu
+2. Pofile
+

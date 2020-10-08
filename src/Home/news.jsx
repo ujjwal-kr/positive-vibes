@@ -145,7 +145,7 @@ export class NewsConstructor extends React.Component {
             )
         } else {
             return (<div>
-                <br/>
+                <br />
                 <Skeleton animation="wave" variant="rect" width={100 + '%'} height={200} /> <br />
             </div>
             )
