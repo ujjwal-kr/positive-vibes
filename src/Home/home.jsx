@@ -21,7 +21,6 @@ import NewsItemComponent from './news';
 import NewsId from './newsId';
 import SettingsComponent from '../Settings/settings';
 import { NavLink, Ham, NavWrapper } from '../Components/nav';
-import ProfileComponent from '../Profile/profile'
 import LoginComponent from '../Auth/login';
 import RegisterComponent from '../Auth/register';
 import MenuComponent from '../Menu/menu';
@@ -193,7 +192,6 @@ export default function HomeComponent() {
           <Route path="/settings" component={SettingsComponent} />
           <Route path="/login" component={LoginComponent} />
           <Route path="/register" component={RegisterComponent} />
-          <Route path="/profile" component={ProfileComponent} />
           <Route path="/menu" component={MenuComponent} />
         </Switch>
       </main>

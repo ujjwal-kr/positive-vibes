@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper, ItemsWrapper, Item, ItemText } from '../Components/menu';
+import { Wrapper, ItemsWrapper, Item, ItemText, ProfileName } from '../Components/menu';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -33,7 +33,9 @@ class MenuComponent extends React.Component {
             <Wrapper>
                 <Grid container>
                     <Grid item xs={8}>
-                        Welcome, {this.state.user.name}
+                        <ProfileName>
+                            Welcome, {this.state.user.name}
+                        </ProfileName>
                     </Grid>
                     <Grid item xs={4}>
                         <IconButton style={{ marginTop: '-20px' }} aria-label="delete">

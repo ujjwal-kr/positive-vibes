@@ -19,3 +19,7 @@ export const ItemText = styled.strong`
     font-size: 1.3em;
     color: black;
 `
+
+export const ProfileName = styled.strong`
+    font-size: 1.2em;
+` 
