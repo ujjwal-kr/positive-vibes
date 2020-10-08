@@ -10,45 +10,65 @@ import Technology from '../assets/svg/tech-icon.png';
 import Health from '../assets/svg/health-icon.svg';
 import Science from '../assets/svg/science-icon.svg';
 import Entertainment from '../assets/svg/entertainment-icon.svg';
+import { Button } from '@material-ui/core';
+
+import { LoginMessage } from '../Home/news';
 
 class MenuComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: {}
+            user: null,
+            alert: true
         }
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(e) {
+        e.preventDefault();
+        this.setState({
+            user: null,
+            alert: true
+        })
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
     }
 
     async componentDidMount() {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user) {
-            this.setState({
-                user: user
-            })
+            this.setState({ user: user, alert: false })
+        } else {
+            this.setState({ alert: true })
         }
     }
 
     render() {
+
+        let alert = this.state.alert;
+
         return (
             <Wrapper>
                 <Grid container>
                     <Grid item xs={8}>
-                        <ProfileName>
-                            Welcome, {this.state.user.name}
-                        </ProfileName>
+                        {alert ? <LoginMessage /> : <ProfileName>Welcome, {this.state.user.name}</ProfileName>}
                     </Grid>
                     <Grid item xs={4}>
-                        <IconButton style={{ marginTop: '-20px' }} aria-label="delete">
-                            <img src={SettingIcon} width={40} height={40} alt="settings" />
-                        </IconButton>
+                        <Link to="/settings">
+                            <IconButton style={{ marginTop: '-10px' }} aria-label="delete">
+                                <img src={SettingIcon} width={40} height={40} alt="settings" />
+                            </IconButton>
+                        </Link>
                     </Grid>
                 </Grid>
+
+                {alert ?null :<span><br/><Button onClick={this.logout} variant="outlined" color="primary">Logout</Button></span>}
 
                 <ItemsWrapper>
                     <ItemConstructor link="/" image={TopStories} text="TOPSTORIES" />
                     <ItemConstructor link="/" image={Bookmarks} text="BOOKMARKS" />
-                    <hr/>
-                    <br/>
+                    <hr />
+                    <br />
                     <ItemConstructor link="/news/health" image={Health} text="HEALTH" />
                     <ItemConstructor link="/news/technology" image={Technology} text="TECHNOLOGY" />
                     <ItemConstructor link="/news/science" image={Science} text="SCIENCE" />
