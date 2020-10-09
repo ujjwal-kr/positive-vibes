@@ -14,13 +14,18 @@ function RegisterForm() {
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
         const name = document.getElementById("name").value
-        axios.post(URL+'auth/register', {name, email, password})
+        const confirm = document.getElementById("comfirm").value
+        if (password !== confirm) {
+            alert("Passwords dont match!")
+        } else {
+            axios.post(URL+'auth/register', {name, email, password})
             .then(data => {
                 setLogin(true);
                 window.localStorage.removeItem("token")
             }).catch(e => {
                 alert("Invalid Input, check the input")
             })
+        }
     };
 
     if(toLogin === true) {
@@ -43,6 +48,10 @@ function RegisterForm() {
                 <br />
                 <div>
                     <TextField id="password" label="Password" type="password" variant="filled" />
+                </div>
+                <br/>
+                <div>
+                    <TextField id="comfirm" label="Comfirm Password" type="password" variant="filled" />
                 </div>
                 <p></p>
                 <Button type="submit">Submit</Button>
