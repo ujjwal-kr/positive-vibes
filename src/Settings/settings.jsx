@@ -3,6 +3,7 @@ import axios from 'axios';
 import URL from '../url';
 
 import { Button } from '@material-ui/core';
+import { Wrapper, STitle, Caption } from '../Components/settings';
 
 class SettingsComponent extends React.Component {
     constructor(props) {
@@ -56,27 +57,36 @@ class SettingsComponent extends React.Component {
 
     render() {
         return (
-            <div style={{textAlign: 'center'}}>
-                <Button 
+            <Wrapper>
+                <STitle>Basic Settings</STitle>
+                <Caption>Filters the news with least effective algorithm.</Caption>
+                <Button
                 color="primary" 
                 size="large" 
-                variant={this.state.basic ? 'contained' : ''} 
+                variant={this.state.basic ? 'contained' : 'outlined'} 
                 onClick={() => this.changeSetting('basic')}>BASIC</Button> <br />
                 <br/>
+
+
+                <STitle>Moderate Settings</STitle>
+                <Caption>Recommended setting, filters the negative contents to a significant level</Caption>
 
                 <Button 
                 color="primary" 
                 size="large"
-                variant={this.state.moderate ? 'contained' : ''} 
+                variant={this.state.moderate ? 'contained' : 'outlined'} 
                 onClick={() => this.changeSetting('moderate')}>MODERATE</Button> <br />
                 <br/>
+
+                <STitle>Strict Settings</STitle>
+                <Caption>Filters the news strictly, only the most positive news is possibly visible.</Caption>
 
                 <Button 
                 size="large" 
                 color="primary" 
-                variant={this.state.strict ? 'contained' : ''} 
+                variant={this.state.strict ? 'contained' : 'outlined'} 
                 onClick={() => this.changeSetting('strict')}>Strict</Button>
-            </div>
+            </Wrapper>
         )
     }
 }
