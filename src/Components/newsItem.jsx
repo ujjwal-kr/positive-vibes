@@ -29,10 +29,19 @@ export const Center = styled.div`
 export const Date = styled.div`
     font-size: .62em;
     color: gray;
-    @media (max-width: 870px) {
+    @media (max-width: 800px) {
         width: 100%;
         text-align: left;
-        margin-bottom: 10px
+    }
+`
+
+export const Source = styled.div`
+    font-size: .62em;
+    color: #3838ff;
+    @media (max-width: 800px) {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 10px;
     }
 `
 

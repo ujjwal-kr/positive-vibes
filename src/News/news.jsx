@@ -4,7 +4,7 @@ import URL from '../url';
 import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
-import { Wrapper, Item, Date, MobileButton, DesktopButton, MobileCenter } from '../Components/newsItem';
+import { Wrapper, Item, Date, Source, MobileButton, DesktopButton, MobileCenter } from '../Components/newsItem';
 import { Alert, Skeleton } from '@material-ui/lab';
 import '../fonts.css';
 
@@ -125,6 +125,7 @@ export class NewsConstructor extends React.Component {
                         <Grid container>
                             <Grid item xs={10}>
                                 <Date>{this.props.news.pubDate._text}</Date>
+                                <Source>{this.props.news.source._text}</Source>
                             </Grid>
                             <Grid item xs={2}>
                                 <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
@@ -137,6 +138,7 @@ export class NewsConstructor extends React.Component {
                     <MobileButton>
                         <Grid item>
                             <Date>{this.props.news.pubDate._text}</Date>
+                            <Source>{this.props.news.source._text}</Source>
                         </Grid>
                         <Button href={this.props.news.link._text} target="_blank" variant="outlined" color="primary">
                             Read Post
