@@ -2,19 +2,19 @@ import React from 'react';
 import axios from 'axios';
 import URL from '../url';
 import { Redirect } from 'react-router-dom';
-import { NewsConstructor, LoginMessage } from './news';
-
 import { Wrapper } from '../Components/newsItem';
+import { NewsConstructor } from './news';
 
-class NewsId extends React.Component {
+class SearchComponent extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            news: null,
+            news: [''],
             present: false,
             login: false,
-            user: null
+            user: null,
+            searchTerm: null
         }
     }
 
@@ -28,22 +28,28 @@ class NewsId extends React.Component {
                 user: user
             })
         }).catch(e => {
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
-        })
-        const { match: { params } } = this.props;
-        await axios.get(URL + 'news/' + params.id, {
-            headers: { 'authorization': token }
-        }).then(data => {
-            console.log(data.data);
-            this.setState({
-                news: data.data.resl,
-                present: true
-            });
-        }).catch(e => {
-            console.log(e);
             this.setState({
                 login: true
+            })
+        })
+        const { match: { params } } = this.props;
+        this.setState({ searchTerm: params.query })
+        await axios.get(URL + 'news/search/' + params.query, {
+            headers: { 'authorization': token }
+        }).then(data => {
+            if(Object.keys(data.data.resl).length < 1) {
+                this.setState({
+                    present: true
+                })
+            } else {
+                this.setState({
+                    news: data.data.resl,
+                    present: true
+                });
+            }
+        }).catch(e => {
+            this.setState({
+                present: true
             });
         })
     }
@@ -52,7 +58,7 @@ class NewsId extends React.Component {
         const present = this.state.present;
         let login = this.state.login;
         let items;
-        let welcome;
+        let searchTerm = this.state.searchTerm;
         if(login) {
             return <Redirect to="/login" />
         }
@@ -65,18 +71,13 @@ class NewsId extends React.Component {
         } else {
             items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
         }
-        if(this.state.user) {
-            welcome = `Welcome, ${this.state.user.name}`
-        } else {
-            welcome = <LoginMessage/>
-        }
         return (
             <Wrapper>
-                 <strong>{welcome}</strong><br/>
+                 <strong>Results for '{searchTerm}'</strong><br/>
                 {items}
             </Wrapper>
         )
     }
 }
 
-export default NewsId;
+export default SearchComponent;

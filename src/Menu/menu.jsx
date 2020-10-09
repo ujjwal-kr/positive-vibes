@@ -12,7 +12,7 @@ import Science from '../assets/svg/science-icon.svg';
 import Entertainment from '../assets/svg/entertainment-icon.svg';
 import { Button } from '@material-ui/core';
 
-import { LoginMessage } from '../Home/news';
+import { LoginMessage } from '../News/news';
 
 class MenuComponent extends React.Component {
     constructor(props) {

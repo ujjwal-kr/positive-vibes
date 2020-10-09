@@ -35,7 +35,6 @@ class NewsItemComponent extends React.Component {
         }).catch(e => {
             localStorage.removeItem("user");
             localStorage.removeItem("token");
-            console.log(e)
         })
 
         await axios.get(URL + 'news', {
@@ -46,7 +45,6 @@ class NewsItemComponent extends React.Component {
                 present: true
             })
         }).catch(e => {
-            console.log(e)
             this.setState({
                 present: false,
                 login: true

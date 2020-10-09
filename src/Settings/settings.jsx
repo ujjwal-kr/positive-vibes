@@ -29,7 +29,6 @@ class SettingsComponent extends React.Component {
             })
             this.changeSettingVal(res.data.setting)
         }).catch(e => {
-            console.log(e)
             return this.props.history.push('/login');
         })
     }
@@ -44,7 +43,7 @@ class SettingsComponent extends React.Component {
                 setting: str
             })
             this.changeSettingVal(str)
-        }).catch(e => console.log(e))
+        }).catch(e => this.props.history.push('/login'))
     }
 
     changeSettingVal(str) {

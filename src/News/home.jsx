@@ -121,6 +121,7 @@ export default function HomeComponent() {
             <Divider />
             <List>
               <Link to="/settings" style={NavLink}>
+                <br/>
                 <ListItem button >
                   <ListItemIcon><SettingsTwoTone /></ListItemIcon>
                   <ListItemText primary="Settings" />
