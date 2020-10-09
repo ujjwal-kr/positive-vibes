@@ -12,20 +12,23 @@ class SettingsComponent extends React.Component {
             setting: '',
             basic: false,
             strict: false,
-            moderate: false
+            moderate: false,
+            user: {}
         }
         this.changeSetting = this.changeSetting.bind(this)
+        this.logout = this.logout.bind(this)
     }
 
     async componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'))
         const token = localStorage.getItem('token')
         if (!token || !user) return this.props.history.push('/login');
+        this.setState({ user: user })
         await axios.get(URL + 'auth/setting/' + user._id, {
             headers: { 'authorization': token }
         }).then(res => {
             this.setState({
-                setting: res.data.setting
+                setting: res.data.setting,
             })
             this.changeSettingVal(res.data.setting)
         }).catch(e => {
@@ -53,10 +56,23 @@ class SettingsComponent extends React.Component {
         return this.setState({ basic: true, moderate: false, strict: false })
     }
 
+    logout() {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        this.props.history.push('/')
+    }
+
 
     render() {
         return (
             <Wrapper>
+
+                <STitle>SETTINGS</STitle>
+                {this.state.user.name ? <Caption>Welcome, <strong>{this.state.user.name}</strong>. As you can see, you can change your news settings here.</Caption> :null }
+                <Button onClick={this.logout} variant="outlined" color="primary">Logout</Button>
+                <br/>
+                <br/>
+                <hr/>
                 <STitle>Basic Settings</STitle>
                 <Caption>Filters the news with least effective algorithm.</Caption>
                 <Button
