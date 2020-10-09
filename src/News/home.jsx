@@ -15,7 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { FlagTwoTone, MovieTwoTone, DesktopMacTwoTone, FitnessCenterTwoTone, ExploreTwoTone, BookmarkTwoTone, PublicTwoTone, SettingsTwoTone } from '@material-ui/icons';
 import { Switch, Route, Link } from 'react-router-dom';
-
+import '../fonts.css';
 import Redirect from './redirect';
 import NewsItemComponent from './news';
 import NewsId from './newsId';
@@ -89,8 +89,8 @@ export default function HomeComponent() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
-          <Typography variant="h6" noWrap className={classes.title} >
+        <Toolbar className="logo">
+          <Typography variant="h5" noWrap className="logo" >
             Positive Vibes
           </Typography>
           {/* <span>

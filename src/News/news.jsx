@@ -4,8 +4,9 @@ import URL from '../url';
 import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
-import { Wrapper, Item, Date, MobileButton, DesktopButton } from '../Components/newsItem';
+import { Wrapper, Item, Date, MobileButton, DesktopButton, MobileCenter } from '../Components/newsItem';
 import { Alert, Skeleton } from '@material-ui/lab';
+import '../fonts.css';
 
 class NewsItemComponent extends React.Component {
 
@@ -94,13 +95,15 @@ class NewsItemComponent extends React.Component {
             welcome = <LoginMessage />
         }
         return (
-            <Wrapper>
-                {this.state.user ?
-                    <form onSubmit={this.search} noValidate autoComplete="off">
-                        <TextField onChange={this.handleSearch} label="Search" variant="outlined" />
-                    </form>
-                    : null
-                }
+            <Wrapper className="roboto">
+                <MobileCenter>
+                    {this.state.user ?
+                        <form onSubmit={this.search} noValidate autoComplete="off">
+                            <TextField style={{width: 80+'%'}} onChange={this.handleSearch} label="Search" variant="outlined" />
+                        </form>
+                        : null
+                    }
+                </MobileCenter>
                 <br />
                 {welcome} <br />
                 {items}
@@ -126,7 +129,7 @@ export class NewsConstructor extends React.Component {
                             <Grid item xs={2}>
                                 <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
                                     Read Post
-                                    </Button>
+                                </Button>
                             </Grid>
                         </Grid>
                     </DesktopButton>

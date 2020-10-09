@@ -50,3 +50,9 @@ export const DesktopButton = styled.div`
         display: none;
     }
 `
+
+export const MobileCenter = styled.div`
+    @media (max-width: 800px) {
+        text-align: center;
+    }
+`

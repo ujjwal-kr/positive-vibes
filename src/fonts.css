@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+.logo{
+    font-family: 'Quicksand', sans-serif !important;
+    flex-grow: 1;
+}
+
+.news {
+    font-family: 'Dosis', sans-serif;
+} 
+
+.roboto {
+    font-family: 'Roboto', sans-serif;
+}
