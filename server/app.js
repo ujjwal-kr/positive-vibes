@@ -11,12 +11,16 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/positive-vibes', {
     useNewUrlParser: true,
     useUnifiedTopology: true
-});
+}).then(() => {
+    console.log('connected to the mongoDB')
+}).catch(() => {
+    console.log('Error connecying to mongoDB')
+})
 
 const Auth = require('./routes/auth/auth')
 const News = require('./routes/parser/news')
 const Xenon = require('./routes/xenon/xenon')
-const UserMiddleware = require ('./middlewares/userMiddleware')
+const UserMiddleware = require('./middlewares/userMiddleware')
 
 app.use('/news', UserMiddleware, News)
 app.use('/auth', Auth)
