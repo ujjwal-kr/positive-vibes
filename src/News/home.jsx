@@ -93,9 +93,6 @@ export default function HomeComponent() {
           <Typography variant="h5" noWrap className="logo" >
             Positive Vibes
           </Typography>
-          {/* <span>
-            profile
-          </span> */}
           <Ham>
             <Link to="/menu">
               <IconButton

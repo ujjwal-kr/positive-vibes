@@ -18,6 +18,7 @@ const WORDS = {
     'immunity': 1,
     'verge': 2,
     'new': 1,
+    'space.com': 2,
     'techcrunch': 2,
     'suicide': -4,
     'depression': -2,

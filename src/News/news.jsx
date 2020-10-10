@@ -6,6 +6,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { Button, Grid, TextField } from '@material-ui/core';
 import { Wrapper, Item, Date, Source, MobileButton, DesktopButton, MobileCenter } from '../Components/newsItem';
 import { Alert, Skeleton } from '@material-ui/lab';
+import { motion } from 'framer-motion';
 import '../fonts.css';
 
 class NewsItemComponent extends React.Component {
@@ -90,19 +91,47 @@ class NewsItemComponent extends React.Component {
             items = this.state.news.map((item, key) => <NewsConstructor key={key} news={item} />);
         }
         if (this.state.user) {
-            welcome = `Welcome, ${this.state.user.name}`
+            welcome = <motion.div initial="hidden" animate="visible" variants={{
+                hidden: {
+                    scale: .8,
+                    opacity: 0
+                },
+                visible: {
+                    scale: 1,
+                    opacity: 1,
+                    transition: {
+                        delay: .2
+                    }
+                },
+            }}>
+                Welcome, {this.state.user.name}
+            </motion.div>
         } else {
             welcome = <LoginMessage />
         }
         return (
             <Wrapper className="roboto">
                 <MobileCenter>
-                    {this.state.user ?
-                        <form onSubmit={this.search} noValidate autoComplete="off">
-                            <TextField style={{width: 80+'%'}} onChange={this.handleSearch} label="Search" variant="outlined" />
-                        </form>
-                        : null
-                    }
+                    <motion.div initial="hidden" animate="visible" variants={{
+                        hidden: {
+                            scale: .8,
+                            opacity: 0
+                        },
+                        visible: {
+                            scale: 1,
+                            opacity: 1,
+                            transition: {
+                                delay: .4,
+                            }
+                        },
+                    }}>
+                        {this.state.user ?
+                            <form onSubmit={this.search} noValidate autoComplete="off">
+                                <TextField style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
+                            </form>
+                            : null
+                        }
+                    </motion.div>
                 </MobileCenter>
                 <br />
                 {welcome} <br />
@@ -118,33 +147,47 @@ export class NewsConstructor extends React.Component {
 
         if (this.props.news) {
             return (
-                <Item>
-                    {this.props.news.title._text}
-                    <p></p>
-                    <DesktopButton>
-                        <Grid container>
-                            <Grid item xs={10}>
+                <motion.div initial="hidden" animate="visible" variants={{
+                    hidden: {
+                        opacity: 0,
+                        scale: .8,
+                    },
+                    visible: {
+                        opacity: 1,
+                        scale: 1,
+                        transition: {
+                            delay: .2
+                        }
+                    }
+                }}>
+                    <Item>
+                        {this.props.news.title._text}
+                        <p></p>
+                        <DesktopButton>
+                            <Grid container>
+                                <Grid item xs={10}>
+                                    <Date>{this.props.news.pubDate._text}</Date>
+                                    <Source>{this.props.news.source._text}</Source>
+                                </Grid>
+                                <Grid item xs={2}>
+                                    <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
+                                        Read Post
+                                </Button>
+                                </Grid>
+                            </Grid>
+                        </DesktopButton>
+
+                        <MobileButton>
+                            <Grid item>
                                 <Date>{this.props.news.pubDate._text}</Date>
                                 <Source>{this.props.news.source._text}</Source>
                             </Grid>
-                            <Grid item xs={2}>
-                                <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
-                                    Read Post
-                                </Button>
-                            </Grid>
-                        </Grid>
-                    </DesktopButton>
-
-                    <MobileButton>
-                        <Grid item>
-                            <Date>{this.props.news.pubDate._text}</Date>
-                            <Source>{this.props.news.source._text}</Source>
-                        </Grid>
-                        <Button href={this.props.news.link._text} target="_blank" variant="outlined" color="primary">
-                            Read Post
+                            <Button href={this.props.news.link._text} target="_blank" variant="outlined" color="primary">
+                                Read Post
                             </Button>
-                    </MobileButton>
-                </Item>
+                        </MobileButton>
+                    </Item>
+                </motion.div>
             )
         } else {
             return (<div>
@@ -159,9 +202,21 @@ export class NewsConstructor extends React.Component {
 export class LoginMessage extends React.Component {
     render() {
         return (
-            <Alert severity="info">
-                Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to change settings. <br />
-            </Alert>
+            <motion.div initial="hidden" animate="visible" variants={{
+                hidden: {
+                    opacity: 0
+                },
+                visible: {
+                    opacity: 1,
+                    transition: {
+                        delay: .5
+                    }
+                }
+            }}>
+                <Alert severity="info">
+                    Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to change settings. <br />
+                </Alert>
+            </motion.div>
         )
     }
 }
