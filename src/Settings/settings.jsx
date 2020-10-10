@@ -3,6 +3,7 @@ import axios from 'axios';
 import URL from '../url';
 
 import { Button } from '@material-ui/core';
+import { motion } from 'framer-motion';
 import { Wrapper, STitle, Caption } from '../Components/settings';
 
 class SettingsComponent extends React.Component {
@@ -65,43 +66,57 @@ class SettingsComponent extends React.Component {
 
     render() {
         return (
-            <Wrapper>
+            <motion.div initial="hidden" animate="visible" variants={{
+                hidden: {
+                    opacity: 0,
+                    translateY: 100
+                },
+                visible: {
+                    opacity: 1,
+                    translateY: 0,
+                    transition: {
+                        delay: .2
+                    }
+                }
+            }}>
+                <Wrapper>
 
-                <STitle>SETTINGS</STitle>
-                {this.state.user.name ? <Caption>Welcome, <strong>{this.state.user.name}</strong>. As you can see, you can change your news settings here.</Caption> :null }
-                <Button onClick={this.logout} variant="outlined" color="primary">Logout</Button>
-                <br/>
-                <br/>
-                <hr/>
-                <STitle>Basic Settings</STitle>
-                <Caption>Filters the news with least effective algorithm.</Caption>
-                <Button
-                color="primary" 
-                size="large" 
-                variant={this.state.basic ? 'contained' : 'outlined'} 
-                onClick={() => this.changeSetting('basic')}>BASIC</Button> <br />
-                <br/>
+                    <STitle>SETTINGS</STitle>
+                    {this.state.user.name ? <Caption>Welcome, <strong>{this.state.user.name}</strong>. As you can see, you can change your news settings here.</Caption> : null}
+                    <Button onClick={this.logout} variant="outlined" color="primary">Logout</Button>
+                    <br />
+                    <br />
+                    <hr />
+                    <STitle>Basic Settings</STitle>
+                    <Caption>Filters the news with least effective algorithm.</Caption>
+                    <Button
+                        color="primary"
+                        size="large"
+                        variant={this.state.basic ? 'contained' : 'outlined'}
+                        onClick={() => this.changeSetting('basic')}>BASIC</Button> <br />
+                    <br />
 
 
-                <STitle>Moderate Settings</STitle>
-                <Caption>Recommended setting, filters the negative contents to a significant level</Caption>
+                    <STitle>Moderate Settings</STitle>
+                    <Caption>Recommended setting, filters the negative contents to a significant level</Caption>
 
-                <Button 
-                color="primary" 
-                size="large"
-                variant={this.state.moderate ? 'contained' : 'outlined'} 
-                onClick={() => this.changeSetting('moderate')}>MODERATE</Button> <br />
-                <br/>
+                    <Button
+                        color="primary"
+                        size="large"
+                        variant={this.state.moderate ? 'contained' : 'outlined'}
+                        onClick={() => this.changeSetting('moderate')}>MODERATE</Button> <br />
+                    <br />
 
-                <STitle>Strict Settings</STitle>
-                <Caption>Filters the news strictly, only the most positive news is possibly visible.</Caption>
+                    <STitle>Strict Settings</STitle>
+                    <Caption>Filters the news strictly, only the most positive news is possibly visible.</Caption>
 
-                <Button 
-                size="large" 
-                color="primary" 
-                variant={this.state.strict ? 'contained' : 'outlined'} 
-                onClick={() => this.changeSetting('strict')}>Strict</Button>
-            </Wrapper>
+                    <Button
+                        size="large"
+                        color="primary"
+                        variant={this.state.strict ? 'contained' : 'outlined'}
+                        onClick={() => this.changeSetting('strict')}>Strict</Button>
+                </Wrapper>
+            </motion.div>
         )
     }
 }

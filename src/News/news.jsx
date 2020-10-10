@@ -159,7 +159,7 @@ export class NewsConstructor extends React.Component {
                         opacity: 1,
                         scale: 1,
                         transition: {
-                            delay: .15
+                            delay: .1
                         }
                     }
                 }}>
