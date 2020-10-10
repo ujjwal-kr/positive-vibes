@@ -13,7 +13,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { FlagTwoTone, MovieTwoTone, DesktopMacTwoTone, FitnessCenterTwoTone, ExploreTwoTone, BookmarkTwoTone, PublicTwoTone, SettingsTwoTone } from '@material-ui/icons';
+import { FlagTwoTone, MovieTwoTone, DesktopMacTwoTone, FitnessCenterTwoTone, ExploreTwoTone, BookmarkTwoTone, PublicTwoTone, SettingsTwoTone, SportsVolleyballTwoTone } from '@material-ui/icons';
 import { Switch, Route, Link } from 'react-router-dom';
 import '../fonts.css';
 import Redirect from './redirect';
@@ -155,6 +155,18 @@ export default function HomeComponent() {
                   <ListItemText primary="Technology" />
                 </ListItem>
               </Link>
+              <Link to="/red/sports" style={NavLink}>
+                <ListItem button>
+                  <ListItemIcon><SportsVolleyballTwoTone /></ListItemIcon>
+                  <ListItemText primary="Sports" />
+                </ListItem>
+              </Link>
+              <Link to="/red/science" style={NavLink}>
+                <ListItem button>
+                  <ListItemIcon><ExploreTwoTone /></ListItemIcon>
+                  <ListItemText primary="Science" />
+                </ListItem>
+              </Link>
               <Link to="/red/entertainment" style={NavLink}>
                 <ListItem button>
                   <ListItemIcon><MovieTwoTone /></ListItemIcon>
@@ -171,12 +183,6 @@ export default function HomeComponent() {
                 <ListItem button>
                   <ListItemIcon><FlagTwoTone /></ListItemIcon>
                   <ListItemText primary="India" />
-                </ListItem>
-              </Link>
-              <Link to="/red/science" style={NavLink}>
-                <ListItem button>
-                  <ListItemIcon><ExploreTwoTone /></ListItemIcon>
-                  <ListItemText primary="Science" />
                 </ListItem>
               </Link>
             </List>

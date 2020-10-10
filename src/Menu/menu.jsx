@@ -10,6 +10,8 @@ import Technology from '../assets/svg/tech-icon.png';
 import Health from '../assets/svg/health-icon.svg';
 import Science from '../assets/svg/science-icon.svg';
 import Entertainment from '../assets/svg/entertainment-icon.svg';
+import Sports from '../assets/svg/sports-icon.svg';
+
 import { Button } from '@material-ui/core';
 
 import { LoginMessage } from '../News/news';
@@ -72,6 +74,7 @@ class MenuComponent extends React.Component {
                     <ItemConstructor link="/news/health" image={Health} text="HEALTH" />
                     <ItemConstructor link="/news/technology" image={Technology} text="TECHNOLOGY" />
                     <ItemConstructor link="/news/science" image={Science} text="SCIENCE" />
+                    <ItemConstructor link="/news/sports" image={Sports} text="SPORTS" />
                     <ItemConstructor link="/news/india" image={TopStories} text="INDIA" />
                     <ItemConstructor link="/news/entertainment" image={Entertainment} text="ENTERTAINMENT" />
                 </ItemsWrapper>
