@@ -40,7 +40,7 @@ router.post('/login', ValidateLogin, async(req, res, next) => {
         if (!correct) return res.status(404).json({message: "Wrong password"})
 
         const payload = { id: user.id }   
-        await jwt.sign(payload, KEY, {expiresIn: '7d'}, (err, token) => {
+        await jwt.sign(payload, KEY, {expiresIn: '30d'}, (err, token) => {
              if(err) return next(err)
              return res.json({ user, token })
         })
@@ -54,7 +54,7 @@ router.patch('/user/:id', UserMiddleware, async (req, res) => {
 
     user.setting = req.body.setting
     user.save()
-    res.json({message: "Canged settings to" + req.body.setting})
+    res.json({message: "Changed settings to " + req.body.setting})
 })
 
 router.get('/check', UserMiddleware, async (req, res) => {
