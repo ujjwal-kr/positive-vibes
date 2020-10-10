@@ -13,6 +13,7 @@ import Entertainment from '../assets/svg/entertainment-icon.svg';
 import Sports from '../assets/svg/sports-icon.svg';
 
 import { Button } from '@material-ui/core';
+import { motion } from 'framer-motion';
 
 import { LoginMessage } from '../News/news';
 
@@ -50,35 +51,49 @@ class MenuComponent extends React.Component {
         let alert = this.state.alert;
 
         return (
-            <Wrapper>
-                <Grid container>
-                    <Grid item xs={8}>
-                        {alert ? <LoginMessage /> : <ProfileName>Welcome, {this.state.user.name}</ProfileName>}
+            <motion.div initial="hidden" animate="visible" variants={{
+                hidden: {
+                    opacity: 0,
+                    translateY: 150
+                },
+                visible: {
+                    opacity: 1,
+                    translateY: 0,
+                    transition: {
+                        delay: .05
+                    }
+                }
+            }}>
+                <Wrapper>
+                    <Grid container>
+                        <Grid item xs={8}>
+                            {alert ? <LoginMessage /> : <ProfileName>Welcome, {this.state.user.name}</ProfileName>}
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Link to="/settings">
+                                <IconButton style={{ marginTop: '-10px' }} aria-label="delete">
+                                    <img src={SettingIcon} width={40} height={40} alt="settings" />
+                                </IconButton>
+                            </Link>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Link to="/settings">
-                            <IconButton style={{ marginTop: '-10px' }} aria-label="delete">
-                                <img src={SettingIcon} width={40} height={40} alt="settings" />
-                            </IconButton>
-                        </Link>
-                    </Grid>
-                </Grid>
 
-                {alert ?null :<span><br/><Button onClick={this.logout} variant="outlined" color="primary">Logout</Button></span>}
+                    {alert ? null : <span><br /><Button onClick={this.logout} variant="outlined" color="primary">Logout</Button></span>}
 
-                <ItemsWrapper>
-                    <ItemConstructor link="/" image={TopStories} text="TOPSTORIES" />
-                    <ItemConstructor link="/" image={Bookmarks} text="BOOKMARKS" />
-                    <hr />
-                    <br />
-                    <ItemConstructor link="/news/health" image={Health} text="HEALTH" />
-                    <ItemConstructor link="/news/technology" image={Technology} text="TECHNOLOGY" />
-                    <ItemConstructor link="/news/science" image={Science} text="SCIENCE" />
-                    <ItemConstructor link="/news/sports" image={Sports} text="SPORTS" />
-                    <ItemConstructor link="/news/india" image={TopStories} text="INDIA" />
-                    <ItemConstructor link="/news/entertainment" image={Entertainment} text="ENTERTAINMENT" />
-                </ItemsWrapper>
-            </Wrapper>
+                    <ItemsWrapper>
+                        <ItemConstructor link="/" image={TopStories} text="TOPSTORIES" />
+                        <ItemConstructor link="/" image={Bookmarks} text="BOOKMARKS" />
+                        <hr />
+                        <br />
+                        <ItemConstructor link="/news/health" image={Health} text="HEALTH" />
+                        <ItemConstructor link="/news/technology" image={Technology} text="TECHNOLOGY" />
+                        <ItemConstructor link="/news/science" image={Science} text="SCIENCE" />
+                        <ItemConstructor link="/news/sports" image={Sports} text="SPORTS" />
+                        <ItemConstructor link="/news/india" image={TopStories} text="INDIA" />
+                        <ItemConstructor link="/news/entertainment" image={Entertainment} text="ENTERTAINMENT" />
+                    </ItemsWrapper>
+                </Wrapper>
+            </motion.div>
         )
     }
 }

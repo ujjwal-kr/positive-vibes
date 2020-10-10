@@ -212,7 +212,7 @@ export class LoginMessage extends React.Component {
                 visible: {
                     opacity: 1,
                     transition: {
-                        delay: .5
+                        delay: .4
                     }
                 }
             }}>
