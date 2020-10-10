@@ -65,3 +65,9 @@ export const MobileCenter = styled.div`
         text-align: center;
     }
 `
+
+export const Topic = styled.div`
+    width: 100%;
+    font-size: 1.4em;
+    text-align: center;
+`

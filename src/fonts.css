@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 
@@ -8,9 +8,9 @@
     flex-grow: 1;
 }
 
-.news {
-    font-family: 'Dosis', sans-serif;
-} 
+.handwriting {
+    font-family: 'Sansita Swashed', cursive;
+}
 
 .roboto {
     font-family: 'Roboto', sans-serif;

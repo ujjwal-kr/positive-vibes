@@ -4,7 +4,7 @@ import URL from '../url';
 import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
-import { Wrapper, Item, Date, Source, MobileButton, DesktopButton, MobileCenter } from '../Components/newsItem';
+import { Wrapper, Item, Date, Source, Topic, MobileButton, DesktopButton, MobileCenter } from '../Components/newsItem';
 import { Alert, Skeleton } from '@material-ui/lab';
 import { motion } from 'framer-motion';
 import '../fonts.css';
@@ -132,9 +132,12 @@ class NewsItemComponent extends React.Component {
                             : null
                         }
                     </motion.div>
+                    <br />
+                    {welcome} <br />
                 </MobileCenter>
-                <br />
-                {welcome} <br />
+                <Topic className="handwriting">
+                    Topstories
+                </Topic>
                 {items}
             </Wrapper>
         )
@@ -156,7 +159,7 @@ export class NewsConstructor extends React.Component {
                         opacity: 1,
                         scale: 1,
                         transition: {
-                            delay: .2
+                            delay: .15
                         }
                     }
                 }}>
