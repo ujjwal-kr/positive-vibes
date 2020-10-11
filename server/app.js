@@ -8,7 +8,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors());
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect('mongodb://ujjwalkumar001:ujjwalrocks123@ds163300.mlab.com:63300/positivevibes', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {

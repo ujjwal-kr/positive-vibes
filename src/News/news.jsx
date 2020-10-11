@@ -9,6 +9,8 @@ import { Alert, Skeleton } from '@material-ui/lab';
 import { motion } from 'framer-motion';
 import '../fonts.css';
 
+import FetchNews from '../services/fetchNews';
+
 class NewsItemComponent extends React.Component {
 
     constructor(props) {
@@ -39,19 +41,29 @@ class NewsItemComponent extends React.Component {
             localStorage.removeItem("token");
         })
 
-        await axios.get(URL + 'news', {
-            headers: { 'authorization': token }
-        }).then(data => {
+        // await axios.get(URL + 'news', {
+        //     headers: { 'authorization': token }
+        // }).then(data => {
+        //     this.setState({
+        //         news: data.data.resl,
+        //         present: true
+        //     })
+        // }).catch(e => {
+        //     this.setState({
+        //         present: false,
+        //         login: true
+        //     })
+        // })
+        FetchNews.topStories(token).then(data => {
             this.setState({
                 news: data.data.resl,
                 present: true
             })
-        }).catch(e => {
-            this.setState({
+        }).catch(e => this.setState(
+            {
                 present: false,
                 login: true
-            })
-        })
+            }))
     }
 
     search(event) {
