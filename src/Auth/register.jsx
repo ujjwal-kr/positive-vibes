@@ -17,7 +17,7 @@ function RegisterForm() {
         if (password !== confirm) {
             alert("Passwords dont match!")
         } else {
-            Auth.register(name, email, password).then(data => {
+            await Auth.register(name, email, password).then(data => {
                 window.localStorage.removeItem("token")
                 setLogin(true);
             }).catch(e => {

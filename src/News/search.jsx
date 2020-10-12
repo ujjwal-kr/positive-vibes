@@ -1,9 +1,10 @@
 import React from 'react';
-import axios from 'axios';
-import URL from '../url';
 import { Redirect } from 'react-router-dom';
 import { Wrapper } from '../Components/newsItem';
 import { NewsConstructor } from './news';
+
+import CheckAuth from '../services/checkAuth';
+import FetchNews from '../services/fetchNews';
 
 class SearchComponent extends React.Component {
 
@@ -21,37 +22,22 @@ class SearchComponent extends React.Component {
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        axios.get(URL+'auth/check', {
-            headers: {'authorization': token}
-        }).then(res => {
-            this.setState({
-                user: user
-            })
+
+        await CheckAuth.check(token).then(res => {
+            this.setState({ user: user })
         }).catch(e => {
-            this.setState({
-                login: true
-            })
+            this.setState({ login: true })
         })
         const { match: { params } } = this.props;
         this.setState({ searchTerm: params.query })
-        await axios.get(URL + 'news/search/' + params.query, {
-            headers: { 'authorization': token }
-        }).then(data => {
+
+        await FetchNews.search(params.query, token).then(data => {
             if(Object.keys(data.data.resl).length < 1) {
-                this.setState({
-                    present: true
-                })
+                return
             } else {
-                this.setState({
-                    news: data.data.resl,
-                    present: true
-                });
+                this.setState({ news: data.data.resl, present: true })
             }
-        }).catch(e => {
-            this.setState({
-                present: true
-            });
-        })
+        }).catch(e => {this.props.history.push('/')})
     }
 
     render() {

@@ -15,7 +15,7 @@ const FetchNews = {
         },
 
         search: async function(term, token) {
-            return await axios.get(URL+'search/'+term, {
+            return await axios.get(URL+'news/search/'+term, {
                 headers: {'authorization': token}
             })
         }
