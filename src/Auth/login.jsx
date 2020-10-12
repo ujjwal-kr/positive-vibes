@@ -3,8 +3,8 @@ import { Wrapper, Container, Label } from '../Components/auth';
 import { TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
-import URL from '../url';
+
+import Auth from '../services/auth';
 
 
 function LoginForm() {
@@ -13,17 +13,16 @@ function LoginForm() {
     const login = async entry => {
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
-        axios.post(URL+'auth/login', {email, password})
-            .then(data => {
-                const token = data.data.token
-                window.localStorage.setItem("user", JSON.stringify(data.data.user));
-                window.localStorage.setItem("token", token);
-                const form = document.getElementById("login");
-                form.reset();
-                homeRedirect(true);
-            }).catch(e => {
-                alert("Invalid Input, check email and Password")
-            })
+        await Auth.login(email, password).then(data => {
+            const token = data.data.token
+            window.localStorage.setItem("user", JSON.stringify(data.data.user));
+            window.localStorage.setItem("token", token);
+            const form = document.getElementById("login");
+            form.reset();
+            homeRedirect(true);
+        }).catch(e => {
+            alert("Invalid Input, check email and Password")
+        })
     };
 
     if (toHome === true) {

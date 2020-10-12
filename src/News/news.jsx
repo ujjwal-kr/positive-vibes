@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import URL from '../url';
 import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
@@ -10,6 +8,7 @@ import { motion } from 'framer-motion';
 import '../fonts.css';
 
 import FetchNews from '../services/fetchNews';
+import CheckAuth from '../services/checkAuth';
 
 class NewsItemComponent extends React.Component {
 
@@ -30,37 +29,20 @@ class NewsItemComponent extends React.Component {
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        await axios.get(URL + 'auth/check', {
-            headers: { 'authorization': token }
-        }).then(res => {
-            this.setState({
-                user: user
-            })
+
+        CheckAuth.check(token).then(res => {
+            this.setState({ user })
         }).catch(e => {
             localStorage.removeItem("user");
             localStorage.removeItem("token");
         })
 
-        // await axios.get(URL + 'news', {
-        //     headers: { 'authorization': token }
-        // }).then(data => {
-        //     this.setState({
-        //         news: data.data.resl,
-        //         present: true
-        //     })
-        // }).catch(e => {
-        //     this.setState({
-        //         present: false,
-        //         login: true
-        //     })
-        // })
         FetchNews.topStories(token).then(data => {
             this.setState({
                 news: data.data.resl,
                 present: true
             })
-        }).catch(e => this.setState(
-            {
+        }).catch(e => this.setState({
                 present: false,
                 login: true
             }))

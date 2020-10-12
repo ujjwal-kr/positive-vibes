@@ -3,9 +3,8 @@ import { Wrapper, Container, Label } from '../Components/auth';
 import { TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
-import URL from '../url';
 
+import Auth from '../services/auth';
 
 function RegisterForm() {
     const [toLogin, setLogin] = useState(false);
@@ -18,10 +17,9 @@ function RegisterForm() {
         if (password !== confirm) {
             alert("Passwords dont match!")
         } else {
-            axios.post(URL+'auth/register', {name, email, password})
-            .then(data => {
-                setLogin(true);
+            Auth.register(name, email, password).then(data => {
                 window.localStorage.removeItem("token")
+                setLogin(true);
             }).catch(e => {
                 alert("Invalid Input, check the input")
             })

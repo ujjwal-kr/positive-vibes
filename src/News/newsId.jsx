@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from 'axios';
-import URL from '../url';
 import { Redirect } from 'react-router-dom';
 import { NewsConstructor, LoginMessage } from './news';
 
 import { Wrapper, Topic, MobileCenter } from '../Components/newsItem';
 import { motion } from 'framer-motion';
+
+import CheckAuth from '../services/checkAuth';
+import FetchNews from '../services/fetchNews';
 
 class NewsId extends React.Component {
 
@@ -23,29 +24,23 @@ class NewsId extends React.Component {
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        axios.get(URL + 'auth/check', {
-            headers: { 'authorization': token }
-        }).then(res => {
-            this.setState({
-                user: user
-            })
+        
+        CheckAuth.check(token).then(res => {
+            this.setState({user: user})
         }).catch(e => {
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
+            localStorage.removeItem("token")
+            localStorage.removeItem("user")
         })
+
         const { match: { params } } = this.props;
         this.setState({param: params.id})
-        await axios.get(URL + 'news/' + params.id, {
-            headers: { 'authorization': token }
-        }).then(data => {
+        FetchNews.fetchWithId(params.id, token).then(data => {
             this.setState({
                 news: data.data.resl,
                 present: true
-            });
+            })
         }).catch(e => {
-            this.setState({
-                login: true
-            });
+            this.setState({ login: true })
         })
     }
 

@@ -8,7 +8,7 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors());
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://ujjwalkumar01:ujjwalrocks123@ds163300.mlab.com:63300/positivevibes', {
+mongoose.connect('mongodb://localhost:27017/positivevibes', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -33,6 +33,6 @@ app.use(function (req, res, next) {
     res.status(404).send("Sorry can't find that out!")
 })
 
-app.listen(process.env.PORT || 4200, (req, res) => {
+app.listen(process.env.PORT || 4000, (req, res) => {
     console.log('app listening on port 4000!')
 })
