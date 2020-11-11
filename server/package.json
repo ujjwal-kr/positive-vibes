@@ -10,7 +10,7 @@
     "stopprocess": "pm2 stop app.js"
   },
   "engines": {
-    "node": "10.22.1"
+    "node": "14.15.0"
   },
   "author": "",
   "license": "ISC",

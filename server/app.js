@@ -26,7 +26,7 @@ app.use('/news', UserMiddleware, News)
 app.use('/auth', Auth)
 app.use('/xenon', Xenon)
 app.get('/', (req, res) => {
-    res.send("WELCOME TO THE POSITIVE VIBES API")
+    res.send("WELCOME TO THE POSITIVE VIBES API\n")
 });
 
 app.use(function (req, res, next) {
