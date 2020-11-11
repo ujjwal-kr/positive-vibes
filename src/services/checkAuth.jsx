@@ -3,7 +3,7 @@ import URL from '../url';
 
 const CheckAuth = {
     check: async function(token) {
-        await axios.get(URL+'auth/check', {
+        return await axios.get(URL+'auth/check', {
             headers: {'authorization': token}
         });
     }
