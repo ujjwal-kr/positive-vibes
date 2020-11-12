@@ -28,8 +28,7 @@ class NewsId extends React.Component {
         CheckAuth.check(token).then(res => {
             this.setState({user: user})
         }).catch(e => {
-            localStorage.removeItem("token")
-            localStorage.removeItem("user")
+            console.log(e)
         })
 
         const { match: { params } } = this.props;

@@ -33,8 +33,7 @@ class NewsItemComponent extends React.Component {
         CheckAuth.check(token).then(res => {
             this.setState({ user })
         }).catch(e => {
-            localStorage.removeItem("user");
-            localStorage.removeItem("token");
+            console.log(e)
         })
 
         FetchNews.topStories(token).then(data => {
