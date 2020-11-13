@@ -117,13 +117,13 @@ export default function HomeComponent() {
           >
             <Divider />
             <List>
-              <Link to="/settings" style={NavLink}>
+              <div style={NavLink}>
                 <br/>
                 <ListItem button >
-                  <ListItemIcon><SettingsTwoTone /></ListItemIcon>
-                  <ListItemText primary="Settings" />
+                  <ListItemIcon></ListItemIcon>
+                  <ListItemText primary="--" />
                 </ListItem>
-              </Link>
+              </div>
               <Link to="/settings" style={NavLink}>
                 <ListItem button >
                   <ListItemIcon><SettingsTwoTone /></ListItemIcon>
