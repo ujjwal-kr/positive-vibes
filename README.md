@@ -1,6 +1,6 @@
 # POSITIVE  VIBE - THE NEWS APP 
 
->**An App which lets Parents control their Children's News Feed from all the negativity in the World. This App allows user to remove negative news from various categories and also let the user add filter to the news on the basis of certain key words like ( "Murder, Kidnap , Riots").**
+>**An App which lets Parents control their Children's News Feed from all the negativity in the World. This App allows user to remove negative news from various categories and also let the user add filter to the news on the basis of certain key words like ( "Murder, Kidnap , Riots", "Death", "Disaster").**
 
 *It is an extended fork of [ujjwal-kr/xenon](https://github.com/ujjwal-kr/xenon), a positive news network*
 
@@ -11,10 +11,10 @@
 
 
 
-*We welcome all the users who want to remove negativity from their children's life to be the part of our journey :rocket:*
+*We welcome all the users who want to remove negativity from their and their children's life to be the part of our journey :rocket:*
 
-*Our STACK -> React , Expressjs , MongoDB & Node*
->Authentication with JSON Web Tokens, MongoDB hosted on MLab.
+*Our STACK -> React , Expressjs , MongoDB & Nodejs*
+>Authentication with JSON Web Tokens, MongoDB hosted on ATLAS.
 
 *Made with javascript and :heart: in India* 
 
