@@ -41,7 +41,7 @@ function LoginForm() {
                     <TextField id="password" label="Password" type="password" variant="filled" />
                 </div>
                 <p></p>
-                <Button type="submit">Submit</Button>
+                <Button color="secondary" type="submit">Submit</Button>
             </form>
         </div>
     );

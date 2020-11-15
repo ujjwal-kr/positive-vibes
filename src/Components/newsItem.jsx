@@ -12,7 +12,7 @@ export const Wrapper = styled.section`
 
 export const Item = styled.div`
     margin: 2em;
-    border: 1px solid blue;
+    border: 1px solid #D62828;
     border-radius: 10px;
     padding: 1em;
     @media (max-width: 870px) {
@@ -37,7 +37,7 @@ export const Date = styled.div`
 
 export const Source = styled.div`
     font-size: .62em;
-    color: #3838ff;
+    color: #372549;
     @media (max-width: 800px) {
         width: 100%;
         text-align: left;

@@ -78,7 +78,7 @@ class MenuComponent extends React.Component {
                         </Grid>
                     </Grid>
 
-                    {alert ? null : <span><br /><Button onClick={this.logout} variant="outlined" color="primary">Logout</Button></span>}
+                    {alert ? null : <span><br /><Button onClick={this.logout} variant="outlined" color="secondary">Logout</Button></span>}
 
                     <ItemsWrapper>
                         <ItemConstructor link="/" image={TopStories} text="TOPSTORIES" />

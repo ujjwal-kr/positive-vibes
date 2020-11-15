@@ -83,14 +83,14 @@ class SettingsComponent extends React.Component {
 
                     <STitle>SETTINGS</STitle>
                     {this.state.user.name ? <Caption>Welcome, <strong>{this.state.user.name}</strong>. As you can see, you can change your news settings here.</Caption> : null}
-                    <Button onClick={this.logout} variant="outlined" color="primary">Logout</Button>
+                    <Button onClick={this.logout} variant="outlined" color="secondary">Logout</Button>
                     <br />
                     <br />
                     <hr />
                     <STitle>Basic Settings</STitle>
                     <Caption>Filters the news with least effective algorithm.</Caption>
                     <Button
-                        color="primary"
+                        color="secondary"
                         size="large"
                         variant={this.state.basic ? 'contained' : 'outlined'}
                         onClick={() => this.changeSetting('basic')}>BASIC</Button> <br />
@@ -101,7 +101,7 @@ class SettingsComponent extends React.Component {
                     <Caption>Recommended setting, filters the negative contents to a significant level</Caption>
 
                     <Button
-                        color="primary"
+                        color="secondary"
                         size="large"
                         variant={this.state.moderate ? 'contained' : 'outlined'}
                         onClick={() => this.changeSetting('moderate')}>MODERATE</Button> <br />
@@ -112,7 +112,7 @@ class SettingsComponent extends React.Component {
 
                     <Button
                         size="large"
-                        color="primary"
+                        color="secondary"
                         variant={this.state.strict ? 'contained' : 'outlined'}
                         onClick={() => this.changeSetting('strict')}>Strict</Button>
                 </Wrapper>

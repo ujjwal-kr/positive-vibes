@@ -120,7 +120,7 @@ class NewsItemComponent extends React.Component {
                     }}>
                         {this.state.user ?
                             <form onSubmit={this.search} noValidate autoComplete="off">
-                                <TextField style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
+                                <TextField color="secondary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
                             </form>
                             : null
                         }
@@ -166,7 +166,7 @@ export class NewsConstructor extends React.Component {
                                     <Source>{this.props.news.source._text}</Source>
                                 </Grid>
                                 <Grid item xs={2}>
-                                    <Button href={this.props.news.link._text} target="_blank" variant="contained" color="primary">
+                                    <Button href={this.props.news.link._text} target="_blank" variant="contained" color="secondary">
                                         Read Post
                                 </Button>
                                 </Grid>
@@ -178,7 +178,7 @@ export class NewsConstructor extends React.Component {
                                 <Date>{this.props.news.pubDate._text}</Date>
                                 <Source>{this.props.news.source._text}</Source>
                             </Grid>
-                            <Button href={this.props.news.link._text} target="_blank" variant="outlined" color="primary">
+                            <Button href={this.props.news.link._text} target="_blank" variant="outlined" color="secondary">
                                 Read Post
                             </Button>
                         </MobileButton>
@@ -209,7 +209,7 @@ export class LoginMessage extends React.Component {
                     }
                 }
             }}>
-                <Alert severity="info">
+                <Alert severity="error">
                     Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to change settings. <br />
                 </Alert>
             </motion.div>
