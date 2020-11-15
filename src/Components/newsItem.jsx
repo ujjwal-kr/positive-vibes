@@ -12,7 +12,7 @@ export const Wrapper = styled.section`
 
 export const Item = styled.div`
     margin: 2em;
-    border: 1px solid #D62828;
+    border: 1px solid #372549;
     border-radius: 10px;
     padding: 1em;
     @media (max-width: 870px) {
@@ -68,6 +68,7 @@ export const MobileCenter = styled.div`
 
 export const Topic = styled.div`
     width: 100%;
+    color: #372549;
     font-size: 1.4em;
     text-align: center;
 `
