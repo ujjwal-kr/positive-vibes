@@ -15,7 +15,7 @@ import Sports from '../assets/svg/sports-icon.svg';
 import { Button } from '@material-ui/core';
 import { motion } from 'framer-motion';
 
-import { LoginMessage } from '../News/news';
+import { LoginMessage, FooterComponent } from '../News/news';
 
 class MenuComponent extends React.Component {
     constructor(props) {
@@ -92,6 +92,7 @@ class MenuComponent extends React.Component {
                         <ItemConstructor link="/news/india" image={TopStories} text="INDIA" />
                         <ItemConstructor link="/news/entertainment" image={Entertainment} text="ENTERTAINMENT" />
                     </ItemsWrapper>
+                    <FooterComponent />
                 </Wrapper>
             </motion.div>
         )

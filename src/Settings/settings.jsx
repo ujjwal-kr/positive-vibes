@@ -5,6 +5,7 @@ import URL from '../url';
 import { Button } from '@material-ui/core';
 import { motion } from 'framer-motion';
 import { Wrapper, STitle, Caption } from '../Components/settings';
+import { FooterComponent } from '../News/news';
 
 class SettingsComponent extends React.Component {
     constructor(props) {
@@ -116,6 +117,7 @@ class SettingsComponent extends React.Component {
                         variant={this.state.strict ? 'contained' : 'outlined'}
                         onClick={() => this.changeSetting('strict')}>Strict</Button>
                 </Wrapper>
+                <FooterComponent />
             </motion.div>
         )
     }

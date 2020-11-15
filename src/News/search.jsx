@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Wrapper } from '../Components/newsItem';
-import { NewsConstructor } from './news';
+import { NewsConstructor, FooterComponent } from './news';
 
 import CheckAuth from '../services/checkAuth';
 import FetchNews from '../services/fetchNews';
@@ -62,6 +62,7 @@ class SearchComponent extends React.Component {
             <Wrapper>
                  <strong>Results for '{searchTerm}'</strong><br/>
                 {items}
+                <FooterComponent />
             </Wrapper>
         )
     }

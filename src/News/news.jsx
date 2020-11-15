@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 
 import { Button, Grid, TextField } from '@material-ui/core';
 import { Wrapper, Item, Date, Source, Topic, MobileButton, DesktopButton, MobileCenter } from '../Components/newsItem';
+import { Footer, FooterText } from '../Components/footer'
 import { Alert, Skeleton } from '@material-ui/lab';
 import { motion } from 'framer-motion';
 import '../fonts.css';
@@ -132,6 +133,7 @@ class NewsItemComponent extends React.Component {
                     Topstories
                 </Topic>
                 {items}
+                <FooterComponent />
             </Wrapper>
         )
     }
@@ -213,6 +215,20 @@ export class LoginMessage extends React.Component {
                     Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to change settings. <br />
                 </Alert>
             </motion.div>
+        )
+    }
+}
+
+export class FooterComponent extends React.Component {
+    render() {
+        return (
+            <div>
+                <Footer>
+                    <FooterText>
+                        <a style={{textDecoration: 'none'}} href="https://github.com/ujjwal-kr/positive-vibes">&copy; ujjwal-kr</a>
+                    </FooterText>
+                </Footer>
+            </div>
         )
     }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { NewsConstructor, LoginMessage } from './news';
+import { NewsConstructor, LoginMessage, FooterComponent } from './news';
 
 import { Wrapper, Topic, MobileCenter } from '../Components/newsItem';
 import { motion } from 'framer-motion';
@@ -89,6 +89,7 @@ class NewsId extends React.Component {
                     {this.state.param}
                 </Topic>
                 {items}
+                <FooterComponent />
             </Wrapper>
         )
     }
