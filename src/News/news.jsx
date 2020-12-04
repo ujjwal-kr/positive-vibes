@@ -158,8 +158,8 @@ export class NewsConstructor extends React.Component {
                         }
                     }
                 }}>
-                    <Item>
-                        {this.props.news.title._text}
+                    <Item> 
+                        <span className="logo">{this.props.news.title._text}</span>
                         <p></p>
                         <DesktopButton>
                             <Grid container>
