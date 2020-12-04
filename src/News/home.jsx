@@ -90,8 +90,8 @@ export default function HomeComponent() {
         })}
       >
         <Toolbar className="logo">
-          <Typography variant="h5" noWrap className="logo" >
-            Positive Vibes
+          <Typography variant="h5" noWrap className="logo">
+            <Link style={{color: '#ffffff', textDecoration: 'none'}} to="/">Positive Vibes</Link>
           </Typography>
           <Ham>
             <Link to="/menu">
