@@ -43,9 +43,9 @@ class NewsItemComponent extends React.Component {
                 present: true
             })
         }).catch(e => this.setState({
-                present: false,
-                login: true
-            }))
+            present: false,
+            login: true
+        }))
     }
 
     search(event) {
@@ -105,35 +105,49 @@ class NewsItemComponent extends React.Component {
         }
         return (
             <Wrapper className="roboto">
-                <MobileCenter>
-                    <motion.div initial="hidden" animate="visible" variants={{
-                        hidden: {
-                            scale: .8,
-                            opacity: 0
-                        },
-                        visible: {
-                            scale: 1,
-                            opacity: 1,
-                            transition: {
-                                delay: .4,
-                            }
-                        },
-                    }}>
-                        {this.state.user ?
-                            <form onSubmit={this.search} noValidate autoComplete="off">
-                                <TextField color="primary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
-                            </form>
-                            : null
+                <motion.div initial="hidden" animate="visible" variants={{
+                    hidden: {
+                        opacity: 0,
+                        translateY: 150
+                    },
+                    visible: {
+                        opacity: 1,
+                        translateY: 0,
+                        transition: {
+                            delay: .02
                         }
-                    </motion.div>
-                    <br />
-                    {welcome} <br />
-                </MobileCenter>
-                <Topic className="handwriting">
-                    Topstories
+                    }
+                }}>
+                    <MobileCenter>
+                        <motion.div initial="hidden" animate="visible" variants={{
+                            hidden: {
+                                scale: .8,
+                                opacity: 0
+                            },
+                            visible: {
+                                scale: 1,
+                                opacity: 1,
+                                transition: {
+                                    delay: .4,
+                                }
+                            },
+                        }}>
+                            {this.state.user ?
+                                <form onSubmit={this.search} noValidate autoComplete="off">
+                                    <TextField color="primary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
+                                </form>
+                                : null
+                            }
+                        </motion.div>
+                        <br />
+                        {welcome} <br />
+                    </MobileCenter>
+                    <Topic className="handwriting">
+                        Topstories
                 </Topic>
-                {items}
-                <FooterComponent />
+                    {items}
+                    <FooterComponent />
+                </motion.div>
             </Wrapper>
         )
     }
@@ -158,7 +172,7 @@ export class NewsConstructor extends React.Component {
                         }
                     }
                 }}>
-                    <Item> 
+                    <Item>
                         <span className="logo">{this.props.news.title._text}</span>
                         <p></p>
                         <DesktopButton>
@@ -225,7 +239,7 @@ export class FooterComponent extends React.Component {
             <div>
                 <Footer>
                     <FooterText>
-                        <a style={{textDecoration: 'none'}} href="https://github.com/ujjwal-kr/positive-vibes">&copy; ujjwal-kr</a>
+                        <a style={{ textDecoration: 'none' }} href="https://github.com/ujjwal-kr/positive-vibes">&copy; ujjwal-kr</a>
                     </FooterText>
                 </Footer>
             </div>
