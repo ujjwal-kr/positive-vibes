@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Wrapper } from '../Components/newsItem';
 import { NewsConstructor, FooterComponent } from './news';
+import { motion } from 'framer-motion';
 
 import CheckAuth from '../services/checkAuth';
 import FetchNews from '../services/fetchNews';
@@ -33,12 +34,12 @@ class SearchComponent extends React.Component {
         })
 
         FetchNews.search(params.query, token).then(data => {
-            if(Object.keys(data.data.resl).length < 1) {
+            if (Object.keys(data.data.resl).length < 1) {
                 return
             } else {
                 this.setState({ news: data.data.resl, present: true })
             }
-        }).catch(e => {this.props.history.push('/')})
+        }).catch(e => { this.props.history.push('/') })
     }
 
     render() {
@@ -46,7 +47,7 @@ class SearchComponent extends React.Component {
         let login = this.state.login;
         let items;
         let searchTerm = this.state.searchTerm;
-        if(login) {
+        if (login) {
             return <Redirect to="/login" />
         }
         if (!present) {
@@ -60,9 +61,23 @@ class SearchComponent extends React.Component {
         }
         return (
             <Wrapper>
-                 <strong>Results for '{searchTerm}'</strong><br/>
-                {items}
-                <FooterComponent />
+                <motion.div initial="hidden" animate="visible" variants={{
+                    hidden: {
+                        opacity: 0,
+                        translateY: 150
+                    },
+                    visible: {
+                        opacity: 1,
+                        translateY: 0,
+                        transition: {
+                            delay: .02
+                        }
+                    }
+                }}>
+                    <strong>Results for '{searchTerm}'</strong><br />
+                    {items}
+                    <FooterComponent />
+                </motion.div>
             </Wrapper>
         )
     }
