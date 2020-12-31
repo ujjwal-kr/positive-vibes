@@ -24,15 +24,15 @@ class NewsId extends React.Component {
     async componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
-        
+
         CheckAuth.check(token).then(res => {
-            this.setState({user: user})
+            this.setState({ user: user })
         }).catch(e => {
             console.log(e)
         })
 
         const { match: { params } } = this.props;
-        this.setState({param: params.id})
+        this.setState({ param: params.id })
         FetchNews.fetchWithId(params.id, token).then(data => {
             this.setState({
                 news: data.data.resl,
@@ -81,15 +81,29 @@ class NewsId extends React.Component {
         }
         return (
             <Wrapper>
-                <MobileCenter>
-                    <strong>{welcome}</strong>
-                </MobileCenter>
-                <Topic className="handwriting">
-                    <br/>
-                    {this.state.param}
-                </Topic>
-                {items}
-                <FooterComponent />
+                <motion.div initial="hidden" animate="visible" variants={{
+                    hidden: {
+                        opacity: 0,
+                        translateY: 150
+                    },
+                    visible: {
+                        opacity: 1,
+                        translateY: 0,
+                        transition: {
+                            delay: .02
+                        }
+                    }
+                }}>
+                    <MobileCenter>
+                        <strong>{welcome}</strong>
+                    </MobileCenter>
+                    <Topic className="handwriting">
+                        <br />
+                        {this.state.param}
+                    </Topic>
+                    {items}
+                    <FooterComponent />
+                </motion.div>
             </Wrapper>
         )
     }
