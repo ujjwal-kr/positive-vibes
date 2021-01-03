@@ -17,18 +17,20 @@ class NewsId extends React.Component {
             present: false,
             login: false,
             user: null,
-            param: ''
+            param: '',
+            loginMessage: false
         }
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         const token = localStorage.getItem("token")
         const user = JSON.parse(localStorage.getItem("user"));
 
         CheckAuth.check(token).then(res => {
-            this.setState({ user: user })
+            this.setState({ user: user, loginMessage: false })
         }).catch(e => {
             console.log(e)
+            this.setState({loginMessage: true})
         })
 
         const { match: { params } } = this.props;
@@ -77,6 +79,9 @@ class NewsId extends React.Component {
                 Welcome, {this.state.user.name}
             </motion.div>
         } else {
+            welcome = <br />
+        }
+        if (this.state.loginMessage) {
             welcome = <LoginMessage />
         }
         return (

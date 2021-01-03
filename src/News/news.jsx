@@ -103,7 +103,7 @@ class NewsItemComponent extends React.Component {
                 Welcome, {this.state.user.name}
             </motion.div>
         } else {
-            welcome = ``
+            welcome = <br />
         }
         if(this.state.loginMessage) {
             welcome = <LoginMessage />
