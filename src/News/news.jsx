@@ -21,7 +21,8 @@ class NewsItemComponent extends React.Component {
             login: false,
             user: null,
             searchValue: null,
-            search: false
+            search: false,
+            loginMessage: false
         }
         this.handleSearch = this.handleSearch.bind(this)
         this.search = this.search.bind(this)
@@ -32,9 +33,10 @@ class NewsItemComponent extends React.Component {
         const user = JSON.parse(localStorage.getItem("user"));
 
         CheckAuth.check(token).then(res => {
-            this.setState({ user })
+            this.setState({ user: user, loginMessage: false })
         }).catch(e => {
             console.log(e)
+            this.setState({ loginMessage: true })
         })
 
         FetchNews.topStories(token).then(data => {
@@ -101,6 +103,9 @@ class NewsItemComponent extends React.Component {
                 Welcome, {this.state.user.name}
             </motion.div>
         } else {
+            welcome = ``
+        }
+        if(this.state.loginMessage) {
             welcome = <LoginMessage />
         }
         return (
