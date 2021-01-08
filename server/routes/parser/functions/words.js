@@ -96,7 +96,8 @@ const WORDS = {
     'disease': -1,
     'diseases': -1,
     'killer': -3,
-    'heartbreak': -6
+    'heartbreak': -6,
+    'sexy': -1,
 }
 
 module.exports = WORDS;
