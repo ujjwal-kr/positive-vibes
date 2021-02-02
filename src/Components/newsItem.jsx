@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.section`
     width: 100%;
-    padding: 5%;
+    padding: 7%;
     font-size: 2em;
+    @media (max-width: 1300px) {
+        padding: 0%;
+    }
     @media (max-width: 870px) {
         font-size: 1.5em;
         padding: 2%;
@@ -15,6 +18,9 @@ export const Item = styled.div`
     border: 1px solid #372549;
     border-radius: 10px;
     padding: 1em;
+    @media (max-width: 1300px) {
+        margin: 1em;
+    }
     @media (max-width: 870px) {
         margin: .2em;
         margin-top: 1.5em
