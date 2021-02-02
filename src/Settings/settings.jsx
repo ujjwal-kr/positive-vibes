@@ -1,11 +1,10 @@
 import React from 'react';
-import axios from 'axios';
-import URL from '../url';
 
 import { Button } from '@material-ui/core';
 import { motion } from 'framer-motion';
 import { Wrapper, STitle, Caption } from '../Components/settings';
 import { FooterComponent } from '../News/news';
+import SettingsService from '../services/settings';
 
 class SettingsComponent extends React.Component {
     constructor(props) {
@@ -21,14 +20,12 @@ class SettingsComponent extends React.Component {
         this.logout = this.logout.bind(this)
     }
 
-    async componentDidMount() {
+    componentDidMount() {
         const user = JSON.parse(localStorage.getItem('user'))
         const token = localStorage.getItem('token')
         if (!token || !user) return this.props.history.push('/login');
         this.setState({ user: user })
-        await axios.get(URL + 'auth/setting/' + user._id, {
-            headers: { 'authorization': token }
-        }).then(res => {
+        SettingsService.getUserSetting(token, user._id).then(res => {
             this.setState({
                 setting: res.data.setting,
             })
@@ -38,12 +35,10 @@ class SettingsComponent extends React.Component {
         })
     }
 
-    async changeSetting(str) {
+    changeSetting(str) {
         const user = JSON.parse(localStorage.getItem('user'))
         const token = localStorage.getItem('token');
-        await axios.patch(URL + 'auth/user/' + user._id, { setting: str }, {
-            headers: { 'authorization': token }
-        }).then(res => {
+        SettingsService.changeSetting(token, user._id, str).then(res => {
             this.setState({
                 setting: str
             })
