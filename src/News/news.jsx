@@ -10,6 +10,7 @@ import '../fonts.css';
 
 import FetchNews from '../services/fetchNews';
 import CheckAuth from '../services/checkAuth';
+import SessionService from '../services/sessionService';
 
 class NewsItemComponent extends React.Component {
 
@@ -30,14 +31,20 @@ class NewsItemComponent extends React.Component {
 
     async componentDidMount() {
         const token = localStorage.getItem("token")
-        const user = JSON.parse(localStorage.getItem("user"));
+        let user = SessionService.getUser()
 
-        CheckAuth.check(token).then(res => {
-            this.setState({ user: user, loginMessage: false })
-        }).catch(e => {
-            console.log(e)
-            this.setState({ loginMessage: true })
-        })
+        if (user === null) {
+            user = JSON.parse(localStorage.getItem("user"));
+            CheckAuth.check(token).then(res => {
+                this.setState({ user: user, loginMessage: false })
+                SessionService.setUser(user)
+            }).catch(e => {
+                console.log(e)
+                this.setState({ loginMessage: true })
+            })
+        } else {
+            this.setState({user: user, loginMessage: false})
+        }
 
         FetchNews.topStories(token).then(data => {
             this.setState({

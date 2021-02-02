@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router-dom';
 
 import Auth from '../services/auth';
+import SessionService from '../services/sessionService';
 
 
 function LoginForm() {
@@ -16,6 +17,7 @@ function LoginForm() {
         await Auth.login(email, password).then(data => {
             const token = data.data.token
             window.localStorage.setItem("user", JSON.stringify(data.data.user));
+            SessionService.setUser(data.data.user)
             window.localStorage.setItem("token", token);
             const form = document.getElementById("login");
             form.reset();
