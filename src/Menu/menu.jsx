@@ -17,6 +17,8 @@ import { motion } from 'framer-motion';
 
 import { LoginMessage, FooterComponent } from '../News/news';
 
+import SessionService from '../services/sessionService';
+
 class MenuComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -35,6 +37,7 @@ class MenuComponent extends React.Component {
         })
         localStorage.removeItem("user");
         localStorage.removeItem("token");
+        SessionService.removeUser()
     }
 
     async componentDidMount() {

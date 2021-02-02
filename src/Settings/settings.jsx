@@ -4,7 +4,9 @@ import { Button } from '@material-ui/core';
 import { motion } from 'framer-motion';
 import { Wrapper, STitle, Caption } from '../Components/settings';
 import { FooterComponent } from '../News/news';
+
 import SettingsService from '../services/settings';
+import SessionService from '../services/sessionService';
 
 class SettingsComponent extends React.Component {
     constructor(props) {
@@ -56,6 +58,7 @@ class SettingsComponent extends React.Component {
     logout() {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
+        SessionService.removeUser()
         this.props.history.push('/')
     }
 
