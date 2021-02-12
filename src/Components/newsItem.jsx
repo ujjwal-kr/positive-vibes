@@ -43,7 +43,7 @@ export const Date = styled.div`
 
 export const Source = styled.div`
     font-size: .62em;
-    color: #372549;
+    color: #ff1c5c;
     @media (max-width: 800px) {
         width: 100%;
         text-align: left;

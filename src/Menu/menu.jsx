@@ -17,7 +17,7 @@ import { motion } from 'framer-motion';
 
 import { LoginMessage, FooterComponent } from '../News/news';
 
-import SessionService from '../services/sessionService';
+import SessionService from '../services/session';
 
 class MenuComponent extends React.Component {
     constructor(props) {

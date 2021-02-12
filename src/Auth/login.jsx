@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router-dom';
 
 import Auth from '../services/auth';
-import SessionService from '../services/sessionService';
+import SessionService from '../services/session';
 
 
 function LoginForm() {

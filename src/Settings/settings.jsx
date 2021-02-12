@@ -6,7 +6,7 @@ import { Wrapper, STitle, Caption } from '../Components/settings';
 import { FooterComponent } from '../News/news';
 
 import SettingsService from '../services/settings';
-import SessionService from '../services/sessionService';
+import SessionService from '../services/session';
 
 class SettingsComponent extends React.Component {
     constructor(props) {

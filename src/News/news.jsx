@@ -10,7 +10,7 @@ import '../fonts.css';
 
 import FetchNews from '../services/fetchNews';
 import CheckAuth from '../services/checkAuth';
-import SessionService from '../services/sessionService';
+import SessionService from '../services/session';
 
 class NewsItemComponent extends React.Component {
 

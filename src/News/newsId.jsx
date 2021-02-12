@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 import CheckAuth from '../services/checkAuth';
 import FetchNews from '../services/fetchNews';
-import SessionService from '../services/sessionService';
+import SessionService from '../services/session';
 
 class NewsId extends React.Component {
 

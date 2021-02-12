@@ -11,7 +11,7 @@ class App extends React.Component {
                     main: '#372549'
                 },
                 secondary: {
-                    main: '#D62828'
+                    main: '#ff1c5c'
                 }
             }
         })
