@@ -71,7 +71,7 @@ class NewsId extends React.Component {
             items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
         }
         if (this.state.user) {
-            welcome = <motion.div initial="hidden" animate="visible" variants={{
+            welcome = <motion.div className="logo" initial="hidden" animate="visible" variants={{
                 hidden: {
                     scale: .8,
                     opacity: 0
