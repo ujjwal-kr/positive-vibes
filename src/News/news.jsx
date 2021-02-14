@@ -146,7 +146,7 @@ class NewsItemComponent extends React.Component {
                         }}>
                             {this.state.user ?
                                 <form onSubmit={this.search} noValidate autoComplete="off">
-                                    <TextField color="primary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
+                                    <TextField color="secondary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
                                 </form>
                                 : null
                             }
