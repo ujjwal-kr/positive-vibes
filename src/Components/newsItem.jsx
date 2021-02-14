@@ -74,7 +74,7 @@ export const MobileCenter = styled.div`
 
 export const Topic = styled.div`
     width: 100%;
-    color: #372549;
+    color: #6d00ba;
     font-size: 1.4em;
     text-align: center;
 `
