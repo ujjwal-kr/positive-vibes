@@ -55,7 +55,7 @@ class SettingsComponent extends React.Component {
             })
             this.changeSettingVal(str)
         }).catch(e => {
-            SessionService.changeSetting(token, user._id, str).then(res => {
+            SettingsService.changeSetting(token, user._id, str).then(res => {
                 this.setState({
                     setting: str
                 })
