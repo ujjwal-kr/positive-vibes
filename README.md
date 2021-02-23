@@ -1,6 +1,6 @@
 # POSITIVE  VIBE - THE NEWS APP 
 
->**An App which lets Parents control their Children's News Feed from all the negativity in the World. This App allows user to remove negative news from various categories and also let the user add filter to the news on the basis of certain key words like ( "Murder, Kidnap , Riots", "Death", "Disaster").**
+>**An App which lets you control your News Feed from all the negativity in the World. This App allows user to remove negative news from various categories and also let the user add filter to the news on the basis of certain key words like ( "Murder, Kidnap , Riots", "Death", "Disaster").**
 
 *It is an extended fork of [ujjwal-kr/xenon](https://github.com/ujjwal-kr/xenon), a positive news network*
 
