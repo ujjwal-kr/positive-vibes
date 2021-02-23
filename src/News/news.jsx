@@ -51,10 +51,22 @@ class NewsItemComponent extends React.Component {
                 news: data.data.resl,
                 present: true
             })
-        }).catch(e => this.setState({
-            present: false,
-            login: true
-        }))
+        }).catch(e => {
+            FetchNews.topStories(token).then(data => {
+                this.setState({
+                    news: data.data.resl,
+                    present: true
+                })
+            }).catch(e => {
+                this.setState({
+                    present: false,
+                    login: true
+                })
+            })
+        })
+
+        // If initial request fails for some network issues, try one more time
+
     }
 
     search(event) {

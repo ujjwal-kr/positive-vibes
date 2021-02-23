@@ -49,9 +49,18 @@ class NewsId extends React.Component {
                 present: true
             })
         }).catch(e => {
-            this.setState({ login: true })
+            FetchNews.fetchWithId(params.id, token).then(data => {
+                this.setState({
+                    news: data.data.resl,
+                    present: true,
+                })
+            }).catch(e => {
+                this.setState({ login: true, present: false })
+            })
         })
     }
+
+    // If initial request fails for some network issues, try one more time
 
     render() {
         const present = this.state.present;
