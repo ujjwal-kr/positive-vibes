@@ -33,9 +33,18 @@ class SettingsComponent extends React.Component {
             })
             this.changeSettingVal(res.data.setting)
         }).catch(e => {
-            return this.props.history.push('/login');
+            SessionService.getUserSetting(token, user._id).then(res => {
+                this.setState({
+                    setting: res.data.setting,
+                })
+                this.changeSettingVal(res.data.setting)
+            }).catch(e => {
+                return this.props.history.push('/login');
+            })        
         })
     }
+
+    // If initial request fails for some network issues, try one more time
 
     changeSetting(str) {
         const user = JSON.parse(localStorage.getItem('user'))
@@ -45,8 +54,19 @@ class SettingsComponent extends React.Component {
                 setting: str
             })
             this.changeSettingVal(str)
-        }).catch(e => this.props.history.push('/login'))
+        }).catch(e => {
+            SessionService.changeSetting(token, user._id, str).then(res => {
+                this.setState({
+                    setting: str
+                })
+                this.changeSettingVal(str)
+            }).catch(e => {
+                return this.props.history.push('/login');
+            })
+        })
     }
+    
+    // If initial request fails for some network issues, try one more time
 
     changeSettingVal(str) {
         if (str === 'basic') return this.setState({ basic: true, moderate: false, strict: false })
