@@ -69,7 +69,7 @@ function RegisterForm() {
                         <TextField id="comfirm" label="Comfirm Password" type="password" variant="filled" />
                     </div>
                     <p></p>
-                    <Button disabled={disableBtn} color="secondary" type="submit">Submit</Button>
+                    <Button disabled={btnDisabled} color="secondary" type="submit">Submit</Button>
                 </form>
             </div>
         </motion.div>
