@@ -3,6 +3,7 @@ import { Wrapper, Container, Label } from '../Components/auth';
 import { TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import Auth from '../services/auth';
 
@@ -33,28 +34,42 @@ function RegisterForm() {
     }
 
     return (
-        <div style={{ padding: 2 + '%' }}>
-            <Label>Register</Label>
-            <form id="register" onSubmit={handleSubmit(register)}>
-                <div>
-                    <TextField id="name" label="Name" name="name" variant="filled" />
-                </div>
-                <br/>
-                <div>
-                    <TextField id="email" label="Email" name="email" variant="filled" />
-                </div>
-                <br />
-                <div>
-                    <TextField id="password" label="Password" type="password" variant="filled" />
-                </div>
-                <br/>
-                <div>
-                    <TextField id="comfirm" label="Comfirm Password" type="password" variant="filled" />
-                </div>
-                <p></p>
-                <Button color="secondary" type="submit">Submit</Button>
-            </form>
-        </div>
+        <motion.div initial="hidden" animate="visible" variants={{
+            hidden: {
+                opacity: 0,
+                scale: .5
+            },
+            visible: {
+                opacity: 1,
+                scale: 1,
+                transition: {
+                    delay: .3
+                }
+            }
+        }}>
+            <div style={{ padding: 2 + '%' }}>
+                <Label>Register</Label>
+                <form id="register" onSubmit={handleSubmit(register)}>
+                    <div>
+                        <TextField id="name" label="Name" name="name" variant="filled" />
+                    </div>
+                    <br/>
+                    <div>
+                        <TextField id="email" label="Email" name="email" variant="filled" />
+                    </div>
+                    <br />
+                    <div>
+                        <TextField id="password" label="Password" type="password" variant="filled" />
+                    </div>
+                    <br/>
+                    <div>
+                        <TextField id="comfirm" label="Comfirm Password" type="password" variant="filled" />
+                    </div>
+                    <p></p>
+                    <Button color="secondary" type="submit">Submit</Button>
+                </form>
+            </div>
+        </motion.div>
     );
 }
 

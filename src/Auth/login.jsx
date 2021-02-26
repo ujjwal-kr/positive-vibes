@@ -3,6 +3,7 @@ import { Wrapper, Container, Label } from '../Components/auth';
 import { TextField, Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import Auth from '../services/auth';
 import SessionService from '../services/session';
@@ -32,20 +33,34 @@ function LoginForm() {
     }
 
     return (
-        <div style={{ padding: 2 + '%' }}>
-            <Label>Login</Label>
-            <form id="login" onSubmit={handleSubmit(login)}>
-                <div>
-                    <TextField id="email" label="email" name="email" variant="filled" />
-                </div>
-                <br />
-                <div>
-                    <TextField id="password" label="Password" type="password" variant="filled" />
-                </div>
-                <p></p>
-                <Button color="secondary" type="submit">Submit</Button>
-            </form>
-        </div>
+        <motion.div initial="hidden" animate="visible" variants={{
+            hidden: {
+                opacity: 0,
+                scale: .5
+            },
+            visible: {
+                opacity: 1,
+                scale: 1,
+                transition: {
+                    delay: .3
+                }
+            }
+        }}>
+            <div style={{ padding: 2 + '%' }}>
+                <Label>Login</Label>
+                <form id="login" onSubmit={handleSubmit(login)}>
+                    <div>
+                        <TextField id="email" label="email" name="email" variant="filled" />
+                    </div>
+                    <br />
+                    <div>
+                        <TextField id="password" label="Password" type="password" variant="filled" />
+                    </div>
+                    <p></p>
+                    <Button color="secondary" type="submit">Submit</Button>
+                </form>
+            </div>
+        </motion.div>
     );
 }
 
