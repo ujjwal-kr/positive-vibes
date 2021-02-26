@@ -9,8 +9,10 @@ import Auth from '../services/auth';
 
 function RegisterForm() {
     const [toLogin, setLogin] = useState(false);
+    const [btnDisabled, disableBtn] = useState(false);
     const { handleSubmit } = useForm();
     const register = async entry => {
+        disableBtn(true)
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
         const name = document.getElementById("name").value
@@ -23,6 +25,7 @@ function RegisterForm() {
                 setLogin(true);
             }).catch(e => {
                 alert("Invalid Input, check the input")
+                disableBtn(false)
             })
         }
     };
@@ -66,7 +69,7 @@ function RegisterForm() {
                         <TextField id="comfirm" label="Comfirm Password" type="password" variant="filled" />
                     </div>
                     <p></p>
-                    <Button color="secondary" type="submit">Submit</Button>
+                    <Button disabled={disableBtn} color="secondary" type="submit">Submit</Button>
                 </form>
             </div>
         </motion.div>
