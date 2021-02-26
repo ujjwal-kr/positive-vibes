@@ -11,8 +11,10 @@ import SessionService from '../services/session';
 
 function LoginForm() {
     const [toHome, homeRedirect] = useState(false);
+    const [btnDisabled, disableBtn] = useState(false);
     const { handleSubmit } = useForm();
     const login = async entry => {
+        disableBtn(true)
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
         await Auth.login(email, password).then(data => {
@@ -25,6 +27,7 @@ function LoginForm() {
             homeRedirect(true);
         }).catch(e => {
             alert("Invalid Input, check email and Password")
+            disableBtn(false)
         })
     };
 
@@ -57,7 +60,7 @@ function LoginForm() {
                         <TextField id="password" label="Password" type="password" variant="filled" />
                     </div>
                     <p></p>
-                    <Button color="secondary" type="submit">Submit</Button>
+                    <Button disabled={btnDisabled} color="secondary" type="submit">Submit</Button>
                 </form>
             </div>
         </motion.div>
