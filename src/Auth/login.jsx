@@ -26,7 +26,7 @@ function LoginForm() {
             form.reset();
             homeRedirect(true);
         }).catch(e => {
-            alert("Invalid Input, check email and Password")
+            alert("Email or Password is incorrect, please check")
             disableBtn(false)
         })
     };
