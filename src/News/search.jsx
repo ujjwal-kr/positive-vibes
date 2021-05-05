@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { Wrapper } from '../Components/newsItem';
-import { TextField } from '@material-ui/core';
+//import { TextField } from '@material-ui/core';
 import { NewsConstructor, FooterComponent } from './news';
 import { motion } from 'framer-motion';
 
@@ -13,7 +13,7 @@ class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            news: [''],
+            news: null,
             present: false,
             login: false,
             user: null,
@@ -70,9 +70,9 @@ class SearchComponent extends React.Component {
         if (login) {
             return <Redirect to="/login" />
         }
-
+        
         if (search) {
-            return <Redirect push to={"/search/" + this.state.searchValue} />
+            return <Redirect push from="/" to={"/search/" + this.state.searchValue}/>
         }
 
         if (!present) {
@@ -82,7 +82,7 @@ class SearchComponent extends React.Component {
                 <NewsConstructor />
             </div>
         } else {
-            items = this.state.news.map((item, key) => <NewsConstructor news={item} />);
+            items = this.state.news.map((item, key) => <NewsConstructor key={key} news={item} />);
         }
         return (
             <Wrapper>
@@ -101,12 +101,13 @@ class SearchComponent extends React.Component {
                 }}>
                     <strong>Results for '{searchTerm}'</strong><br /><br />
                     
-                    {this.state.user ?
+                    {/* {this.state.user ?
                                 <form onSubmit={this.search} noValidate autoComplete="off">
                                     <TextField color="secondary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search for another term" variant="outlined" />
                                 </form>
                                 : null
-                            }<br />
+                            } */}
+                                <br />
                     {items}
                     <FooterComponent />
                 </motion.div>

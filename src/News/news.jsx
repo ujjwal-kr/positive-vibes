@@ -250,7 +250,7 @@ export class LoginMessage extends React.Component {
                 }
             }}>
                 <Alert severity="error">
-                    Please <Link to="/register">SignUp</Link> or <Link to="/login">Login</Link> to change settings. <br />
+                    Please <Link to="/register">Sign Up</Link> or <Link to="/login">Login</Link> for the best experience. <br />
                 </Alert>
             </motion.div>
         )

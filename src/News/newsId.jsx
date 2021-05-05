@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { NewsConstructor, LoginMessage, FooterComponent } from './news';
-
+import { TextField } from '@material-ui/core';
 import { Wrapper, Topic, MobileCenter } from '../Components/newsItem';
 import { motion } from 'framer-motion';
 
@@ -18,9 +18,13 @@ class NewsId extends React.Component {
             present: false,
             login: false,
             user: null,
+            searchValue: null,
+            search: false,
             param: '',
             loginMessage: false
         }
+        this.handleSearch = this.handleSearch.bind(this)
+        this.search = this.search.bind(this)
     }
 
     componentDidMount() {
@@ -60,15 +64,32 @@ class NewsId extends React.Component {
         })
     }
 
+    search(event) {
+        event.preventDefault();
+        this.setState({
+            search: true
+        })
+    }
+
+    handleSearch(event) {
+        this.setState({
+            searchValue: event.target.value
+        })
+    }
+
     // If initial request fails for some network issues, try one more time
 
     render() {
         const present = this.state.present;
         let login = this.state.login;
+        const search = this.state.search;
         let items;
         let welcome;
         if (login) {
             return <Redirect to="/login" />
+        }
+        if (search) {
+            return <Redirect push to={"/search/" + this.state.searchValue}/>
         }
         if (!present) {
             items = <div>
@@ -116,9 +137,16 @@ class NewsId extends React.Component {
                         }
                     }
                 }}>
+                    
                     <MobileCenter>
                         <strong>{welcome}</strong>
-                    </MobileCenter>
+                    </MobileCenter><br/>
+                    {this.state.user ?
+                                <form onSubmit={this.search} noValidate autoComplete="off">
+                                    <TextField color="secondary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
+                                </form>
+                                : null
+                            }
                     <Topic className="handwriting">
                         <br />
                         {this.state.param}

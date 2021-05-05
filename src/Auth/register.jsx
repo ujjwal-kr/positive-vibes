@@ -66,7 +66,7 @@ function RegisterForm() {
                     </div>
                     <br/>
                     <div>
-                        <TextField id="comfirm" label="Comfirm Password" type="password" variant="filled" />
+                        <TextField id="comfirm" label="Confirm Password" type="password" variant="filled" />
                     </div>
                     <p></p>
                     <Button disabled={btnDisabled} color="secondary" type="submit">Submit</Button>
