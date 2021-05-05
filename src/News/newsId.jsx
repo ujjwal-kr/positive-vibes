@@ -139,14 +139,15 @@ class NewsId extends React.Component {
                 }}>
                     
                     <MobileCenter>
-                        <strong>{welcome}</strong>
-                    </MobileCenter><br/>
-                    {this.state.user ?
+                        <strong>{welcome}</strong><br />
+                        {this.state.user ?
                                 <form onSubmit={this.search} noValidate autoComplete="off">
                                     <TextField color="secondary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
                                 </form>
                                 : null
                             }
+                    </MobileCenter><br/>
+                    
                     <Topic className="handwriting">
                         <br />
                         {this.state.param}
