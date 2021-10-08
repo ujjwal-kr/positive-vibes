@@ -1,4 +1,4 @@
-# POSITIVE  VIBE - THE NEWS APP 
+# POSITIVE  VIBES - THE GOOD NEWS APP 
 
 >**An App which lets you control your News Feed from all the negativity in the World. This App allows user to remove negative news from various categories and also let the user add filter to the news on the basis of certain key words like ( "Murder, Kidnap , Riots", "Death", "Disaster").**
 
