@@ -4,7 +4,12 @@ class Redirect extends React.Component {
     componentDidMount() {
         const { match: { params } } = this.props;
         if (params.id) {
-            return this.props.history.push('/news/'+params.id);
+            if(params.id !== 'search') {
+                console.log(params.id)
+                return this.props.history.push('/news/'+params.id);
+            } else {
+                return this.props.history.push(`/${params.id}/${params.two}`)
+            }
         }
     }
 
@@ -16,5 +21,6 @@ class Redirect extends React.Component {
         )
     }
 }
+
 
 export default Redirect;

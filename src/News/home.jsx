@@ -191,8 +191,9 @@ export default function HomeComponent() {
         <Switch>
           <Route path="/" component={NewsItemComponent} exact />
           <Route path="/search/:query" component={SearchComponent} />
-          <Route path="/red/:id" component={Redirect} />
-          <Route path="/news/:id" component={NewsId} />
+          <Route path="/red/:id/:two" component={Redirect} />
+          <Route path="/red/:id/" component={Redirect} />
+          <Route path="/news/:id/" component={NewsId} />
           <Route path="/settings" component={SettingsComponent} />
           <Route path="/login" component={LoginComponent} />
           <Route path="/register" component={RegisterComponent} />

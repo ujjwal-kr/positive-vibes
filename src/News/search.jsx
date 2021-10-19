@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Wrapper } from '../Components/newsItem';
-//import { TextField } from '@material-ui/core';
+import { Wrapper, MobileCenter } from '../Components/newsItem';
+import { TextField } from '@material-ui/core';
 import { NewsConstructor, FooterComponent } from './news';
 import { motion } from 'framer-motion';
 
@@ -66,14 +66,15 @@ class SearchComponent extends React.Component {
         let login = this.state.login;
         let items;
         let searchTerm = this.state.searchTerm;
-        
+
         if (login) {
             return <Redirect to="/login" />
         }
-        
+
         if (search) {
-            return <Redirect push from="/" to={"/search/" + this.state.searchValue}/>
+            return <Redirect push from={window.location} to={"/red/search/" + this.state.searchValue} />
         }
+
 
         if (!present) {
             items = <div>
@@ -99,15 +100,16 @@ class SearchComponent extends React.Component {
                         }
                     }
                 }}>
+                    <MobileCenter>
+                        {this.state.user ?
+                            <form onSubmit={this.search} noValidate autoComplete="off">
+                                <TextField color="secondary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search" variant="outlined" />
+                            </form>
+                            : null
+                        }
+                    </MobileCenter><br />
                     <strong>Results for '{searchTerm}'</strong><br /><br />
-                    
-                    {/* {this.state.user ?
-                                <form onSubmit={this.search} noValidate autoComplete="off">
-                                    <TextField color="secondary" style={{ width: 80 + '%' }} onChange={this.handleSearch} label="Search for another term" variant="outlined" />
-                                </form>
-                                : null
-                            } */}
-                                <br />
+                    <br />
                     {items}
                     <FooterComponent />
                 </motion.div>
