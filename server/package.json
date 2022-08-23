@@ -2,29 +2,32 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "startprocess": "pm2 start app.js --watch",
-    "stopprocess": "pm2 stop app.js"
+    "dev": "nodemon app.js"
   },
   "engines": {
-    "node": "14.15.0"
+    "node": "16.15.0"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
-    "bcrypt": "^5.0.0",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.21",
+    "mongoose": "^6.5.2",
     "morgan": "^1.10.0",
     "sentiment": "^5.0.2",
     "validatorjs": "^3.18.1",
     "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }

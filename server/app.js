@@ -3,18 +3,20 @@ const app = express();
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const dotenv = require("dotenv")
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors());
+dotenv.config()
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
     console.log('connected to the mongoDB !!!')
-}).catch(() => {
-    console.log('Error connecting to mongoDB !!!')
+}).catch((e) => {
+    console.log('Error connecting to mongoDB !!!', e)
 })
 
 const Auth = require('./routes/auth/auth')
