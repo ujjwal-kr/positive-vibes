@@ -16,7 +16,7 @@
 - run `npm i` in both the client and server folders to install the dependencies.
 - make an .env file in /server and enter `MONGO_URI=<db-uri>`,  Here `<db-uri>` can be a mongo instance running on ATLAS or your local network.
 - run `npm run dev` inside both the apps to start them in watch mode.
-- visit post 3000 in your localhost to see the app live.
+- visit port 3000 in your localhost to see the app live.
 
 *Made with javascript and :heart: in India* 
 **Developers : [@ujjwal-kr](https://github.com/ujjwal-kr) [@kaaarigar](https://github.com/kaaarigar)**
