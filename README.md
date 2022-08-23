@@ -4,18 +4,19 @@
 
 *It is an extended fork of [ujjwal-kr/xenon](https://github.com/ujjwal-kr/xenon), a positive news network*
 
-
 >Featured with a custom setting to adjust the alaysis of the news delivered.
 
-![Children's Safety](https://i1.wp.com/blog.securly.com/wp-content/uploads/2018/07/securly-7-tips-on-keeping-your-child-safe-online.jpg?resize=676%2C386&ssl=1)
+## Our Stack.
+ - React with Vite.
+ - Nodejs and Express.
+ - Mongo hosted on ATLAS.
+ - Bcrypt and JWT for user signin and auth.
 
-
-
-*We welcome all the users who want to remove negativity from their and their children's life to be the part of our journey :rocket:*
-
-*Our STACK -> React , Expressjs , MongoDB & Nodejs*
->Authentication with JSON Web Tokens, MongoDB hosted on ATLAS.
+## How to build
+- run `npm i` in both the client and server folders to install the dependencies.
+- make an .env file in /server and enter `MONGO_URI=<db-uri>`,  Here `<db-uri>` can be a mongo instance running on ATLAS or your local network.
+- run `npm run dev` inside both the apps to start them in watch mode.
+- visit post 3000 in your localhost to see the app live.
 
 *Made with javascript and :heart: in India* 
-
 **Developers : [@ujjwal-kr](https://github.com/ujjwal-kr) [@kaaarigar](https://github.com/kaaarigar)**
