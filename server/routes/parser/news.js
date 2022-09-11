@@ -25,7 +25,7 @@ router.get('/', async (req, res, next) => {
             })
             const final = parsed.rss.channel.item
             const resl = await Analyzer(final, req.body.score)
-            res.json({resl})
+            res.json(resl)
         }).catch(e => {
             return e
         })
@@ -45,7 +45,7 @@ router.get('/search/:id', SearchBlocker, async (req, res) => {
         })
         const final = parsed.rss.channel.item;
         const resl = await Analyzer(final, req.body.score)
-        res.json({ resl })
+        res.json(resl)
     }).catch(e => {
         res.send(e)
     })
@@ -66,7 +66,7 @@ router.get('/technology', async (req, res, next) => {
             })
             const final = parsed.rss.channel.item
             const resl = await Analyzer(final, req.body.score)
-            res.json({resl})
+            res.json(resl)
         }).catch(e => {
             return e
         })
@@ -85,7 +85,7 @@ router.get('/health', async (req, res, next) => {
             })
             const final = parsed.rss.channel.item
             const resl = await Analyzer(final, req.body.score)
-            res.json({resl})
+            res.json(resl)
         }).catch(e => {
             return e
         })
@@ -104,7 +104,7 @@ router.get('/science', async (req, res, next) => {
             })
             const final = parsed.rss.channel.item
             const resl = await Analyzer(final, req.body.score)
-            res.json({resl})
+            res.json(resl)
         }).catch(e => {
             return e
         })
@@ -123,7 +123,7 @@ router.get('/entertainment', async (req, res, next) => {
             })
             const final = parsed.rss.channel.item
             const resl = await Analyzer(final, req.body.score)
-            res.json({resl})
+            res.json(resl)
         }).catch(e => {
             return e
         })
@@ -142,7 +142,7 @@ router.get('/india', async (req, res, next) => {
             })
             const final = parsed.rss.channel.item
             const resl = await Analyzer(final, req.body.score)
-            res.json({resl})
+            res.json(resl)
         }).catch(e => {
             return e
         })
@@ -161,7 +161,7 @@ router.get('/sports', async (req, res, next) => {
             })
             const final = parsed.rss.channel.item
             const resl = await Analyzer(final, req.body.score)
-            res.json({resl})
+            res.json(resl)
         }).catch(e => {
             return e
         })

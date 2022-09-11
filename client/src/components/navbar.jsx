@@ -89,7 +89,7 @@ const useNavStyles = createStyles((theme, _params, getRef) => {
         },
 
         main: {
-            float: 'left'
+            float: 'left',
         },
 
         footer: {
