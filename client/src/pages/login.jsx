@@ -18,17 +18,19 @@ const useStyles = createStyles(() => ({
     wrapper: {
         display: 'flex',
         justifyContent: 'center',
+        [`@media (max-width: 600px)`]: {
+            marginTop: '15vh'
+        },
     },
 
     paper: {
         width: '40%',
         marginTop: '10%',
 
-        [`@media (max-width: 600px)`]: {
+        [`@media (max-width: 800px)`]: {
             width: '90%'
         },
     }
-
 }))
 
 export default function Login() {
