@@ -4,8 +4,9 @@ import Register from "./pages/register"
 import Settings from "./pages/settings"
 import News from "./pages/news"
 import Nav from "./components/navbar"
+import Search from "./components/search";
 
-import { ContentWrapper } from "./styled/main"
+import { ContentWrapper, RouteWrapper } from "./styled/main"
 
 import {
   BrowserRouter,
@@ -21,16 +22,20 @@ function App() {
 
       <Nav />
       <ContentWrapper>
+        <div>
+          <Search />
 
-        <Routes>
+          <RouteWrapper>
+            <Routes>
+              <Route path="/" element={<Home />} exact />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/news/:id" element={<News />} />
+            </Routes>
+          </RouteWrapper>
 
-          <Route path="/" element={<Home />} exact />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/news/:id" element={<News />} />
-
-        </Routes>
+        </div>
       </ContentWrapper>
     </BrowserRouter>
   )
