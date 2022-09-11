@@ -2,6 +2,10 @@ import Home from "./pages/home"
 import Login from "./pages/login"
 import Register from "./pages/register"
 import Settings from "./pages/settings"
+import News from "./pages/news"
+import Nav from "./components/navbar"
+
+import { ContentWrapper } from "./styled/main"
 
 import {
   BrowserRouter,
@@ -14,14 +18,20 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
 
-        <Route path="/" element={<Home />} exact />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/settings" element={<Settings /> } />
+      <Nav />
+      <ContentWrapper>
 
-      </Routes>
+        <Routes>
+
+          <Route path="/" element={<Home />} exact />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/news/:id" element={<News />} />
+
+        </Routes>
+      </ContentWrapper>
     </BrowserRouter>
   )
 }
