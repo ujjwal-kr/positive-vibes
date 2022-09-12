@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createStyles, Navbar, Group, Code } from '@mantine/core';
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
+import NavState from '../state/navState';
 
 import {
     IconAtom,
@@ -15,6 +16,7 @@ import {
     IconLogin,
     IconUserPlus
 } from '@tabler/icons';
+import { useRecoilState } from 'recoil';
 
 
 const data = [
@@ -29,19 +31,67 @@ const data = [
 
 export default function Nav() {
     const { classes, cx } = useNavStyles();
-    const [active, setActive] = useState('Top Stories');
-    const naviagate = useNavigate();
+    const [active, setActive] = useRecoilState(NavState);
 
-    const links = data.map((item, key) => (
+    const links =  (
+        <div>
             <Link
-                className={cx(classes.link, { [classes.linkActive]: item.label === active })}
-                to={item.link}
-                key={key}
+                className={cx(classes.link, { [classes.linkActive]: active === "top stories" })}
+                to="/"
             >
-                <item.icon className={classes.linkIcon} stroke={1.5} />
-                <span>{item.label}</span>
+                <IconArticle className={classes.linkIcon} stroke={1.5} />
+                <span>Top Stories</span>
             </Link>
-    ));
+
+            <Link
+                className={cx(classes.link, { [classes.linkActive]: active === "india" })}
+                to="/news/india"
+            >
+                <IconFlag className={classes.linkIcon} stroke={1.5} />
+                <span>India</span>
+            </Link>
+
+            <Link
+                className={cx(classes.link, { [classes.linkActive]: active === "health" })}
+                to="/news/health/"
+            >
+                <IconActivity className={classes.linkIcon} stroke={1.5} />
+                <span>Health</span>
+            </Link>
+
+            <Link
+                className={cx(classes.link, { [classes.linkActive]: active === "technology" })}
+                to="/news/technology"
+            >
+                <IconCpu className={classes.linkIcon} stroke={1.5} />
+                <span>Technology</span>
+            </Link>
+
+            <Link
+                className={cx(classes.link, { [classes.linkActive]: active === "science" })}
+                to="/news/science"
+            >
+                <IconAtom className={classes.linkIcon} stroke={1.5} />
+                <span>Science</span>
+            </Link>
+
+            <Link
+                className={cx(classes.link, { [classes.linkActive]: active === "entertainment" })}
+                to="/news/entertainment"
+            >
+                <IconDeviceTvOld className={classes.linkIcon} stroke={1.5} />
+                <span>Entertainment</span>
+            </Link>
+
+            <Link
+                className={cx(classes.link, { [classes.linkActive]: active === "sports" })}
+                to="/news/sports"
+            >
+                <IconBallFootball className={classes.linkIcon} stroke={1.5} />
+                <span>Sports</span>
+            </Link>
+        </div>
+    );
 
     return (
         <Navbar height={700} width={{ sm: 300 }} p="md" className={classes.main}>

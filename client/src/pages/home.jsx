@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react"
+import { useRecoilState } from "recoil"
 import FetchNews from "../services/news.service"
-
+import NavState from "../state/navState"
 
 export default function Home() {
     let [news, setNews] = useState([])
+    let [active, setActive] = useRecoilState(NavState)
 
     useEffect(() => {
+        setActive('top stories')
         fetchNews()
     }, [])
 
     async function fetchNews() {
         let newsRes = await FetchNews.topStories("")
         setNews(newsRes.data)
-        console.log(newsRes.data)
     }
 
     return (
