@@ -9,13 +9,14 @@ export default function News() {
     let [news, setNews] = useState([])
 
     useEffect(() => {
+        setNews([])
         fetchNews()
-    }, [])
+    }, [params.id])
 
     async function fetchNews() {
         let newsRes = await FetchNews.fetchWithId(params.id)
         setNews(newsRes.data)
-        console.log(newsRes.data)
+        console.log(params.id)
     }
 
     return (

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { createStyles, Navbar, Group, Code } from '@mantine/core';
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import {
     IconAtom,
@@ -19,12 +19,12 @@ import {
 
 const data = [
     { link: '/', label: 'Top Stories', icon: IconArticle },
-    { link: '/news/india', label: 'India', icon: IconFlag },
-    { link: '/news/health', label: 'Health', icon: IconActivity },
-    { link: '/news/technology', label: 'Technology', icon: IconCpu },
-    { link: '/news/science', label: 'Science', icon: IconAtom },
-    { link: '/news/entertainment', label: 'Entertainment', icon: IconDeviceTvOld },
-    { link: '/news/sports', label: 'Sports', icon: IconBallFootball },
+    { link: '/news/india/', label: 'India', icon: IconFlag },
+    { link: '/news/health/', label: 'Health', icon: IconActivity },
+    { link: '/news/technology/', label: 'Technology', icon: IconCpu },
+    { link: '/news/science/', label: 'Science', icon: IconAtom },
+    { link: '/news/entertainment/', label: 'Entertainment', icon: IconDeviceTvOld },
+    { link: '/news/sports/', label: 'Sports', icon: IconBallFootball },
 ];
 
 export default function Nav() {
@@ -32,19 +32,15 @@ export default function Nav() {
     const [active, setActive] = useState('Top Stories');
     const naviagate = useNavigate();
 
-    const links = data.map((item) => (
-            <a
+    const links = data.map((item, key) => (
+            <Link
                 className={cx(classes.link, { [classes.linkActive]: item.label === active })}
-                href={item.link}
-                key={item.label}
-                onClick={(event) => {
-                    naviagate(item.link)
-                    setActive(item.label)
-                }}
+                to={item.link}
+                key={key}
             >
                 <item.icon className={classes.linkIcon} stroke={1.5} />
                 <span>{item.label}</span>
-            </a>
+            </Link>
     ));
 
     return (
