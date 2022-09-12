@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { createStyles, Navbar, Group, Code } from '@mantine/core';
+import { useNavigate } from "react-router-dom"
+
 import {
     IconAtom,
     IconArticle,
@@ -16,32 +18,33 @@ import {
 
 
 const data = [
-    { link: '', label: 'Top Stories', icon: IconArticle },
-    { link: '', label: 'India', icon: IconFlag },
-    { link: '', label: 'Health', icon: IconActivity },
-    { link: '', label: 'Technology', icon: IconCpu },
-    { link: '', label: 'Science', icon: IconAtom },
-    { link: '', label: 'Entertainment', icon: IconDeviceTvOld },
-    { link: '', label: 'Sports', icon: IconBallFootball },
+    { link: '/', label: 'Top Stories', icon: IconArticle },
+    { link: '/news/india', label: 'India', icon: IconFlag },
+    { link: '/news/health', label: 'Health', icon: IconActivity },
+    { link: '/news/technology', label: 'Technology', icon: IconCpu },
+    { link: '/news/science', label: 'Science', icon: IconAtom },
+    { link: '/news/entertainment', label: 'Entertainment', icon: IconDeviceTvOld },
+    { link: '/news/sports', label: 'Sports', icon: IconBallFootball },
 ];
 
 export default function Nav() {
     const { classes, cx } = useNavStyles();
     const [active, setActive] = useState('Top Stories');
+    const naviagate = useNavigate();
 
     const links = data.map((item) => (
-        <a
-            className={cx(classes.link, { [classes.linkActive]: item.label === active })}
-            href={item.link}
-            key={item.label}
-            onClick={(event) => {
-                event.preventDefault();
-                setActive(item.label);
-            }}
-        >
-            <item.icon className={classes.linkIcon} stroke={1.5} />
-            <span>{item.label}</span>
-        </a>
+            <a
+                className={cx(classes.link, { [classes.linkActive]: item.label === active })}
+                href={item.link}
+                key={item.label}
+                onClick={(event) => {
+                    naviagate(item.link)
+                    setActive(item.label)
+                }}
+            >
+                <item.icon className={classes.linkIcon} stroke={1.5} />
+                <span>{item.label}</span>
+            </a>
     ));
 
     return (
@@ -65,7 +68,7 @@ export default function Nav() {
                 </a>
 
                 <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-                    <IconLogin   className={classes.linkIcon} stroke={1.5} />
+                    <IconLogin className={classes.linkIcon} stroke={1.5} />
                     <span>Login</span>
                 </a>
 
