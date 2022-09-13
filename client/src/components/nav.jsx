@@ -3,10 +3,10 @@ import { Navbar, Button, Link, Text } from "@nextui-org/react";
 export default function Nav() {
     return (
         <div>
-            <Navbar variant="floating" isCompact isBordered>
+            <Navbar variant="floating" isCompact isBordered style={{position: "fixed"}}>
                 <Navbar.Brand>
                     <Text b color="inherit" hideIn="xs">
-                        Positive Vives
+                        Positive Vibes
                     </Text>
                 </Navbar.Brand>
 

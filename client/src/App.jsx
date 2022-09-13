@@ -1,15 +1,29 @@
-import { useState } from 'react'
 import Nav from './components/nav'
+import TopContent from "./components/top-content/top-content"
 
-
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom"
+import { MainWrapper } from './styles/main-wrapper'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div>
+    <BrowserRouter>
       <Nav />
-    </div>
+      <MainWrapper>
+        <TopContent />
+
+        <Routes>
+          <Route path="/" element={<></>} exact />
+          <Route path="/news/:id" element={<></>} />
+          <Route path="/search/:query" element={<></>} />
+        </Routes>
+      </MainWrapper>
+
+    </BrowserRouter>
   )
 }
 
