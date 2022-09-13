@@ -1,15 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { MantineProvider } from '@mantine/core'
-import { RecoilRoot } from "recoil"
+import { NextUIProvider } from '@nextui-org/react';
+import { createTheme } from "@nextui-org/react"
+
+const darkTheme = createTheme({
+  type: 'dark',
+  theme: {
+    colors: {
+      background: '#0d0d0d'
+    }
+  }
+});
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RecoilRoot>
-      <MantineProvider theme={{ colorScheme: 'dark' }} withGlobalStyles>
-        <App />
-      </MantineProvider>
-    </RecoilRoot>
+    <NextUIProvider theme={darkTheme}>
+      <App />
+    </NextUIProvider>
   </React.StrictMode>
 )

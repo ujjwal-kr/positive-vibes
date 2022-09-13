@@ -1,43 +1,15 @@
-import Home from "./pages/home"
-import Login from "./pages/login"
-import Register from "./pages/register"
-import Settings from "./pages/settings"
-import News from "./pages/news"
-import Nav from "./components/navbar"
-import Search from "./components/search";
+import { useState } from 'react'
+import Nav from './components/nav'
 
-import { ContentWrapper, RouteWrapper } from "./styled/main"
-
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom"
 
 
 function App() {
+  const [count, setCount] = useState(0)
 
   return (
-    <BrowserRouter>
-
+    <div>
       <Nav />
-      <ContentWrapper>
-        <div>
-          <Search />
-
-          <RouteWrapper>
-            <Routes>
-              <Route path="/" element={<Home />} exact />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/news/:id" element={<News />} />
-            </Routes>
-          </RouteWrapper>
-
-        </div>
-      </ContentWrapper>
-    </BrowserRouter>
+    </div>
   )
 }
 
