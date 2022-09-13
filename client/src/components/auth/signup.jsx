@@ -19,7 +19,7 @@ export default function Register() {
             >
                 <Modal.Header>
                     <Text id="modal-title" size={18}>
-                        <Text b size={18}>
+                        <Text b size={25}>
                             Register
                         </Text>
                     </Text>
@@ -47,6 +47,7 @@ export default function Register() {
                         fullWidth
                         color="primary"
                         size="lg"
+                        type="password"
                         placeholder="Password"
                     />
                 </Modal.Body>

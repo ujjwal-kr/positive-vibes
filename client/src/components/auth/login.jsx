@@ -19,8 +19,8 @@ export default function Login() {
             >
                 <Modal.Header>
                     <Text id="modal-title" size={18}>
-                        <Text b size={18}>
-                            Log In
+                        <Text b size={25}>
+                            Login
                         </Text>
                     </Text>
                 </Modal.Header>
@@ -39,6 +39,7 @@ export default function Login() {
                         fullWidth
                         color="primary"
                         size="lg"
+                        type="password"
                         placeholder="Password"
                     />
                 </Modal.Body>
