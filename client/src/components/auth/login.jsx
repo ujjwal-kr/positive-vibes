@@ -26,6 +26,7 @@ export default function Login() {
                 </Modal.Header>
                 <Modal.Body>
                     <Input
+                        aria-label="Email"
                         clearable
                         bordered
                         fullWidth
@@ -40,14 +41,15 @@ export default function Login() {
                         color="primary"
                         size="lg"
                         type="password"
+                        aria-label="Email"
                         placeholder="Password"
                     />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button auto flat color="error" onClick={closeHandler}>
+                    <Button auto flat color="error" onPress={closeHandler}>
                         Close
                     </Button>
-                    <Button auto onClick={closeHandler}>
+                    <Button auto onPress={closeHandler}>
                         Sign in
                     </Button>
                 </Modal.Footer>

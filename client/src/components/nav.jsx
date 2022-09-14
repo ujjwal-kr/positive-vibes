@@ -4,9 +4,12 @@ import { loginModal, registerModal } from "../states/auth-modal"
 import Login from "./auth/login";
 import Register from "./auth/signup";
 
+import { loggedInState } from "../states/user";
+
 export default function Nav() {
     let [loginVisible, setLoginVisible] = useRecoilState(loginModal)
     let [registerVisible, setRegisterVisible] = useRecoilState(registerModal)
+    let [loggedIn, setLoggedIn] = useRecoilState(loggedInState)
 
     return (
         <div>
@@ -27,14 +30,22 @@ export default function Nav() {
                     <Navbar.Link href="#">Entertainment</Navbar.Link>
                 </Navbar.Content>
                 <Navbar.Content>
-                    <Navbar.Link onClick={() => setLoginVisible(true)} color="inherit" href="#">
-                        Login
-                    </Navbar.Link>
-                    <Navbar.Item>
-                        <Button onClick={() => setRegisterVisible(true)} auto flat as={Link} href="#">
-                            Sign Up
-                        </Button>
-                    </Navbar.Item>
+                    {
+                        loggedIn ? "Welcome"
+
+                            :
+                            <>
+                                <Navbar.Link onClick={() => setLoginVisible(true)} color="inherit" href="#">
+                                    Login
+                                </Navbar.Link>
+                                <Navbar.Item>
+                                    <Button onPress={() => setRegisterVisible(true)} auto flat as={Link} href="#">
+                                        Sign Up
+                                    </Button>
+                                </Navbar.Item>
+                            </>
+
+                    }
                 </Navbar.Content>
             </Navbar>
 

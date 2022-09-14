@@ -6,11 +6,11 @@ const StorageService = {
     },
 
     setUser: function(user) {
-        window.localStorage.setItem("user", JSON.stringify(user))
+        return window.localStorage.setItem("user", JSON.stringify(user))
     },
 
     setToken: (token) => {
-        window.localStorage.setItem("token", token)
+        return window.localStorage.setItem("token", token)
     },
 
     getToken: () => {
@@ -22,7 +22,7 @@ const StorageService = {
     },
 
     removeUser: function() {
-        window.localStorage.removeItem("user")
+        return window.localStorage.removeItem("user")
     }
 }
 
