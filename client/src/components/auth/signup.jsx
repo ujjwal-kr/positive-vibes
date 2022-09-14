@@ -43,67 +43,67 @@ export default function Register() {
     }
 
     return (
-            <Modal
-                closeButton
-                blur
-                aria-labelledby="modal-title"
-                open={visible}
-                onClose={closeHandler}
-            >
-                <Modal.Header>
-                    <Text id="modal-title" size={18}>
-                        <Text b size={25}>
-                            Register
-                        </Text>
+        <Modal
+            closeButton
+            blur
+            aria-labelledby="modal-title"
+            open={visible}
+            onClose={closeHandler}
+        >
+            <Modal.Header>
+                <Text id="modal-title" size={18}>
+                    <Text b size={25}>
+                        Register
                     </Text>
-                </Modal.Header>
-                <Modal.Body>
+                </Text>
+            </Modal.Header>
+            <Modal.Body>
                 <Input
-                        clearable
-                        bordered
-                        fullWidth
-                        color="primary"
-                        size="lg"
-                        required
-                        aria-label="Name"
-                        onChange={(e) => 
-                            setName(e.target.value)}
-                        placeholder="Name"
-                    />
-                    <Input
-                        clearable
-                        bordered
-                        fullWidth
-                        color="primary"
-                        size="lg"
-                        required
-                        aria-label="Email"
-                        onChange={(e) => 
-                            setEmail(e.target.value)}
-                        placeholder="Email"
-                    />
-                    <Input
-                        clearable
-                        bordered
-                        fullWidth
-                        color="primary"
-                        size="lg"
-                        type="password"
-                        required
-                        aria-label="Password"
-                        onChange={(e) => 
-                            setPassword(e.target.value)}
-                        placeholder="Password"
-                    />
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button auto flat color="error" onPress={closeHandler}>
-                        Close
-                    </Button>
-                    <Button auto onPress={async () => await submit()}>
-                        Sign Up
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+                    clearable
+                    bordered
+                    fullWidth
+                    color="primary"
+                    size="lg"
+                    required
+                    aria-label="Name"
+                    onChange={(e) =>
+                        setName(e.target.value)}
+                    placeholder="Name"
+                />
+                <Input
+                    clearable
+                    bordered
+                    fullWidth
+                    color="primary"
+                    size="lg"
+                    required
+                    aria-label="Email"
+                    onChange={(e) =>
+                        setEmail(e.target.value)}
+                    placeholder="Email"
+                />
+                <Input
+                    clearable
+                    bordered
+                    fullWidth
+                    color="primary"
+                    size="lg"
+                    type="password"
+                    required
+                    aria-label="Password"
+                    onChange={(e) =>
+                        setPassword(e.target.value)}
+                    placeholder="Password"
+                />
+            </Modal.Body>
+            <Modal.Footer>
+                <Button auto flat color="error" onPress={closeHandler}>
+                    Close
+                </Button>
+                <Button auto onPress={async () => await submit()}>
+                    Sign Up
+                </Button>
+            </Modal.Footer>
+        </Modal>
     )
 }
