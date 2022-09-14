@@ -1,9 +1,34 @@
 import { useRecoilState } from "recoil"
 import { loginModal } from "../../states/auth-modal"
 import { Button, Text, Modal, Input } from "@nextui-org/react"
+import { userState, tokenState, loggedInState } from "../../states/user"
+import AuthService from "../../services/auth.service"
+import StorageService from "../../services/storage.service"
+import { useState } from "react"
 
 export default function Login() {
     const [visible, setVisible] = useRecoilState(loginModal)
+    const [user, setUser] = useRecoilState(userState)
+    const [token, setToken] = useRecoilState(tokenState)
+    const [logged, setLogged] = useRecoilState(loggedInState)
+
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+
+    async function onSubmit() {
+        try {
+            let res = await AuthService.login(email, password)
+            setUser(res.data.user)
+            setToken(res.data.token)
+            StorageService.setUser(res.data.user)
+            StorageService.setToken(res.data.token)
+            setLogged(true)
+            setVisible(false)
+        } catch (e) {
+            console.log(e)
+            alert("Email/Password invalid")
+        }
+    }
 
     const closeHandler = () => {
         setVisible(false)
@@ -33,6 +58,9 @@ export default function Login() {
                     color="primary"
                     size="lg"
                     placeholder="Email"
+                    onChange={(e) => {
+                        setEmail(e.target.value)
+                    }}
                 />
                 <Input
                     clearable
@@ -43,13 +71,18 @@ export default function Login() {
                     type="password"
                     aria-label="Email"
                     placeholder="Password"
+                    onChange={(e) => {
+                        setPassword(e.target.value)
+                    }}
                 />
             </Modal.Body>
             <Modal.Footer>
                 <Button auto flat color="error" onPress={closeHandler}>
                     Close
                 </Button>
-                <Button auto onPress={closeHandler}>
+                <Button auto onPress={async () => 
+                    await onSubmit()}
+                >
                     Sign in
                 </Button>
             </Modal.Footer>
