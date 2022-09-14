@@ -65,7 +65,6 @@ export default function Register() {
                         color="primary"
                         size="lg"
                         required
-                        value={name}
                         aria-label="Name"
                         onChange={(e) => 
                             setName(e.target.value)}
@@ -79,7 +78,6 @@ export default function Register() {
                         size="lg"
                         required
                         aria-label="Email"
-                        value={email}
                         onChange={(e) => 
                             setEmail(e.target.value)}
                         placeholder="Email"
@@ -93,7 +91,6 @@ export default function Register() {
                         type="password"
                         required
                         aria-label="Password"
-                        value={password}
                         onChange={(e) => 
                             setPassword(e.target.value)}
                         placeholder="Password"
