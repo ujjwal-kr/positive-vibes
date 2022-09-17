@@ -7,6 +7,7 @@ import {
   Route
 } from "react-router-dom"
 import { MainWrapper } from './styles/main-wrapper'
+import Home from './pages/home'
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
         <TopContent />
 
         <Routes>
-          <Route path="/" element={<></>} exact />
+          <Route path="/" element={<Home/>} exact />
           <Route path="/news/:id" element={<></>} />
           <Route path="/search/:query" element={<></>} />
         </Routes>
