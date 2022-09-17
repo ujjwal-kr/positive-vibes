@@ -8,6 +8,7 @@ import {
 } from "react-router-dom"
 import { MainWrapper } from './styles/main-wrapper'
 import Home from './pages/home'
+import News from "./pages/news"
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home/>} exact />
-          <Route path="/news/:id" element={<></>} />
+          <Route path="/news/:id" element={<News/>} />
           <Route path="/search/:query" element={<></>} />
         </Routes>
       </MainWrapper>
