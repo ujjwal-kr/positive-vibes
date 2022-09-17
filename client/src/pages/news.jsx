@@ -5,15 +5,19 @@ import { useRecoilState } from "recoil"
 import { tokenState } from "../states/user"
 import { Loading } from "@nextui-org/react"
 import NewsConstructor from "../components/news-constructor"
+import { activeState } from "../states/nav"
 
 export default function News() {
     let { id } = useParams()
     let [token, setToken] = useRecoilState(tokenState)
     let [news, setNews] = useState()
+    let [active, setActive] = useRecoilState(activeState)
 
     useEffect(() => {
+        setActive(id)
+        setNews(null)
         fetchNews(id)
-    }, [])
+    }, [id])
 
     async function fetchNews(id) {
         try {

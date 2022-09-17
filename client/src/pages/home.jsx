@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import NewsService from "../services/news.service"
 import { useRecoilState } from "recoil"
 import { tokenState } from "../states/user"
+import { activeState } from "../states/nav"
 import { Loading } from "@nextui-org/react"
 import NewsConstructor from "../components/news-constructor"
 
@@ -9,8 +10,11 @@ export default function Home() {
 
     let [token, setToken] = useRecoilState(tokenState)
     let [news, setNews] = useState()
+    let [active, setActive] = useRecoilState(activeState)
+
 
     useEffect(() => {
+        setActive('home')
         fetchNews()
     }, [])
 
