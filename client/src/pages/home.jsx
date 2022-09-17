@@ -3,6 +3,7 @@ import NewsService from "../services/news.service"
 import { useRecoilState } from "recoil"
 import { tokenState } from "../states/user"
 import { Loading } from "@nextui-org/react"
+import NewsConstructor from "../components/news-constructor"
 
 export default function Home() {
 
@@ -26,7 +27,7 @@ export default function Home() {
     return (
         <div>
             {news ?
-                news.map((item, key) => <p key={key}>{item.title._text}</p>)
+                <NewsConstructor item={news}/>
                 : <Loading type="spinner" size={"xl"} />
             }
         </div>
