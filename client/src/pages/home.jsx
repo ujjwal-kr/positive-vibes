@@ -15,7 +15,7 @@ export default function Home() {
 
     useEffect(() => {
         setActive('home')
-        fetchNews()
+        // fetchNews()
     }, [])
 
     async function fetchNews() {

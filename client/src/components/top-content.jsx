@@ -1,5 +1,5 @@
 import { Card, Grid, Input, Text } from "@nextui-org/react";
-import { TopContentWrapper } from "../../styles/top-content";
+import { TopContentWrapper } from "../styles/top-content";
 
 export default function TopContent() {
     return (

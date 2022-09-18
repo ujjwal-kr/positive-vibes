@@ -16,11 +16,11 @@ const darkTheme = createTheme({
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <RecoilRoot>
       <NextUIProvider theme={darkTheme}>
         <App />
       </NextUIProvider>
     </RecoilRoot>
-  </React.StrictMode>
+  // </React.StrictMode>
 )

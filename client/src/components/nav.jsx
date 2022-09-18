@@ -1,20 +1,55 @@
 import { Navbar, Button, Link, Text } from "@nextui-org/react";
 import { useRecoilState } from "recoil"
-import { loginModal, registerModal } from "../states/auth-modal"
 import { useNavigate } from "react-router-dom";
 import Login from "./auth/login";
 import Register from "./auth/signup";
+import AuthService from "../services/auth.service";
+import StorageService from "../services/storage.service";
 
-import { loggedInState } from "../states/user";
+import { loginModal, registerModal } from "../states/auth-modal"
+import { loggedInState, userState, tokenState } from "../states/user";
 import { activeState } from "../states/nav";
+import { useEffect } from "react";
 
 export default function Nav() {
     let [loginVisible, setLoginVisible] = useRecoilState(loginModal)
     let [registerVisible, setRegisterVisible] = useRecoilState(registerModal)
+
     let [loggedIn, setLoggedIn] = useRecoilState(loggedInState)
     let [active, setActive] = useRecoilState(activeState)
 
+    let [user, setUser] = useRecoilState(userState)
+    let [token, setToken] = useRecoilState(tokenState)
+
     let navigate = useNavigate()
+
+    useEffect(() => {
+        let localToken = StorageService.getToken()
+        let localUser = StorageService.getUser()
+        if (localToken) {
+            setLoggedIn(true)
+            setUser(localUser)
+            checkAuth(localToken)
+        } else {
+            setLoggedIn(false)
+        }
+    }, [])
+
+    async function checkAuth(localToken) {
+        try {
+            console.log(localToken)
+            let res = await AuthService.checkAuth(localToken)
+            console.log(res.data)
+        } catch (e) {
+            console.error(e)
+            console.error("checkauth failed!")
+            // StorageService.removeToken()
+            // StorageService.removeUser()
+            setLoggedIn(false)
+            setUser(null)
+            setToken('')
+        }
+    }
 
     return (
         <div>

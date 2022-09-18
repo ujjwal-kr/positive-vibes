@@ -1,5 +1,5 @@
 import Nav from './components/nav'
-import TopContent from "./components/top-content/top-content"
+import TopContent from "./components/top-content"
 
 import {
   BrowserRouter,
