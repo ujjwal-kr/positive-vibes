@@ -1,5 +1,6 @@
 import { Card, Grid, Input, Text } from "@nextui-org/react";
 import { TopContentWrapper } from "../styles/top-content";
+import { BiSearch } from "react-icons/bi";
 
 export default function TopContent() {
     return (
@@ -8,7 +9,7 @@ export default function TopContent() {
 
                 <Grid.Container gap={2} justify="center">
                     <Grid xs={9}>
-                        <Input width="75%" aria-label="Search" bordered size="lg" placeholder="Search" color="primary" />
+                        <Input contentLeft={<BiSearch style={{fontSize: '2rem'}} />} width="75%" aria-label="Search" bordered size="lg" placeholder="Search" color="primary" />
                     </Grid>
 
                     <Grid xs={3}>
