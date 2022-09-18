@@ -58,7 +58,7 @@ export default function Login() {
                         setEmail(e.target.value)
                     }}
                 />
-                <Input
+                <Input.Password
                     clearable
                     bordered
                     fullWidth

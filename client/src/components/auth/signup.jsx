@@ -78,7 +78,7 @@ export default function Register() {
                         setEmail(e.target.value)}
                     placeholder="Email"
                 />
-                <Input
+                <Input.Password
                     clearable
                     bordered
                     fullWidth
