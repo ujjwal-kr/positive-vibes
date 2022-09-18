@@ -46,7 +46,7 @@ export default function Nav() {
         <div>
             <Navbar variant="floating" isCompact isBordered style={{ position: "fixed" }}>
                 <Navbar.Brand>
-                    <Text b color="inherit" hideIn="xs">
+                    <Text b color="inherit" hideIn="xs" onClick={() => navigate('/')}>
                         Positive Vibes
                     </Text>
                 </Navbar.Brand>
