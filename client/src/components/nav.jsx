@@ -3,13 +3,14 @@ import { useRecoilState } from "recoil"
 import { useNavigate } from "react-router-dom";
 import Login from "./auth/login";
 import Register from "./auth/signup";
-import AuthService from "../services/auth.service";
-import StorageService from "../services/storage.service";
+import AuthService from "../services/auth.service"
+import StorageService from "../services/storage.service"
 
 import { loginModal, registerModal } from "../states/auth-modal"
-import { loggedInState, userState, tokenState } from "../states/user";
+import { loggedInState } from "../states/user";
 import { activeState } from "../states/nav";
 import { useEffect } from "react";
+import ProfileDrop from "./auth/profile-drop";
 
 export default function Nav() {
     let [loginVisible, setLoginVisible] = useRecoilState(loginModal)
@@ -18,36 +19,26 @@ export default function Nav() {
     let [loggedIn, setLoggedIn] = useRecoilState(loggedInState)
     let [active, setActive] = useRecoilState(activeState)
 
-    let [user, setUser] = useRecoilState(userState)
-    let [token, setToken] = useRecoilState(tokenState)
-
     let navigate = useNavigate()
 
     useEffect(() => {
-        let localToken = StorageService.getToken()
-        let localUser = StorageService.getUser()
-        if (localToken) {
+        let token = StorageService.getToken()
+        if (token) {
             setLoggedIn(true)
-            setUser(localUser)
-            checkAuth(localToken)
+            checkAuth(token)
         } else {
             setLoggedIn(false)
         }
     }, [])
 
-    async function checkAuth(localToken) {
+    async function checkAuth(token) {
         try {
-            console.log(localToken)
-            let res = await AuthService.checkAuth(localToken)
-            console.log(res.data)
+            await AuthService.checkAuth(token)
         } catch (e) {
-            console.error(e)
             console.error("checkauth failed!")
-            // StorageService.removeToken()
-            // StorageService.removeUser()
+            StorageService.removeToken()
+            StorageService.removeUser()
             setLoggedIn(false)
-            setUser(null)
-            setToken('')
         }
     }
 
@@ -71,7 +62,7 @@ export default function Nav() {
                 </Navbar.Content>
                 <Navbar.Content>
                     {
-                        loggedIn ? "Welcome"
+                        loggedIn ? <ProfileDrop />
 
                             :
                             <>

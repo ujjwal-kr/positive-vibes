@@ -11,7 +11,6 @@ const AuthService = {
     },
 
     checkAuth: async (token) => {
-        console.log(token)
         return await axios.get(URL + "auth/check", {
             headers: { 'authorization': token, 'test': 'test123' }
         })

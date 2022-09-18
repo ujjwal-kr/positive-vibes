@@ -1,25 +1,26 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import NewsService from "../services/news.service"
 import { useRecoilState } from "recoil"
-import { tokenState } from "../states/user"
 import { Loading } from "@nextui-org/react"
 import NewsConstructor from "../components/news-constructor"
 import { activeState } from "../states/nav"
 
+import NewsService from "../services/news.service"
+import StorageService from "../services/storage.service"
+
 export default function News() {
     let { id } = useParams()
-    let [token, setToken] = useRecoilState(tokenState)
     let [news, setNews] = useState()
     let [active, setActive] = useRecoilState(activeState)
 
     useEffect(() => {
         setActive(id)
         setNews(null)
-        fetchNews(id)
+        let token = StorageService.getToken()
+        fetchNews(id, token)
     }, [id])
 
-    async function fetchNews(id) {
+    async function fetchNews(id, token) {
         try {
             let res = await NewsService.fetchWithId(id, token)
             setNews(res.data)

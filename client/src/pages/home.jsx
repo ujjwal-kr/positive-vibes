@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react"
-import NewsService from "../services/news.service"
 import { useRecoilState } from "recoil"
-import { tokenState } from "../states/user"
 import { activeState } from "../states/nav"
 import { Loading } from "@nextui-org/react"
 import NewsConstructor from "../components/news-constructor"
 
+import NewsService from "../services/news.service"
+import StorageService from "../services/storage.service"
+
 export default function Home() {
 
-    let [token, setToken] = useRecoilState(tokenState)
-    let [news, setNews] = useState()
     let [active, setActive] = useRecoilState(activeState)
-
+    let [news, setNews] = useState()
 
     useEffect(() => {
         setActive('home')
-        // fetchNews()
+        let token = StorageService.getToken()
+        fetchNews(token)
     }, [])
 
-    async function fetchNews() {
+    async function fetchNews(token) {
         try {
             let res = await NewsService.topStories(token)
             setNews(res.data)
-            console.log(res.data)
         } catch (e) {
             console.log(e)
         }
