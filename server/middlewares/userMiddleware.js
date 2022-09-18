@@ -5,15 +5,17 @@ const scoring = require('../routes/parser/functions/scoreLogic')
 
 const UserMiddleware = async function (req, res, next) {
     const token = await req.headers.authorization
+    console.log(req.headers)
     try {
         const decoded = jwt.verify(token, KEY)
         const id = decoded.id
-        await User.findById(id, (err, user) => {
-            if (user == null) return res.status(404).json({ err: err })
-            const score = scoring(user.setting)
-            req.body.score = score
-            req.body.user = user
-        })
+        let user = await User.findById(id);
+        if (user == null) return res.status(404).json({
+            message: "User not found"
+         })
+         const score  = scoring(user.setting)
+         req.body.score = score
+         req.body.user = user
         return next()
     } catch(e) {
         req.body.score = 2
