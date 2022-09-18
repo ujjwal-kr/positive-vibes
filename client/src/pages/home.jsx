@@ -6,6 +6,7 @@ import NewsConstructor from "../components/news-constructor"
 
 import NewsService from "../services/news.service"
 import StorageService from "../services/storage.service"
+import { LoadWrapper, NewsWrapper } from "../styles/news-wrapper"
 
 export default function Home() {
 
@@ -29,10 +30,12 @@ export default function Home() {
 
     return (
         <div>
-            {news ?
-                <NewsConstructor item={news}/>
-                : <Loading type="spinner" size={"xl"} />
-            }
+            <NewsWrapper>
+                {news ?
+                    <NewsConstructor item={news} />
+                    : <LoadWrapper><Loading type="spinner" size={"xl"} /></LoadWrapper> 
+                }
+            </NewsWrapper>
         </div>
     )
 }

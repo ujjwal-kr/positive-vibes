@@ -66,11 +66,11 @@ export default function Nav() {
 
                             :
                             <>
-                                <Navbar.Link onClick={() => setLoginVisible(true)} color="inherit" href="#">
+                                <Navbar.Link onClick={() => setLoginVisible(true)} color="inherit">
                                     Login
                                 </Navbar.Link>
                                 <Navbar.Item>
-                                    <Button onPress={() => setRegisterVisible(true)} auto flat as={Link} href="#">
+                                    <Button onPress={() => setRegisterVisible(true)} auto flat as={Link}>
                                         Sign Up
                                     </Button>
                                 </Navbar.Item>

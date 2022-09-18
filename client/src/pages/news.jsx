@@ -8,6 +8,8 @@ import { activeState } from "../states/nav"
 import NewsService from "../services/news.service"
 import StorageService from "../services/storage.service"
 
+import { NewsWrapper, LoadWrapper } from "../styles/news-wrapper"
+
 export default function News() {
     let { id } = useParams()
     let [news, setNews] = useState()
@@ -32,10 +34,12 @@ export default function News() {
 
     return (
         <div>
-            {news ?
-                <NewsConstructor item={news}/>
-                : <Loading type="spinner" size={"xl"} />
-            }
+            <NewsWrapper>
+                {news ?
+                    <NewsConstructor item={news} />
+                    : <LoadWrapper><Loading type="spinner" size={"xl"} /></LoadWrapper> 
+                }
+            </NewsWrapper>
         </div>
     )
 
