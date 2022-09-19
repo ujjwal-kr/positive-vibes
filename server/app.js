@@ -22,11 +22,13 @@ mongoose.connect(process.env.MONGO_URI, {
 const Auth = require('./routes/auth/auth')
 const News = require('./routes/parser/news')
 const Xenon = require('./routes/xenon/xenon')
+const Weather = require('./routes/weather')
 const UserMiddleware = require('./middlewares/userMiddleware')
 
 app.use('/news', UserMiddleware, News)
 app.use('/auth', Auth)
 app.use('/xenon', Xenon)
+app.use('/weather', Weather)
 app.get('/', (req, res) => {
     res.send("WELCOME TO THE POSITIVE VIBES API\n")
 });
