@@ -21,9 +21,11 @@ export default function News() {
         setNews(null)
         let token = StorageService.getToken()
         let cachedNews = SessionService.getNews(id)
-        if (cachedNews) {
-            setNews(cachedNews)
-        }
+        setTimeout(() => {
+            if (cachedNews) {
+                setNews(cachedNews)
+            }
+        }, .00001);
         fetchNews(id, token)
     }, [id])
 
