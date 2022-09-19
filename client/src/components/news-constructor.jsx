@@ -23,7 +23,7 @@ export default function NewsConstructor(props) {
                         </Grid>
                         <Grid xs={3}>
                             <Button size={"lg"} auto onClick={() => window.open(news.link._text)}
-                                color={"gradient"}>Open Link</Button>
+                                color={"gradient"}>Read Post</Button>
                         </Grid>
                     </Grid.Container>
                 </Card>
