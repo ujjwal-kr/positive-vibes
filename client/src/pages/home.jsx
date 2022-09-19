@@ -6,6 +6,8 @@ import NewsConstructor from "../components/news-constructor"
 
 import NewsService from "../services/news.service"
 import StorageService from "../services/storage.service"
+import SessionService from "../services/session.service"
+
 import { LoadWrapper, NewsWrapper } from "../styles/news-wrapper"
 
 export default function Home() {
@@ -15,7 +17,11 @@ export default function Home() {
 
     useEffect(() => {
         setActive('home')
-        let token = StorageService.getToken()
+        const token = StorageService.getToken()
+        const cachedNews = SessionService.getNews('home')
+        if (cachedNews) {
+            setNews(cachedNews)
+        }
         fetchNews(token)
     }, [])
 
@@ -23,6 +29,7 @@ export default function Home() {
         try {
             let res = await NewsService.topStories(token)
             setNews(res.data)
+            SessionService.setNews('home', res.data)
         } catch (e) {
             console.log(e)
         }

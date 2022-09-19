@@ -7,6 +7,7 @@ import { activeState } from "../states/nav"
 
 import NewsService from "../services/news.service"
 import StorageService from "../services/storage.service"
+import SessionService from "../services/session.service"
 
 import { NewsWrapper, LoadWrapper } from "../styles/news-wrapper"
 
@@ -19,6 +20,10 @@ export default function News() {
         setActive(id)
         setNews(null)
         let token = StorageService.getToken()
+        let cachedNews = SessionService.getNews(id)
+        if (cachedNews) {
+            setNews(cachedNews)
+        }
         fetchNews(id, token)
     }, [id])
 
@@ -26,6 +31,7 @@ export default function News() {
         try {
             let res = await NewsService.fetchWithId(id, token)
             setNews(res.data)
+            SessionService.setNews(id, res.data)
             console.log(res.data)
         } catch (e) {
             console.log(e)

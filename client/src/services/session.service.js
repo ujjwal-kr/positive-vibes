@@ -1,17 +1,10 @@
 const SessionService = {
-    getUser: function() {
-        let user = window.sessionStorage.getItem("user")
-        user = JSON.parse(user)
-        return user
+    setNews: (id, news) => {
+        return window.sessionStorage.setItem(id, JSON.stringify(news))
     },
 
-    setUser: function(user) {
-        window.sessionStorage.setItem("user", JSON.stringify(user))
-        return
-    },
-
-    removeUser: function() {
-        window.sessionStorage.removeItem("user")
+    getNews: (id) => {
+        return JSON.parse(window.sessionStorage.getItem(id))
     }
 }
 
