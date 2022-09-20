@@ -101,13 +101,13 @@ export default function Nav() {
                     </Navbar.Content>
                 </DesktopItems>
                 <Navbar.Collapse>   
-                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => { navigate('/'); setChecked(true) }}>Headlines</Navbar.Toggle></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => {navigate('/news/health'); setChecked(true)}}>Health</Navbar.Toggle></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/science')}>Science</Navbar.Toggle></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/india')}>India</Navbar.Toggle></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/technology')}>Technology</Navbar.Toggle></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/sports')}>Sports</Navbar.Toggle></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/entertainment')}>Entertainment</Navbar.Toggle></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a href="/">Headlines</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a href="/news/health">Health</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a href="/news/science">Science</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a href="/news/india">India</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a href="/news/technology">Technology</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a href="/news/sports">Sports</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a href="/news/entertainment">Entertainment</a></Navbar.CollapseItem>
                 </Navbar.Collapse>
 
             </Navbar>
