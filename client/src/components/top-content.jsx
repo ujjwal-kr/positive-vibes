@@ -3,6 +3,7 @@ import { TopContentWrapper } from "../styles/top-content";
 import { BiSearch } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import WeatherService from "../services/weather.service";
+import SessionService from "../services/session.service";
 
 export default function TopContent() {
 
@@ -12,9 +13,15 @@ export default function TopContent() {
 
     async function getTemperature() {
         try {
-            const res = await WeatherService.getTemperature()
-            const roundTemp = Math.round(parseInt(res.data.temperature))
-            setTemperature(roundTemp.toString())
+            const tempCache = SessionService.getTemperature()
+            if (tempCache) {
+                setTemperature(tempCache)
+            } else {
+                const res = await WeatherService.getTemperature()
+                const roundTemp = Math.round(parseInt(res.data.temperature))
+                setTemperature(roundTemp.toString())
+                SessionService.setTemperature(roundTemp.toString())
+            }
         } catch(e) {
             console.log(e)
         }
