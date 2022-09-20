@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
     const url = "https://api.ip8.com/ip/lookup/103.72.178.110";
 
     try {
-        console.log(ip)
         let response = await Axios.get(url, {
             headers: { 'user-agent': agent }
         })
