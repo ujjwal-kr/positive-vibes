@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
         let res = await Axios.get(url, {
             headers: { 'user-agent': agent }
         })
-        req.json(res.data)
+        return req.json(res.data)
         // const city = res.data.details.geoip[0].city.name
         // try {
         //     let finalRes = await Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=84f0c05e16abc57b03ca8fa00b59f78e&units=metric`)
@@ -35,10 +35,6 @@ router.get('/', async (req, res) => {
             message: 'Something went wrong'
         })
     }
-
-    res.json({
-        ip
-    })
 })
 
 module.exports = router
