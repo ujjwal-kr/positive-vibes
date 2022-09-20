@@ -1,4 +1,4 @@
-import { Navbar, Button, Link, Text } from "@nextui-org/react";
+import { Navbar, Button, Link, Text, Input } from "@nextui-org/react";
 import { useRecoilState } from "recoil"
 import { useNavigate } from "react-router-dom";
 import Login from "./auth/login";
@@ -11,6 +11,8 @@ import { loggedInState } from "../states/user";
 import { activeState } from "../states/nav";
 import { useEffect } from "react";
 import ProfileDrop from "./auth/profile-drop";
+import { DesktopItems, MobileItems } from "../styles/navbar";
+import { useState } from "react";
 
 export default function Nav() {
     let [loginVisible, setLoginVisible] = useRecoilState(loginModal)
@@ -20,6 +22,7 @@ export default function Nav() {
     let [active, setActive] = useRecoilState(activeState)
 
     let navigate = useNavigate()
+    let [checked, setChecked] = useState(true)
 
     useEffect(() => {
         let token = StorageService.getToken()
@@ -46,12 +49,19 @@ export default function Nav() {
         <div>
             <Navbar variant="floating" isCompact isBordered style={{ position: "fixed" }}>
                 <Navbar.Brand>
+                    <MobileItems>
+                        <Navbar.Toggle aria-label="toggle navigation" onClick={() => { setChecked(true) }} />
+                        <Text b color="inherit" hideIn="xs" onClick={() => navigate('/')}>
+                            Positive Vibes
+                        </Text>
+                    </MobileItems>
                     <Text b color="inherit" hideIn="xs" onClick={() => navigate('/')}>
                         Positive Vibes
                     </Text>
                 </Navbar.Brand>
 
-                <Navbar.Content hideIn="xs" enableCursorHighlight>
+                <Navbar.Content hideIn={"xs"} enableCursorHighlight>
+
                     <Navbar.Link onClick={() => navigate('/')} isActive={active === 'home'}>Headlines</Navbar.Link>
                     <Navbar.Link isActive={active === 'health'} onClick={() => navigate('/news/health')}>Health</Navbar.Link>
                     <Navbar.Link isActive={active === 'science'} onClick={() => navigate('/news/science')}>Science</Navbar.Link>
@@ -60,24 +70,46 @@ export default function Nav() {
                     <Navbar.Link isActive={active === 'sports'} onClick={() => navigate('/news/sports')}>Sports</Navbar.Link>
                     <Navbar.Link isActive={active === 'entertainment'} onClick={() => navigate('/news/entertainment')}>Entertainment</Navbar.Link>
                 </Navbar.Content>
-                <Navbar.Content>
-                    {
-                        loggedIn ? <ProfileDrop />
 
-                            :
-                            <>
-                                <Navbar.Link onClick={() => setLoginVisible(true)} color="inherit">
-                                    Login
-                                </Navbar.Link>
-                                <Navbar.Item>
-                                    <Button onPress={() => setRegisterVisible(true)} auto flat as={Link}>
-                                        Sign Up
-                                    </Button>
-                                </Navbar.Item>
-                            </>
 
-                    }
-                </Navbar.Content>
+                <MobileItems>
+                    <Navbar.Content>
+                        <Input
+                            clearable
+                            placeholder="Search..."
+                        />
+                    </Navbar.Content>
+                </MobileItems>
+
+                <DesktopItems>
+                    <Navbar.Content>
+                        {
+                            loggedIn ? <ProfileDrop />
+                                :
+                                <>
+                                    <Navbar.Link onClick={() => setLoginVisible(true)} color="inherit">
+                                        Login
+                                    </Navbar.Link>
+                                    <Navbar.Item>
+                                        <Button onPress={() => setRegisterVisible(true)} auto flat as={Link}>
+                                            Sign Up
+                                        </Button>
+                                    </Navbar.Item>
+                                </>
+
+                        }
+                    </Navbar.Content>
+                </DesktopItems>
+                <Navbar.Collapse>   
+                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => { navigate('/'); setChecked(true) }}>Headlines</Navbar.Toggle></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => {navigate('/news/health'); setChecked(true)}}>Health</Navbar.Toggle></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/science')}>Science</Navbar.Toggle></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/india')}>India</Navbar.Toggle></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/technology')}>Technology</Navbar.Toggle></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/sports')}>Sports</Navbar.Toggle></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><Navbar.Toggle defaultSelected={checked} onClick={() => navigate('/news/entertainment')}>Entertainment</Navbar.Toggle></Navbar.CollapseItem>
+                </Navbar.Collapse>
+
             </Navbar>
 
             <Login />
