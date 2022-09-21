@@ -11,7 +11,7 @@ import { loggedInState } from "../states/user";
 import { activeState } from "../states/nav";
 import { useEffect } from "react";
 import ProfileDrop from "./auth/profile-drop";
-import { DesktopItems, MobileItems } from "../styles/navbar";
+import { DesktopItems, MobileItems } from "../styles/responsive";
 import { useState } from "react";
 
 export default function Nav() {

@@ -1,12 +1,16 @@
 import Nav from './components/nav'
 import TopContent from "./components/top-content"
+import MobileTemp from './components/mobile-temp'
 
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom"
+
 import { MainWrapper } from './styles/main-wrapper'
+import { DesktopItems, MobileItems } from './styles/responsive'
+
 import Home from './pages/home'
 import News from "./pages/news"
 
@@ -16,7 +20,14 @@ function App() {
     <BrowserRouter>
       <Nav />
       <MainWrapper>
-        <TopContent />
+
+        <DesktopItems>
+          <TopContent />
+        </DesktopItems>
+
+        <MobileItems>
+          <MobileTemp />
+        </MobileItems>
 
         <Routes>
           <Route path="/" element={<Home/>} exact />
