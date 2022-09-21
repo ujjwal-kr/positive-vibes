@@ -94,11 +94,16 @@ const WORDS = {
     'heartbreak': -6,
     'sexy': -1,
     'religion': -2,
-    'court': -.5,
-    'hindu': -1,
-    'muslim': -1,
-    'christian': -1,
-    'islam': -1,
+    'court': -2,
+    'hindu': -2,
+    'hinduism': -2,
+    'muslim': -2,
+    'christian': -2,
+    'christianity': -2,
+    'hindus': -1,
+    'muslims': -1,
+    'christians': -1,
+    'islam': -2,
 }
 
 module.exports = WORDS;
