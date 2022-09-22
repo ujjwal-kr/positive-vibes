@@ -8,7 +8,7 @@ export const DesktopItems = styled.span`
 
 export const MobileItems = styled.span`
     display: none;
-    @media all and (max-width: 650px) {
+    @media all and (max-width: 900px) {
         display: block;
     }
 `
