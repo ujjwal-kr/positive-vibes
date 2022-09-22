@@ -4,7 +4,6 @@ import { DesktopItems, MobileItems } from "../styles/responsive"
 
 export default function NewsConstructor(props) {
     let { item } = props
-    console.log(item[0])
 
     return (
         item.map((news, key) => 

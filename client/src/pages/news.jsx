@@ -34,7 +34,6 @@ export default function News() {
             let res = await NewsService.fetchWithId(id, token)
             setNews(res.data)
             SessionService.setNews(id, res.data)
-            console.log(res.data)
         } catch (e) {
             console.log(e)
         }

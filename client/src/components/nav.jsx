@@ -10,6 +10,8 @@ import { loginModal, registerModal } from "../states/auth-modal"
 import { loggedInState } from "../states/user";
 import { activeState } from "../states/nav";
 import { useEffect } from "react";
+import { FiSettings, FiLogOut, FiPlusCircle, FiLogIn } from "react-icons/fi"
+
 import ProfileDrop from "./auth/profile-drop";
 import { DesktopItems, MobileItems } from "../styles/responsive";
 import { useState } from "react";
@@ -100,7 +102,7 @@ export default function Nav() {
                         }
                     </Navbar.Content>
                 </DesktopItems>
-                <Navbar.Collapse>   
+                <Navbar.Collapse>
                     <Navbar.CollapseItem><a style={white} href="/">Headlines</a></Navbar.CollapseItem>
                     <Navbar.CollapseItem><a style={white} href="/news/health">Health</a></Navbar.CollapseItem>
                     <Navbar.CollapseItem><a style={white} href="/news/science">Science</a></Navbar.CollapseItem>
@@ -108,6 +110,21 @@ export default function Nav() {
                     <Navbar.CollapseItem><a style={white} href="/news/technology">Technology</a></Navbar.CollapseItem>
                     <Navbar.CollapseItem><a style={white} href="/news/sports">Sports</a></Navbar.CollapseItem>
                     <Navbar.CollapseItem><a style={white} href="/news/entertainment">Entertainment</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem>
+                        {
+                            loggedIn ? 
+                            <>
+                            <Button icon={<FiSettings />} flat auto color={"secondary"}>Settings</Button>
+                            <Button icon={<FiLogOut />} flat auto style={{ marginLeft: '10px' }} color={"error"}>Log Out</Button>
+                            </>
+                                :
+                                <>
+                                    <Button icon={<FiPlusCircle />} onPress={() => setRegisterVisible(true)} flat auto >Sign Up</Button>
+                                    <Button icon={<FiLogIn />} onPress={() => setLoginVisible(true)} style={{ marginLeft: '10px' }} flat auto >Log In</Button>
+                                </>
+                        }
+                    </Navbar.CollapseItem>
+
                 </Navbar.Collapse>
 
             </Navbar>
@@ -118,6 +135,6 @@ export default function Nav() {
     )
 }
 
-const white =  {
+const white = {
     color: 'white'
 }
