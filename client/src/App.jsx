@@ -16,7 +16,7 @@ import News from "./pages/news"
 
 function App() {
 
-  return (
+    return (
     <BrowserRouter>
       <Nav />
       <MainWrapper>

@@ -6,7 +6,7 @@ export const DesktopItems = styled.span`
     }
 `
 
-export const MobileItems = styled.div`
+export const MobileItems = styled.span`
     display: none;
     @media all and (max-width: 650px) {
         display: block;

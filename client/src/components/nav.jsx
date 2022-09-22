@@ -101,13 +101,13 @@ export default function Nav() {
                     </Navbar.Content>
                 </DesktopItems>
                 <Navbar.Collapse>   
-                    <Navbar.CollapseItem><a href="/">Headlines</a></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><a href="/news/health">Health</a></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><a href="/news/science">Science</a></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><a href="/news/india">India</a></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><a href="/news/technology">Technology</a></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><a href="/news/sports">Sports</a></Navbar.CollapseItem>
-                    <Navbar.CollapseItem><a href="/news/entertainment">Entertainment</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a style={white} href="/">Headlines</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a style={white} href="/news/health">Health</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a style={white} href="/news/science">Science</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a style={white} href="/news/india">India</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a style={white} href="/news/technology">Technology</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a style={white} href="/news/sports">Sports</a></Navbar.CollapseItem>
+                    <Navbar.CollapseItem><a style={white} href="/news/entertainment">Entertainment</a></Navbar.CollapseItem>
                 </Navbar.Collapse>
 
             </Navbar>
@@ -116,4 +116,8 @@ export default function Nav() {
             <Register />
         </div>
     )
+}
+
+const white =  {
+    color: 'white'
 }

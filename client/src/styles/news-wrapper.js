@@ -22,4 +22,7 @@ export const NewsContentWrapper = styled.div`
     animation-name: ${FadeUp};
     margin: auto;
     width: 70%;
+    @media all and (max-width: 790px) {
+        width: 100%;
+    }
 `
