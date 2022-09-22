@@ -24,7 +24,7 @@ export default function Nav() {
     let [active, setActive] = useRecoilState(activeState)
 
     let navigate = useNavigate()
-    let [checked, setChecked] = useState(true)
+    let [term, setTerm] = useState()
 
     useEffect(() => {
         let token = StorageService.getToken()
@@ -45,6 +45,11 @@ export default function Nav() {
             StorageService.removeUser()
             setLoggedIn(false)
         }
+    }
+
+    function search(e) {
+        e.preventDefault()
+        navigate('/search/' + term)
     }
 
     return (
@@ -76,10 +81,16 @@ export default function Nav() {
 
                 <MobileItems>
                     <Navbar.Content>
-                        <Input
-                            clearable
-                            placeholder="Search..."
-                        />
+                        <form onSubmit={(e) => search(e)} style={{ width: '100%' }}>
+                            <Input
+                                clearable
+                                placeholder="Search..."
+                                aria-label="Search"
+                                onChange={(e) => setTerm(e.target.value)}
+                                bordered
+                            />
+                        </form>
+
                     </Navbar.Content>
                 </MobileItems>
 
@@ -112,11 +123,11 @@ export default function Nav() {
                     <Navbar.CollapseItem><a style={white} href="/news/entertainment">Entertainment</a></Navbar.CollapseItem>
                     <Navbar.CollapseItem>
                         {
-                            loggedIn ? 
-                            <>
-                            <Button icon={<FiSettings />} flat auto color={"secondary"}>Settings</Button>
-                            <Button icon={<FiLogOut />} flat auto style={{ marginLeft: '10px' }} color={"error"}>Log Out</Button>
-                            </>
+                            loggedIn ?
+                                <>
+                                    <Button icon={<FiSettings />} flat auto color={"secondary"}>Settings</Button>
+                                    <Button icon={<FiLogOut />} flat auto style={{ marginLeft: '10px' }} color={"error"}>Log Out</Button>
+                                </>
                                 :
                                 <>
                                     <Button icon={<FiPlusCircle />} onPress={() => setRegisterVisible(true)} flat auto >Sign Up</Button>

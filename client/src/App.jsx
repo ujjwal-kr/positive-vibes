@@ -13,6 +13,7 @@ import { DesktopItems, MobileItems } from './styles/responsive'
 
 import Home from './pages/home'
 import News from "./pages/news"
+import Search from './pages/search'
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} exact />
           <Route path="/news/:id" element={<News/>} />
-          <Route path="/search/:query" element={<></>} />
+          <Route path="/search/:term" element={<Search />} />
         </Routes>
       </MainWrapper>
 

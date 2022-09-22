@@ -4,8 +4,11 @@ import { BiSearch } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import WeatherService from "../services/weather.service";
 import SessionService from "../services/session.service";
+import { useNavigate } from "react-router-dom"
 
 export default function TopContent() {
+    let navigate = useNavigate()
+    let [term, setTerm] = useState()
 
     useEffect(() => {
         getTemperature()
@@ -27,6 +30,11 @@ export default function TopContent() {
         }
     }
 
+    function search(e) {
+        e.preventDefault()
+        navigate('/search/'+ term)
+    }
+
     let [temperature, setTemperature] = useState('27')
 
     return (
@@ -35,7 +43,17 @@ export default function TopContent() {
 
                 <Grid.Container gap={2} justify="center">
                     <Grid xs={9}>
-                        <Input contentLeft={<BiSearch style={{fontSize: '2rem'}} />} width="75%" aria-label="Search" bordered size="lg" placeholder="Search" color="primary" />
+                        <form onSubmit={(e) => search(e)} style={{ width: '100%' }}>
+                            <Input contentLeft={<BiSearch style={{fontSize: '2rem'}} />}
+                             onChange={(e) => setTerm(e.target.value)}
+                             clearable
+                             width="75%" 
+                             aria-label="Search" 
+                             bordered 
+                             size="lg" 
+                             placeholder="Search" 
+                             color="primary" />
+                        </form>
                     </Grid>
 
                     <Grid xs={3}>
