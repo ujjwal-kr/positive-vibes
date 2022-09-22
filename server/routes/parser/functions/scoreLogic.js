@@ -1,8 +1,8 @@
 function scoring(type) {
-    if (type === 'basic') return 1
-    if (type === 'moderate') return 2
-    if (type === 'strict') return 3
-    return 1
+    if (type === 'basic') return 2
+    if (type === 'moderate') return 3
+    if (type === 'strict') return 4
+    return 2
 }
 
 module.exports = scoring;

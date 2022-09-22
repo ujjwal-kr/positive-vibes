@@ -104,6 +104,10 @@ const WORDS = {
     'muslims': -1,
     'christians': -1,
     'islam': -2,
+    'falls': -1,
+    'down': -1,
+    'crashes': -1,
+    'crash': -1
 }
 
 module.exports = WORDS;
