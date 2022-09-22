@@ -52,6 +52,12 @@ export default function Nav() {
         navigate('/search/' + term)
     }
 
+    function logout() {
+        StorageService.removeToken()
+        StorageService.removeUser()
+        setLoggedIn(false)
+    }
+
     return (
         <div>
             <Navbar variant="floating" isCompact isBordered style={{ position: "fixed" }}>
@@ -86,8 +92,8 @@ export default function Nav() {
                                 clearable
                                 placeholder="Search..."
                                 aria-label="Search"
+                                shadow={false}
                                 onChange={(e) => setTerm(e.target.value)}
-                                bordered
                             />
                         </form>
 
@@ -126,7 +132,7 @@ export default function Nav() {
                             loggedIn ?
                                 <>
                                     <Button icon={<FiSettings />} flat auto color={"secondary"}>Settings</Button>
-                                    <Button icon={<FiLogOut />} flat auto style={{ marginLeft: '10px' }} color={"error"}>Log Out</Button>
+                                    <Button onClick={logout} icon={<FiLogOut />} flat auto style={{ marginLeft: '10px' }} color={"error"}>Log Out</Button>
                                 </>
                                 :
                                 <>
