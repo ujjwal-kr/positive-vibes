@@ -6,8 +6,8 @@ import Register from "./auth/signup";
 import AuthService from "../services/auth.service"
 import StorageService from "../services/storage.service"
 
-import { loginModal, registerModal } from "../states/auth-modal"
-import { loggedInState } from "../states/user";
+import { loginModal, registerModal, settingsModal } from "../states/modal"
+import { loggedInState, settingState } from "../states/user";
 import { activeState } from "../states/nav";
 import { useEffect } from "react";
 import { FiSettings, FiLogOut, FiPlusCircle, FiLogIn } from "react-icons/fi"
@@ -15,12 +15,14 @@ import { FiSettings, FiLogOut, FiPlusCircle, FiLogIn } from "react-icons/fi"
 import ProfileDrop from "./auth/profile-drop";
 import { DesktopItems, MobileItems } from "../styles/responsive";
 import { useState } from "react";
+import Settings from "./auth/settings";
 
 export default function Nav() {
     let [loginVisible, setLoginVisible] = useRecoilState(loginModal)
     let [registerVisible, setRegisterVisible] = useRecoilState(registerModal)
 
     let [loggedIn, setLoggedIn] = useRecoilState(loggedInState)
+    let [setting, setSetting] = useRecoilState(settingState)
     let [active, setActive] = useRecoilState(activeState)
 
     let navigate = useNavigate()
@@ -28,8 +30,10 @@ export default function Nav() {
 
     useEffect(() => {
         let token = StorageService.getToken()
+        let user = StorageService.getUser()
         if (token) {
             setLoggedIn(true)
+            setSetting(user.setting)
             checkAuth(token)
         } else {
             setLoggedIn(false)
@@ -63,7 +67,7 @@ export default function Nav() {
             <Navbar variant="floating" isCompact isBordered style={{ position: "fixed" }}>
                 <Navbar.Brand>
                     <MobileItems>
-                        <Navbar.Toggle aria-label="toggle navigation" onClick={() => { setChecked(true) }} />
+                        <Navbar.Toggle aria-label="toggle navigation" />
                         <Text b color="inherit" hideIn="xs" onClick={() => navigate('/')}>
                             Positive Vibes
                         </Text>
@@ -148,6 +152,7 @@ export default function Nav() {
 
             <Login />
             <Register />
+            <Settings />
         </div>
     )
 }

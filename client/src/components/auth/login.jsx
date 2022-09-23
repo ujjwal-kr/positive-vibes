@@ -1,13 +1,14 @@
 import { useRecoilState } from "recoil"
-import { loginModal } from "../../states/auth-modal"
+import { loginModal } from "../../states/modal"
 import { Button, Text, Modal, Input } from "@nextui-org/react"
-import { loggedInState } from "../../states/user"
+import { loggedInState, settingState } from "../../states/user"
 import AuthService from "../../services/auth.service"
 import StorageService from "../../services/storage.service"
 import { useState } from "react"
 
 export default function Login() {
     const [visible, setVisible] = useRecoilState(loginModal)
+    const [setting, setSetting] = useRecoilState(settingState)
     const [logged, setLogged] = useRecoilState(loggedInState)
 
     const [email, setEmail] = useState()
@@ -19,6 +20,7 @@ export default function Login() {
             StorageService.setUser(res.data.user)
             StorageService.setToken(res.data.token)
             setLogged(true)
+            setSetting(res.data.user.setting)
             setVisible(false)
         } catch (e) {
             console.log(e)

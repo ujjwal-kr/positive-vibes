@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil"
-import { registerModal } from "../../states/auth-modal"
-import { loggedInState } from "../../states/user"
+import { registerModal } from "../../states/modal"
+import { loggedInState, settingState } from "../../states/user"
 import { Button, Text, Modal, Input } from "@nextui-org/react"
 import AuthService from "../../services/auth.service"
 import StorageService from "../../services/storage.service"
@@ -8,6 +8,7 @@ import { useState } from "react";
 
 export default function Register() {
     const [visible, setVisible] = useRecoilState(registerModal)
+    let [setting, setSetting] = useRecoilState(settingState)
     const [logged, setLogged] = useRecoilState(loggedInState)
 
     const closeHandler = () => {
@@ -30,8 +31,8 @@ export default function Register() {
             StorageService.setUser(loginRes.data.user)
             StorageService.setToken(loginRes.data.token)
             setLogged(true)
+            setSetting(loginRes.data.user.setting)
             setVisible(false)
-            console.log(loginRes.data);
         } catch (e) {
             console.error(e)
             alert("Something went wrong")

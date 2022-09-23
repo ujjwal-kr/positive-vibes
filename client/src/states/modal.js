@@ -9,3 +9,8 @@ export const registerModal = atom({
     key: 'register-modal',
     default: false
 })
+
+export const settingsModal = atom({
+    key: 'settings-modal',
+    default: false
+})
