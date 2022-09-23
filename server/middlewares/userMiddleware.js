@@ -5,7 +5,6 @@ const scoring = require('../routes/parser/functions/scoreLogic')
 
 const UserMiddleware = async function (req, res, next) {
     const token = await req.headers.authorization
-    console.log(req.headers)
     try {
         const decoded = jwt.verify(token, KEY)
         const id = decoded.id

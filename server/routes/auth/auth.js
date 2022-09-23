@@ -17,8 +17,8 @@ router.post('/register', ValidateRegister, async(req, res, next) => {
     const {email} = req.body
     const user = await User.findOne({email})
     if(user) return res.status(400).json({message: "User Exists"})
-    await bcrypt.genSalt(10, async (err, salt) => {
-        await bcrypt.hash(data.password, salt, async (err, hash) => {
+    bcrypt.genSalt(10, async (err, salt) => {
+        bcrypt.hash(data.password, salt, async (err, hash) => {
             if (err) return next(err)
             data.password = hash
             const user = await User.create(data).catch(e => {
@@ -35,12 +35,12 @@ router.post('/login', ValidateLogin, async(req, res, next) => {
     const user = await User.findOne({email})
 
     if(!user) return res.status(404).json({message: "Didnt find any user"})
-    await bcrypt.compare(password, user.password, async (err, correct) => {
+    bcrypt.compare(password, user.password, async (err, correct) => {
         if (err) return console.log(err)
         if (!correct) return res.status(404).json({message: "Wrong password"})
 
         const payload = { id: user.id }   
-        await jwt.sign(payload, KEY, {expiresIn: '30d'}, (err, token) => {
+        jwt.sign(payload, KEY, {expiresIn: '30d'}, (err, token) => {
              if(err) return next(err)
              return res.json({ user, token })
         })
