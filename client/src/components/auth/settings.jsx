@@ -3,13 +3,28 @@ import { useRecoilState } from "recoil";
 import { settingsModal } from "../../states/modal";
 import { settingState } from "../../states/user";
 
+import SettingsService from "../../services/settings.service";
+import StorageService from "../../services/storage.service"
+
 export default function Settings() {
     const [visible, setVisible] = useRecoilState(settingsModal)
-    const [setting, setSetting] = useRecoilState(settingState)
+    const [setting, setSettingState] = useRecoilState(settingState)
+
+    let token = StorageService.getToken()
+    let user = StorageService.getUser()
 
     const closeHandler = () => {
         setVisible(false);
     };
+
+    async function setSetting(value) {
+        try {
+            await SettingsService.changeSetting(token, user._id, value)
+            setSettingState(value)
+        } catch (e) {
+            alert("fatal error")
+        }
+    }
 
 
     return (
@@ -36,7 +51,7 @@ export default function Settings() {
                     <Grid.Container style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }} gap={3}>
                         <Grid>
                             <Button
-                                onClick={() => setSetting('basic')}
+                                onClick={async () => await setSetting('basic')}
                                 color={setting == 'basic' ? "success" : "default"}
                                 shadow={setting == 'basic'} auto>
                                 Basic
@@ -45,7 +60,7 @@ export default function Settings() {
 
                         <Grid>
                             <Button
-                                onClick={() => setSetting('moderate')}
+                                onClick={async () => await setSetting('moderate')}
                                 color={setting == 'moderate' ? "success" : "default"}
                                 shadow={setting == 'moderate'} auto>
                                 Moderate
@@ -54,7 +69,7 @@ export default function Settings() {
 
                         <Grid>
                             <Button
-                                onClick={() => setSetting('strict')}
+                                onClick={async () => await setSetting('strict')}
                                 color={setting == 'strict' ? "success" : "default"}
                                 shadow={setting == 'strict'} auto>
                                 Strict

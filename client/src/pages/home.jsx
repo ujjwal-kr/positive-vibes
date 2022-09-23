@@ -9,21 +9,24 @@ import StorageService from "../services/storage.service"
 import SessionService from "../services/session.service"
 
 import { LoadWrapper, NewsWrapper } from "../styles/news-wrapper"
+import { settingState } from "../states/user"
 
 export default function Home() {
 
     let [active, setActive] = useRecoilState(activeState)
     let [news, setNews] = useState()
+    let [setting, setSetting] = useRecoilState(settingState)
 
     useEffect(() => {
         setActive('home')
+        setNews(null)   
         const token = StorageService.getToken()
         const cachedNews = SessionService.getNews('home')
         if (cachedNews) {
             setNews(cachedNews)
         }
         fetchNews(token)
-    }, [])
+    }, [setting])
 
     async function fetchNews(token) {
         try {

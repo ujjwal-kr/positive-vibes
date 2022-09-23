@@ -10,11 +10,13 @@ import StorageService from "../services/storage.service"
 import SessionService from "../services/session.service"
 
 import { NewsWrapper, LoadWrapper } from "../styles/news-wrapper"
+import { settingState } from "../states/user"
 
 export default function News() {
     let { id } = useParams()
     let [news, setNews] = useState()
     let [active, setActive] = useRecoilState(activeState)
+    let [setting, setSetting] = useRecoilState(settingState)
 
     useEffect(() => {
         setActive(id)
@@ -27,7 +29,7 @@ export default function News() {
             }
         }, .00001);
         fetchNews(id, token)
-    }, [id])
+    }, [id, setting])
 
     async function fetchNews(id, token) {
         try {
