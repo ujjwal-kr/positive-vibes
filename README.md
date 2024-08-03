@@ -6,7 +6,8 @@ _It is an extended fork of [ujjwal-kr/xenon](https://github.com/ujjwal-kr/xenon)
 
 > Featured with a custom setting to adjust the analysis of the news delivered.
 
-![ss](https://media.discordapp.net/attachments/936106022576201769/1037926404098113667/image.png)
+![ss](https://github.com/user-attachments/assets/2aa3a580-fffb-400e-9600-bfc047efc6f8)
+
 
 ## Our Stack
 
